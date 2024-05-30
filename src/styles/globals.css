@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark ) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+header {
+  background: rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
+}
+
+footer {
+  background: rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
+} */
+
+#page-layout{
+  margin: 0;
+  padding: 4rem 0;
+  box-sizing: border-box;
+  min-height: 100%;
+  min-width: 100%;
+  display: flex;
+}
+
+.image-logo{
+  padding: 0.5rem 0 0;
+  width: 80% !important;
+}
+
+.header{ 
+  /* box-shadow: -8px 5px 30px 0px rgba(58, 49, 66, 0.3), 0 0px 0px -5px rgba(78, 65, 90, 0.35); */
+}
+
+.locale-wrapper{
+  inline-size: min-content;
+}
+
+.menu-link{}
+.menu-profile-link{}
+.menu-register-link{}
+.menu-login-link{}
+.menu-contact-link{}
+.menu-contact-link{}
+.menu-logout-link{}
+
+/* Estilos del servicio */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+input:focus {
+  outline: none;
+}
+
+

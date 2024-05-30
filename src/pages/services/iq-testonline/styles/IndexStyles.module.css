@@ -1,0 +1,114 @@
+.section {
+  @apply text-customGray mx-[6vw];
+}
+
+.OurTestSection {
+  @apply text-customGray md:px-8;
+}
+
+.divSection {
+  @apply grid max-w-screen-xl px-4 pt-20 pb-8 lg:gap-8 xl:gap-0 lg:py-16 grid-cols-1 xl:grid-cols-2 lg:pt-28;
+}
+
+.h1 {
+  @apply max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl;
+}
+
+.pInitial {
+  @apply max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-black;
+}
+
+.buttonTest {
+  @apply flex 
+  flex-wrap 
+  items-center 
+  text-white 
+  bg-purple-700 
+  hover:bg-white 
+  hover:text-purple-700 
+  transition duration-300  
+  font-medium 
+  rounded-lg 
+  md:mr-0 
+  dark:bg-purple-600
+  dark:hover:bg-white 
+  dark:hover:text-purple-700 
+  focus:outline-none 
+  dark:focus:ring-purple-800 
+  border-2 
+  border-transparent 
+  hover:border-purple-700
+  text-2xl sm:text-3xl 
+  py-2 px-4 md:px-12 md:py-6;
+}
+
+.buttonStartTest {
+  @apply hidden
+  lg:flex
+  w-full
+  justify-center
+  text-white
+  bg-purple-700
+  hover:bg-white
+  hover:text-purple-700
+  transition duration-100
+  font-medium
+  rounded-lg
+  dark:bg-purple-600
+  dark:hover:bg-white
+  dark:hover:text-purple-700
+  focus:outline-none
+  dark:focus:ring-purple-800
+  border-2
+  border-transparent
+  hover:border-purple-700
+  text-base
+  py-2 px-4;
+}
+
+.buttonStartTestQuestions {
+  @apply flex
+  w-full
+  justify-center
+  text-white
+  bg-purple-700
+  hover:bg-white
+  hover:text-purple-700
+  transition duration-100
+  font-medium
+  rounded-lg
+  dark:bg-purple-600
+  dark:hover:bg-white
+  dark:hover:text-purple-700
+  focus:outline-none
+  dark:focus:ring-purple-800
+  border-2
+  border-transparent
+  hover:border-purple-700
+  text-base
+  py-2 px-4;
+}
+
+.buttonStartTestMobile {
+  @apply flex
+  sm:hidden
+  w-full
+  justify-center
+  text-white
+  bg-purple-700
+  hover:bg-white
+  hover:text-purple-700
+  transition duration-100
+  font-medium
+  rounded-lg
+  dark:bg-purple-600
+  dark:hover:bg-white
+  dark:hover:text-purple-700
+  focus:outline-none
+  dark:focus:ring-purple-800
+  border-2
+  border-transparent
+  hover:border-purple-700
+  text-base
+  py-2 px-4;
+}

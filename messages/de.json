@@ -1,0 +1,159 @@
+{
+    "LocaleSwitcher": {
+        "es": "Spanisch",
+        "fr": "Französisch",
+        "ae": "Vereinigte Arabische Emirate",
+        "de": "Deutsch",
+        "it": "Italienisch",
+        "nl": "Niederländisch",
+        "ie": "Irisch",
+        "uk": "Vereinigtes Königreich"
+    },
+    
+    "Index": {
+        "title": "Hallo Welt!",
+        "description": "Dies ist eine Testnachricht auf Spanisch."
+    },
+
+    "Menu": {
+        "profile": "Profil",
+        "register": "Registrieren",
+        "login": "Anmelden",
+        "contact": "Kontakt",
+        "logout": "Abmelden",
+        "weating-locale": "Lade Sprachen..."
+    },
+
+    "Login": {
+        "title": "Anmelden",
+        "password": "Passwort",
+        "submit": "Anmelden",
+        "error": "{error, select, CredentialsSignin {Ungültiger Benutzername oder Passwort} other {Unbekannter Fehler}}",
+        "invalid-login-credentials": "Ungültiger Benutzername oder Passwort",
+        "too-many-requests": "Zu viele Anfragen, bitte versuchen Sie es später noch einmal",
+        "Unknown": "Unbekannter Fehler",
+        "success_message": "Anmeldung erfolgreich",
+        "user_email": "E-Mail",
+        "email_holder": "Geben Sie Ihre E-Mail ein",
+        "password_holder": "Geben Sie Ihr Passwort ein",
+        "invalid-email": "Ungültige E-Mail"
+    },
+
+    "Register": {
+        "title": "Registrieren",
+        "user_name": "Benutzername",
+        "user_email": "E-Mail",
+        "password": "Passwort",
+        "submit": "Registrieren",
+        "Unknown": "Unbekannter Fehler",
+        "success_message": "Registrierung erfolgreich",
+        "email-already-in-use": "E-Mail bereits in Gebrauch",
+        "invalid-email": "Ungültige E-Mail",
+        "weak-password": "Schwaches Passwort",
+        "error": "{error, select, CredentialsSignup {Benutzername bereits vergeben} other {Unbekannter Fehler}}",
+        "user_name_holder": "Geben Sie Ihren Benutzernamen ein",
+        "email_holder": "Geben Sie Ihre E-Mail ein",
+        "password_holder": "Geben Sie Ihr Passwort ein"
+    },
+
+    "About": {
+        "title": "Über",
+        "lastUpdated": "Dieses Beispiel wurde aktualisiert {lastUpdatedRelative} ({lastUpdated, date, short})."
+    },
+
+    "Contact": {
+        "title": "Kontakt",
+        "description": "Wenn Sie Fragen haben, zögern Sie nicht, uns zu kontaktieren.",
+        "submit": "Senden",
+        "message": "Nachricht",
+        "name": "Name",
+        "email": "E-Mail",
+        "invalid-email": "Ungültige E-Mail",
+        "invalid-name": "Ungültiger Name",
+        "invalid-message": "Ungültige Nachricht",
+        "success_message": "Nachricht erfolgreich gesendet",
+        "error": "Fehler beim Senden der Nachricht"
+    },
+
+    "Cookies": {
+        "accept": "Akzeptieren",
+        "decline": "Ablehnen",
+        "message": "Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website machen.",
+        "link": "Mehr erfahren"
+    },
+
+    "Logout": {
+        "title": "Abmelden",
+        "description": "Sind Sie sicher, dass Sie sich abmelden möchten?"
+    },
+
+    "Payment": {
+        "title": "Zahlung",
+        "description": "Bitte geben Sie Ihre Zahlungsdaten ein.",
+        "submit": "Bezahlen",
+        "card": "Kartennummer",
+        "expiration": "Ablaufdatum",
+        "cvc": "CVC",
+        "invalid-card": "Ungültige Kartennummer",
+        "invalid-expiration": "Ungültiges Ablaufdatum",
+        "invalid-cvc": "Ungültiger CVC",
+        "success_message": "Zahlung erfolgreich",
+        "error": "Fehler bei der Zahlungsabwicklung"
+    },
+
+    "Privacy": {
+        "title": "Datenschutzbestimmungen",
+        "description": "Dies sind unsere Datenschutzbestimmungen."
+    },
+
+    "Profile": {
+        "title": "Profil",
+        "description": "Dies sind Ihre Profildaten.",
+        "submit": "Speichern",
+        "name": "Name",
+        "email": "E-Mail",
+        "invalid-email": "Ungültige E-Mail",
+        "invalid-name": "Ungültiger Name",
+        "success_message": "Profil erfolgreich aktualisiert",
+        "error": "Fehler beim Aktualisieren des Profils"
+    },
+
+    "Terms": {
+        "title": "Nutzungsbedingungen",
+        "description": "Dies sind unsere Nutzungsbedingungen."
+    },
+
+    "Thanks": {
+        "title": "Danke",
+        "description": "Danke für Ihren Besuch auf unserer Website."
+    },
+
+    "Navigation": {
+        "index": "Startseite",
+        "about": "Über",
+        "switchLocale": "Wechseln zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}}"
+    },
+
+    "PageLayout": {
+        "pageTitle": "next-intl"
+    },
+    
+    "StrictTypes": {
+        "nested": {
+          "hello": "Hallo",
+          "another": {
+            "level": "Niveau"
+          }
+        }
+    },
+
+    "NotFound": {
+        "title": "Seite nicht gefunden",
+        "description": "Entschuldigung, die gesuchte Seite existiert nicht."
+    },
+
+    "Default": {
+        "title": "Willkommen",
+        "description": "Dies ist eine Standardnachricht."
+    }
+}

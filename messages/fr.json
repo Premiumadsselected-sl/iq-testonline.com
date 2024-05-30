@@ -1,0 +1,159 @@
+{
+    "LocaleSwitcher": {
+        "es": "Espagnol",
+        "fr": "Français",
+        "ae": "Émirats Arabes Unis",
+        "de": "Allemand",
+        "it": "Italien",
+        "nl": "Néerlandais",
+        "ie": "Irlandais",
+        "uk": "Royaume-Uni"
+    },
+
+    "Index": {
+        "title": "Bonjour le monde!",
+        "description": "Ceci est un message de test en espagnol."
+    },
+
+    "Menu": {
+        "profile": "Profil",
+        "register": "S'inscrire",
+        "login": "Se connecter",
+        "contact": "Contact",
+        "logout": "Se déconnecter",
+        "weating-locale": "Chargement des langues..."
+    },
+
+    "Login": {
+        "title": "Connexion",
+        "password": "Mot de passe",
+        "submit": "Se connecter",
+        "error": "{error, select, CredentialsSignin {Nom d'utilisateur ou mot de passe invalide} other {Erreur inconnue}}",
+        "invalid-login-credentials": "Nom d'utilisateur ou mot de passe invalide",
+        "too-many-requests": "Trop de demandes, veuillez réessayer plus tard",
+        "Unknown": "Erreur inconnue",
+        "success_message": "Connexion réussie",
+        "user_email": "Email",
+        "email_holder": "Entrez votre email",
+        "password_holder": "Entrez votre mot de passe",
+        "invalid-email": "Email invalide"
+    },
+
+    "Register": {
+        "title": "S'inscrire",
+        "user_name": "Nom d'utilisateur",
+        "user_email": "Email",
+        "password": "Mot de passe",
+        "submit": "S'inscrire",
+        "Unknown": "Erreur inconnue",
+        "success_message": "Inscription réussie",
+        "email-already-in-use": "Email déjà utilisé",
+        "invalid-email": "Email invalide",
+        "weak-password": "Mot de passe faible",
+        "error": "{error, select, CredentialsSignup {Nom d'utilisateur déjà pris} other {Erreur inconnue}}",
+        "user_name_holder": "Entrez votre nom d'utilisateur",
+        "email_holder": "Entrez votre email",
+        "password_holder": "Entrez votre mot de passe"
+    },
+
+    "About": {
+        "title": "À propos",
+        "lastUpdated": "Cet exemple a été mis à jour {lastUpdatedRelative} ({lastUpdated, date, short})."
+    },
+
+    "Contact": {
+        "title": "Contact",
+        "description": "Si vous avez des questions, n'hésitez pas à nous contacter.",
+        "submit": "Envoyer",
+        "message": "Message",
+        "name": "Nom",
+        "email": "Email",
+        "invalid-email": "Email invalide",
+        "invalid-name": "Nom invalide",
+        "invalid-message": "Message invalide",
+        "success_message": "Message envoyé avec succès",
+        "error": "Erreur lors de l'envoi du message"
+    },
+
+    "Cookies": {
+        "accept": "Accepter",
+        "decline": "Refuser",
+        "message": "Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.",
+        "link": "En savoir plus"
+    },
+
+    "Logout": {
+        "title": "Se déconnecter",
+        "description": "Êtes-vous sûr de vouloir vous déconnecter?"
+    },
+
+    "Payment": {
+        "title": "Paiement",
+        "description": "Veuillez entrer vos informations de paiement.",
+        "submit": "Payer",
+        "card": "Numéro de carte",
+        "expiration": "Date d'expiration",
+        "cvc": "CVC",
+        "invalid-card": "Numéro de carte invalide",
+        "invalid-expiration": "Date d'expiration invalide",
+        "invalid-cvc": "CVC invalide",
+        "success_message": "Paiement réussi",
+        "error": "Erreur lors du traitement du paiement"
+    },
+
+    "Privacy": {
+        "title": "Politique de confidentialité",
+        "description": "Voici notre politique de confidentialité."
+    },
+
+    "Profile": {
+        "title": "Profil",
+        "description": "Voici vos informations de profil.",
+        "submit": "Enregistrer",
+        "name": "Nom",
+        "email": "Email",
+        "invalid-email": "Email invalide",
+        "invalid-name": "Nom invalide",
+        "success_message": "Profil mis à jour avec succès",
+        "error": "Erreur lors de la mise à jour du profil"
+    },
+
+    "Terms": {
+        "title": "Conditions d'utilisation",
+        "description": "Voici nos conditions d'utilisation."
+    },
+
+    "Thanks": {
+        "title": "Merci",
+        "description": "Merci de visiter notre site."
+    },
+
+    "Navigation": {
+        "index": "Accueil",
+        "about": "À propos",
+        "switchLocale": "Changer en {locale, select, de {Allemand} en {Anglais} other {Inconnu}}"
+    },
+
+    "PageLayout": {
+        "pageTitle": "next-intl"
+    },
+
+    "StrictTypes": {
+        "nested": {
+          "hello": "Bonjour",
+          "another": {
+            "level": "Niveau"
+          }
+        }
+    },
+
+    "NotFound": {
+        "title": "Page non trouvée",
+        "description": "Désolé, la page que vous cherchez n'existe pas."
+    },
+
+    "Default": {
+        "title": "Bienvenue",
+        "description": "Ceci est un message par défaut."
+    }
+}

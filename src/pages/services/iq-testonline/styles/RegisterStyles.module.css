@@ -1,0 +1,48 @@
+.buttonRegister {
+  @apply flex
+  w-full
+  justify-center
+  text-white
+  bg-purple-700
+  hover:bg-white
+  hover:text-purple-700
+  transition duration-100
+  font-medium
+  rounded-lg
+  dark:bg-purple-600
+  dark:hover:bg-white
+  dark:hover:text-purple-700
+  focus:outline-none
+  dark:focus:ring-purple-800
+  border-2
+  border-transparent
+  hover:border-purple-700
+  text-base
+  py-2 px-4;
+}
+
+.inputForm {
+  @apply bg-gray-50 
+  border
+  border-gray-300 
+  text-gray-900 
+  text-sm 
+  rounded-lg 
+  focus:ring-2
+  focus:ring-purple-700 
+  focus:border-purple-700 
+  focus:border-none
+  block 
+  w-full 
+  p-3.5 
+  dark:bg-gray-700 
+  dark:border-gray-600 
+  dark:placeholder-gray-400 
+  dark:text-white 
+  dark:focus:ring-blue-500 
+  dark:focus:border-blue-500;
+}
+
+.titleForm {
+  @apply col-span-2 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight dark:text-white;
+}

@@ -1,0 +1,70 @@
+.button {
+  @apply flex 
+  flex-wrap 
+  items-center 
+  border
+  border-gray-400
+  text-customGray 
+  hover:bg-purple-700
+  hover:bg-opacity-45
+  hover:text-white
+  transition duration-150  
+  font-medium 
+  rounded-lg 
+  dark:bg-purple-600
+  dark:hover:bg-white 
+  dark:hover:text-purple-700 
+  focus:outline-none 
+  dark:focus:ring-purple-800 
+  text-xs
+  sm:text-base
+  py-1 px-2 md:px-2 md:py-1;
+}
+
+.progressIndicator {
+  @apply cursor-pointer
+    border-gray-300 
+    focus:outline-none 
+    focus:ring-4 
+    focus:ring-gray-100 
+    font-medium rounded-lg 
+    text-xs lg:text-sm
+    px-2 py-1 md:px-1 md:py-1 lg:px-3 lg:py-2 xl:px-4 xl:py-2 
+    me-auto 
+    dark:bg-gray-800 
+    dark:text-white 
+    dark:border-gray-600 
+    dark:hover:bg-gray-700 
+    dark:hover:border-gray-600 
+    dark:focus:ring-gray-700;
+}
+
+.buttonAnswer {
+  @apply hover:border-[3px]
+  hover:border-gray-400
+  rounded-lg
+  transition-transform duration-300 transform hover:scale-105;
+}
+
+.buttonAnswerSelected {
+  @apply border-[3px]
+  border-purple-700
+  rounded-lg
+  transition-transform duration-300 transform scale-105;
+}
+
+.timerProgressBar {
+  @apply w-full bg-[#7826cb80] rounded-full h-1.5 mb-3 mr-1 dark:bg-[#7826cb80];
+}
+
+.timerBar {
+  @apply bg-purple-700 h-1.5 rounded-full dark:bg-purple-700;
+}
+
+.percentNumber {
+  @apply text-[11px] md:text-sm text-customGray mb-4 mr-2 ml-1;
+}
+
+.currentTime {
+  @apply text-sm md:text-xl font-bold mb-4;
+}
