@@ -340,31 +340,6 @@
         "rights": "Derechos de autor © 2024 Todos los derechos reservados por IQes"
     },
 
-    "PageLayout": {
-        "title": "next-intl"
-    },
-
-    "Test": {
-        "title": "Prueba",
-        "preview": "Atrás",
-        "next": "Siguiente"
-    },
-
-    "OurTest": {
-        "title": "Nuestro test de CI en detalle",
-        "subtitle": "EL OBJETIVO ES PROPORCIONAR UNA INDICACIÓN NUMÉRICA DE LA INTELIGENCIA DE LA PERSONA EN COMPARACIÓN CON SU GRUPO DE EDAD.",
-        "card1Text1": "INMEDIATO",
-        "card1Text2": "¿Qué es el CI?",
-        "card1Text3": "CI significa Cociente Intelectual. Es una medida de tu inteligencia y se expresa por un número.",
-        "card2Text1": "SIMPLE",
-        "card2Text2": "¿Cómo calcularlo?",
-        "card2Text3": "El CI de una persona se puede calcular haciéndole una prueba de inteligencia.",
-        "card3Text1": "RÁPIDO",
-        "card3Text2": "¿Cómo evaluar mi resultado?",
-        "card3Text3": "El CI promedio es de 100. Si obtienes una puntuación superior a 100, lo has hecho mejor que la persona promedio.",
-        "buttonTest": "INICIAR TEST AHORA"
-    },
-
     "FrequentQuestions": {
         "title": "Preguntas frecuentes",
         "subtitle": "AQUÍ ESTÁN NUESTRAS RESPUESTAS A LAS PREGUNTAS MÁS FRECUENTES.",
@@ -410,5 +385,32 @@
     "Default": {
         "title": "Bienvenido",
         "description": "Este es un mensaje predeterminado."
+    },
+
+    "PageLayout": {
+        "title": "next-intl"
+    },
+
+    "Test": {
+        "title": "Prueba",
+        "preview": "Atrás",
+        "next": "Siguiente"
+    },
+
+    "OurTest": {
+        "title": "Nuestro test de CI en detalle",
+        "subtitle": "EL OBJETIVO ES PROPORCIONAR UNA INDICACIÓN NUMÉRICA DE LA INTELIGENCIA DE LA PERSONA EN COMPARACIÓN CON SU GRUPO DE EDAD.",
+        "card1Text1": "INMEDIATO",
+        "card1Text2": "¿Qué es el CI?",
+        "card1Text3": "CI significa Cociente Intelectual. Es una medida de tu inteligencia y se expresa por un número.",
+        "card2Text1": "SIMPLE",
+        "card2Text2": "¿Cómo calcularlo?",
+        "card2Text3": "El CI de una persona se puede calcular haciéndole una prueba de inteligencia.",
+        "card3Text1": "RÁPIDO",
+        "card3Text2": "¿Cómo evaluar mi resultado?",
+        "card3Text3": "El CI promedio es de 100. Si obtienes una puntuación superior a 100, lo has hecho mejor que la persona promedio.",
+        "buttonTest": "INICIAR TEST AHORA"
     }
+
+    
 }

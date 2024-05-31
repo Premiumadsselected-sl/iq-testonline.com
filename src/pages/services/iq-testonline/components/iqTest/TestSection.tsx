@@ -64,9 +64,7 @@ export default function TestSection({ pageProps }: Props) {
         if (Object.keys(updatedAnswers).length === 20) {
             console.log(updatedAnswers)
             setResultPage(true)
-
-
-            
+ 
             // Get the response from the server
             const user = auth.currentUser
             const token = await user?.getIdToken()

@@ -8,6 +8,7 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
+
 export default function Profile({ Component, router, pageProps }: Props) {
 
     return (

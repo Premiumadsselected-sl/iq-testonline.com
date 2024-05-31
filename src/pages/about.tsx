@@ -9,6 +9,8 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
+
+
 export default function About({ Component, router, pageProps }: Props) {
 
     return (
