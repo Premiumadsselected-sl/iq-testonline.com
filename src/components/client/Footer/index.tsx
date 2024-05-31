@@ -1,6 +1,6 @@
 'use client'
 import { AppProps } from 'next/app'
-import CustomizeFooter from '@/pages/services/iq-testonline/components/Footer/CustomizeFooter
+import CustomizeFooter from '@/pages/services/iq-testonline/components/Footer/CustomizeFooter'
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -19,7 +19,6 @@ const Footer = ({ Component, router, pageProps }: Props) => {
                     Component={Footer} 
                     router={router}
                     pageProps={pageProps}
-                
                 />
 
             </section>
