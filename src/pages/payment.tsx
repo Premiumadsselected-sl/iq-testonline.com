@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import PWrapper from '@/pages/providers/client/PWrapper'
-import PaymentForm from '@/components/private/Payments/paymentForm'
+import CustomizePaymentForm from './services/iq-testonline/components/Payment/CustomizePaymentForm'
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -14,14 +14,18 @@ export default function Payment({ Component, router, pageProps }: Props) {
             Component={Payment}
             pageProps={pageProps}
             router={router}
-            translations="Payment" 
+            translations="Payment"
             timeZone={process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'}
         >
-            
-            
-            {/* - Require payment form. */}
-            <PaymentForm />
 
+            {/* - Require payment form. */}
+            <div className='w-full justify-center items-center'>
+                <CustomizePaymentForm
+                    Component={Payment}
+                    router={router}
+                    pageProps={pageProps}
+                />
+            </div>
 
         </PWrapper>
     )
@@ -32,7 +36,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: (await import(`../../messages/${locale}.json`)).default,
-            translationNamespace: 'Payment', 
+            translationNamespace: 'Payment',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE
         }

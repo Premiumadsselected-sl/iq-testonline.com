@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './ForgotPasswordStyles.module.css'
+import styles from '@/pages/services/iq-testonline/styles/ForgotPasswordStyles.module.css'
 import { AppProps } from 'next/app';
 import { useTranslations } from 'next-intl';
 
@@ -18,13 +18,16 @@ export default function ForgotPasswordForm({ pageProps }: Props) {
 
     return (
         <>
+
             <form
-            // action="/api/auth/callback/credentials"
-            // method="post"
-            // onSubmit={onSubmit}
+                // action="/api/auth/callback/credentials"
+                method="post"
+                // onSubmit={onSubmit}
+                id="forgot-password-form"
+                className="forgot-password-form"
             >
                 <div className="w-full lg:max-w-full lg:flex h-[38vh]">
-                    <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full">
+                    <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">
                         <div className="grid grid-cols-1 gap-4 md:gap-6" >
                             <span className={styles.titleForm}>{t('forgotTitle')}</span>
                             <div className="w-full col-span-2">

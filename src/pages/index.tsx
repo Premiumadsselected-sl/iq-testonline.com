@@ -27,7 +27,6 @@ export default function Index({ Component, router, pageProps }: Props) {
             <div className='grid grid-cols-1 gap-20 lg:gap-36'>
                 <IndexComponent {...pageProps} />
                 <OurTest {...pageProps} />
-                <FrequentQuestions {...pageProps} />
                 <PricingComponent {...pageProps}/>
             </div>
             {/* ------------------------------------------- */}

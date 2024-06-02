@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import styles from './ContactUsStyles.module.css'
 import { AppProps } from 'next/app';
 import { useTranslations } from 'next-intl';
+
+// Styles
+import styles from '@/pages/services/iq-testonline/styles/ContactUsStyles.module.css'
 
 type Props = AppProps & {
     t: any
@@ -9,7 +11,7 @@ type Props = AppProps & {
 
 export default function ContactUsForm({ pageProps }: Props) {
 
-    const t = useTranslations('Contact') 
+    const t = useTranslations('Contact')
     pageProps = {
         ...pageProps,
         t: t,
@@ -18,38 +20,40 @@ export default function ContactUsForm({ pageProps }: Props) {
     return (
         <>
             <form
-            // action="/api/auth/callback/credentials"
-            // method="post"
-            // onSubmit={onSubmit}
+                action="/api/auth/callback/credentials"
+                method="post"
+                // onSubmit={onSubmit}
+                id="contact-form"
+                className="contact-form"
             >
                 <div className="w-full lg:max-w-full lg:flex">
-                    <div className="bg-white p-4 flex flex-col leading-normal rounded-l-lg rounded-r-lg lg:rounded-r-none w-full">
+                    <div className="bg-white p-4 flex flex-col leading-normal rounded-l-lg rounded-r-lg lg:rounded-r-none w-full border-customBorderGray border-[1px] shadow-md">
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6" >
-                            
+
                             <span className={styles.titleForm}>{t('title')}</span>
 
                             <div className="w-full col-span-2 lg:col-span-1">
-                                <input 
-                                    type="text" 
-                                    className={styles.inputForm} 
-                                    placeholder={t('name_holder')} 
-                                required />
+                                <input
+                                    type="text"
+                                    className={styles.inputForm}
+                                    placeholder={t('name_holder')}
+                                    required />
                             </div>
 
                             <div className="w-full col-span-2 lg:col-span-1">
-                                <input 
-                                    type="text" 
-                                    className={styles.inputForm} 
-                                    placeholder={t('email_holder')} 
-                                required />
+                                <input
+                                    type="text"
+                                    className={styles.inputForm}
+                                    placeholder={t('email_holder')}
+                                    required />
                             </div>
 
                             <div className="w-full col-span-2">
-                                <input 
-                                    type="text" 
-                                    className={styles.inputForm} 
-                                    placeholder={t('topic_holder')} 
-                                required />
+                                <input
+                                    type="text"
+                                    className={styles.inputForm}
+                                    placeholder={t('topic_holder')}
+                                    required />
                             </div>
 
                             <div className="w-full col-span-2">
@@ -68,9 +72,9 @@ export default function ContactUsForm({ pageProps }: Props) {
 
                         </div>
                     </div>
-                    <div 
-                        className=" lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" 
-                        style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }} 
+                    <div
+                        className=" lg:w-[50%] flex-none bg-cover rounded-r-lg text-center"
+                        style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }}
                         title="Woman holding a mug">
                     </div>
                 </div>

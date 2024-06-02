@@ -1,20 +1,20 @@
-'use client'
 import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import PWrapper from '@/pages/providers/client/PWrapper'
 
 // - import default login form or create your own
-import CustomizeLoginForm from './services/iq-testonline/components/LoginForm/CustomizeLoginForm'
+import CustomizeRegisterForm from '@/pages/services/iq-testonline/components/RegisterForm/CustomizeRegisterForm'
+import ForgotPasswordForm from '@/pages/services/iq-testonline/components/forgotPassword/ForgotPasswordForm'
 
 type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function Login({ Component, router, pageProps }: Props) {
+export default function ForgotPassword({ Component, router, pageProps }: Props) {
 
     return (
         <PWrapper
-            Component={Login}
+            Component={ForgotPassword}
             pageProps={pageProps}
             router={router}
             translations="About"
@@ -22,12 +22,8 @@ export default function Login({ Component, router, pageProps }: Props) {
         >
 
             {/* Add yor custumize form. */}
-            <div className='w-full justify-center items-center px-6 pt-10 md:px-24 md:pt-20'>
-                <CustomizeLoginForm
-                    Component={Login}
-                    router={router}
-                    pageProps={pageProps}
-                />
+            <div className='w-full justify-center items-center px-6 pt-10 md:px-72 md:pt-20'>
+                <ForgotPasswordForm {...pageProps} />
             </div>
 
         </PWrapper>
@@ -39,7 +35,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: (await import(`../../messages/${locale}.json`)).default,
-            translationNamespace: 'Login',
+            translationNamespace: 'ForgotPassword',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE
         }

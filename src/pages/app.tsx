@@ -4,7 +4,9 @@ import PWrapper from '@/pages/providers/client/PWrapper'
 
 // Importa los componentes del servicio
 import Timer from './services/iq-testonline/components/iqTest/Timer'
+import AnalyzeTest from './services/iq-testonline/components/iqTest/AnalyzeTest'
 import TestSection from './services/iq-testonline/components/iqTest/TestSection'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 type Props = AppProps & {
@@ -13,19 +15,22 @@ type Props = AppProps & {
 
 export default function Index({ Component, router, pageProps }: Props) {
 
+    // Get the context Redux
+    const { totalAnswerTest } = useSelector((state: any) => state.iqTestStore)
+
     return (
         <PWrapper
             Component={Index}
             pageProps={pageProps}
             router={router}
-            translations="Index" 
+            translations="Index"
             timeZone={process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'}
         >
-            
+
             {/* Los componentes deven ser renderizados aqui */}
             <div className='w-full justify-center items-center px-4 pt-4 md:px-36 md:pt-4'>
                 <Timer />
-                <TestSection {...pageProps}/>
+                <TestSection {...pageProps} />
             </div>
             {/* ------------------------------------------- */}
 
@@ -38,7 +43,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: (await import(`../../messages/${locale}.json`)).default,
-            translationNamespace: 'Index', 
+            translationNamespace: 'Index',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE
         }

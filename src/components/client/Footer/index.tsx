@@ -7,27 +7,20 @@ type Props = AppProps & {
 }
 
 const Footer = ({ Component, router, pageProps }: Props) => {
-    
+
     const dateYear = new Date().getFullYear()
 
     return (
-        <footer className="flex p-4 mt-8 flex-col w-full text-center" id="footer">
-            
-            <section id="service-footer">
-                
+        <>
+            <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <footer className="flex p-4 mt-8 flex-col w-full text-center justify-center items-center" id="footer">
                 <CustomizeFooter
-                    Component={Footer} 
+                    Component={Footer}
                     router={router}
                     pageProps={pageProps}
                 />
-
-            </section>
-            
-            <section className="flex flex-col m-4 mt-8 text-center" id="copy-footer">
-                &copy; ADSSELECTED S.L. All rights reserved. {dateYear}
-            </section>
-
-        </footer>
+            </footer>
+        </>
     )
 }
 

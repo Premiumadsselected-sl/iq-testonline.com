@@ -3,12 +3,16 @@ import { useContext, useEffect, useState } from "react";
 import { MdTimer } from "react-icons/md";
 import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css';
 import CGlobal from "@/contexts/global/CGlobal";
+import { useSelector } from "react-redux";
 
 const Timer: React.FC = () => {
     const totalTime = 20 * 60; // 20 minutes
     const [timeLeft, setTimeLeft] = useState<number>(totalTime);
     const [isRunning] = useState<boolean>(true);
     const [gridTemplateColumns, setGridTemplateColumns] = useState<string>('87% auto');
+
+    // Get the context Redux
+    const { progressTestPage } = useSelector((state: any) => state.iqTestStore)
 
     const Context = useContext(CGlobal)
     const { o }: any = Context
@@ -52,19 +56,20 @@ const Timer: React.FC = () => {
     const progressBarWidth = (timeLeft / totalTime) * 100;
 
     return (
-        <div className="grid grid-cols-4 gap-0 items-center" style={{ gridTemplateColumns: gridTemplateColumns, gridAutoFlow: 'column' }}>
-            <div className={styles.timerProgressBar}>
-                <div className={styles.timerBar}
-                    style={{ width: `${progressBarWidth}%` }}
-                ></div>
-            </div>
-            <div className={styles.percentNumber}>{`${Math.floor(progressBarWidth)}%`}</div>
-            <div className={styles.currentTime}>{`${formatTime(timeLeft)} `}</div>
-            <MdTimer className="mb-3 tex-sm sm:text-lg" />
-            {/* <div className="flex flex-wrap items-center w-full">
-            </div> */}
-        </div>
-
+        <>
+            {progressTestPage !== 100 &&
+                <div className="grid grid-cols-4 gap-0 items-center" style={{ gridTemplateColumns: gridTemplateColumns, gridAutoFlow: 'column' }}>
+                    <div className={styles.timerProgressBar}>
+                        <div className={styles.timerBar}
+                            style={{ width: `${progressTestPage}%` }}
+                        ></div>
+                    </div>
+                    <div className={styles.percentNumber}>{`${progressTestPage}%`}</div>
+                    <div className={styles.currentTime}>{`${formatTime(timeLeft)} `}</div>
+                    <MdTimer className="mb-3 tex-sm sm:text-lg" />
+                </div>
+            }
+        </>
     );
 };
 

@@ -15,17 +15,21 @@ export default function LegalNoticeComponent({ pageProps }: Props) {
     return (
         <div className="flex flex-col flex-wrap justify-start items-start text-left text-customGray">
             <h1 className="text-6xl font-extrabold mb-2">{t('title')}</h1>
-            <p>{t('address')}</p>
-            <h3 className="text-2xl font-extrabold mt-4">{t('title2')}</h3>
-            <p>{t('addressComplete')}</p>
-            <p>{t('contact')}</p>
-            <p><strong>{t('representation')}</strong> {t('legalRepresentation')}</p>
-            <p><strong>{t('director')}</strong> {t('directorPublications')}</p>
-            <p><strong>{t('manager')}</strong> {t('webManager')}</p>
-            <p><strong>{t('hosting')}</strong> {t('webHosting')}</p>
-            <p>{t('thePublisher')}</p>
-            <p>{t('innospark')}</p>
+            <p className="mb-6">{t('legal_notice')}</p>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title2')}</h3>
+            <p className="mb-6">{t('intellectual_property')}</p>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title3')}</h3>
+            <p className="mb-6">{t('use_web_site')}</p>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title4')}</h3>
+            <p className="mb-6">{t('links_parties')}</p>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title5')}</h3>
+            <p className="mb-6">{t('limitation_liability')}</p>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title6')}</h3>
+            <p className="mb-6">{t('law_jurisdiction')}</p>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title7')}</h3>
+            <p className="mb-6">{t('changes_legalNotice')}</p>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title8')}</h3>
+            <p className="mb-6">{t('Contact')}</p>
         </div>
-
     );
 }

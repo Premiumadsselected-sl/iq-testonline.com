@@ -1,0 +1,12 @@
+.checkText {
+    @apply text-customGray text-[13px] flex items-center mb-1 font-semibold	text-start;
+}
+
+.subtitles {
+    @apply mb-1 font-semibold text-customGray justify-start flex pt-5 text-start;
+    
+}
+
+.explanations {
+    @apply text-customGray text-[13px] text-start font-normal;
+}

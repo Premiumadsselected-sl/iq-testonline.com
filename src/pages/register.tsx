@@ -17,17 +17,19 @@ export default function Register({ Component, router, pageProps }: Props) {
             Component={Register}
             pageProps={pageProps}
             router={router}
-            translations="About" 
+            translations="About"
             timeZone={process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'}
         >
-            
+
             {/* Add yor custumize form. */}
-            <CustomizeRegisterForm 
-                Component={Register} 
-                router={router}
-                pageProps={pageProps}
-            />
-            
+            <div className='w-full justify-center items-center px-6 pt-10 md:px-24 md:pt-20'>
+                <CustomizeRegisterForm
+                    Component={Register}
+                    router={router}
+                    pageProps={pageProps}
+                />
+            </div>
+
         </PWrapper>
     )
 
@@ -37,7 +39,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: (await import(`../../messages/${locale}.json`)).default,
-            translationNamespace: 'Register', 
+            translationNamespace: 'Register',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE
         }
