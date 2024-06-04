@@ -11,11 +11,8 @@
   transition duration-150  
   font-medium 
   rounded-lg 
-  dark:bg-purple-600
-  dark:hover:bg-white 
-  dark:hover:text-purple-700 
+
   focus:outline-none 
-  dark:focus:ring-purple-800 
   text-xs
   sm:text-base
   py-1 px-2 md:px-2 md:py-1;
@@ -30,13 +27,7 @@
     font-medium rounded-lg 
     text-xs lg:text-sm
     px-2 py-1 md:px-1 md:py-1 lg:px-3 lg:py-2 xl:px-4 xl:py-2 
-    me-auto 
-    dark:bg-gray-800 
-    dark:text-white 
-    dark:border-gray-600 
-    dark:hover:bg-gray-700 
-    dark:hover:border-gray-600 
-    dark:focus:ring-gray-700;
+    me-auto;
 }
 
 .buttonAnswer {
@@ -54,11 +45,11 @@
 }
 
 .timerProgressBar {
-  @apply w-full bg-[#7826cb80] rounded-full h-1.5 mb-3 mr-1 dark:bg-[#7826cb80];
+  @apply w-full bg-[#7826cb80] rounded-full h-1.5 mb-3 mr-1;
 }
 
 .timerBar {
-  @apply bg-purple-700 h-1.5 rounded-full dark:bg-purple-700;
+  @apply bg-purple-700 h-1.5 rounded-full ;
 }
 
 .percentNumber {

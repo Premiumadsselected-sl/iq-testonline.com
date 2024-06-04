@@ -6,7 +6,7 @@ type PageProps = {
 };
 export default function Answer({ page, picture }: PageProps) {
     return (
-        <div className="w-full bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 p-5">
+        <div className="w-full bg-white border border-gray-200 rounded-lg shadow-xl p-5">
             <span className='text-sm md:text-xl text-customGray font-bold'>{picture.toUpperCase()}</span>
             <Image
                 className='mt-4'

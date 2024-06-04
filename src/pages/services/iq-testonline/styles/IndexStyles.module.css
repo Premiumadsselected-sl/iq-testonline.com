@@ -30,11 +30,8 @@
   font-medium 
   rounded-lg 
   md:mr-0 
-  dark:bg-purple-600
-  dark:hover:bg-white 
-  dark:hover:text-purple-700 
+
   focus:outline-none 
-  dark:focus:ring-purple-800 
   border-2 
   border-transparent 
   hover:border-purple-700
@@ -54,11 +51,8 @@
   transition duration-100
   font-medium
   rounded-lg
-  dark:bg-purple-600
-  dark:hover:bg-white
-  dark:hover:text-purple-700
+
   focus:outline-none
-  dark:focus:ring-purple-800
   border-2
   border-transparent
   hover:border-purple-700
@@ -77,11 +71,8 @@
   transition duration-100
   font-medium
   rounded-lg
-  dark:bg-purple-600
-  dark:hover:bg-white
-  dark:hover:text-purple-700
+
   focus:outline-none
-  dark:focus:ring-purple-800
   border-2
   border-transparent
   hover:border-purple-700
@@ -101,11 +92,8 @@
   transition duration-100
   font-medium
   rounded-lg
-  dark:bg-purple-600
-  dark:hover:bg-white
-  dark:hover:text-purple-700
+
   focus:outline-none
-  dark:focus:ring-purple-800
   border-2
   border-transparent
   hover:border-purple-700

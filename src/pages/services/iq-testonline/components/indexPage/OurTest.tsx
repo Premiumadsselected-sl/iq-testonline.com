@@ -29,18 +29,18 @@ export default function OurTest({ pageProps }: Props) {
                             <div className="w-full   bg-[#ffffff3e] border border-gray-200 rounded-lg shadow">
                                 <Image className="rounded-t-lg" src="/assets/login/cosmos.jpg" alt="" width={800} height={400} />
                                 <div className="px-8 py-4 text-start">
-                                    <h5 className="text-[16px] font-medium tracking-tight text-purple-700 dark:text-white mb-4">{t('card1Text1')}</h5>
+                                    <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card1Text1')}</h5>
                                     <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card1Text2')}</h6>
-                                    <p className="mb-3 text-[16px] font-normal text-gray-700 dark:text-gray-400">{t('card1Text3')}.</p>
+                                    <p className="mb-3 text-[16px] font-normal text-gray-700 ">{t('card1Text3')}.</p>
                                 </div>
                             </div>
                             <div >
                                 <div className="w-full h-max  border border-gray-200 rounded-lg shadow lg:-mt-8 lg:mb-8">
                                     <Image className="rounded-t-lg" src="/assets/login/cosmos.jpg" alt="" width={800} height={400} />
                                     <div className="px-8 py-4 text-start">
-                                        <h5 className="text-[16px] font-medium tracking-tight text-purple-700 dark:text-white mb-4">{t('card2Text1')}</h5>
+                                        <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card2Text1')}</h5>
                                         <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card2Text2')}</h6>
-                                        <p className="mb-3 text-[16px] font-normal text-gray-700 dark:text-gray-400">{t('card2Text3')}.</p>
+                                        <p className="mb-3 text-[16px] font-normal text-gray-700 ">{t('card2Text3')}.</p>
                                     </div>
                                 </div>
                                 <button className={styles.buttonStartTest}>
@@ -50,9 +50,9 @@ export default function OurTest({ pageProps }: Props) {
                             <div className="w-full bg-[#ffffff3e] border border-gray-200 rounded-lg shadow">
                                 <Image className="rounded-t-lg" src="/assets/login/cosmos.jpg" alt="" width={800} height={400} />
                                 <div className="px-8 py-4 text-start">
-                                    <h5 className="text-[16px] font-medium tracking-tight text-purple-700 dark:text-white mb-4">{t('card3Text1')}</h5>
+                                    <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card3Text1')}</h5>
                                     <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card3Text2')}</h6>
-                                    <p className="mb-3 text-[16px] font-normal text-gray-700 dark:text-gray-400">{t('card3Text3')}.</p>
+                                    <p className="mb-3 text-[16px] font-normal text-gray-700 ">{t('card3Text3')}.</p>
                                 </div>
                             </div>
                             <button className={styles.buttonStartTestMobile}>
