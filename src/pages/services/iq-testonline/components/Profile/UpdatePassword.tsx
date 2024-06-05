@@ -1,0 +1,37 @@
+
+//Styles
+import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
+
+export default function UpdatePassword() {
+    return (
+        <form
+            // action="/api/auth/callback/credentials"
+            method="post"
+            // onSubmit={onSubmit}
+            id="forgot-password-form"
+            className="forgot-password-form"
+        >
+            <div className="w-full lg:max-w-full lg:flex h-auto">
+                <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">
+                    <div className="grid grid-cols-1 gap-2" >
+                        <span className="col-span-2 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight">Restablecer mi contraseña</span>
+                        <div className=" col-span-2 text-start">
+                            <input type="password" id="old_password" className={styles.inputForm} placeholder={"Contraseña actual"} required  />
+                        </div>
+                        <div className=" col-span-2 text-start">
+                            <input type="password" id="new_password" className={styles.inputForm} placeholder={"Nueva contraseña"} required  />
+                        </div>
+                        <div className=" col-span-2 text-start">
+                            <input type="password" id="confirm_password" className={styles.inputForm} placeholder={"Confirmar contraseña"} required  />
+                        </div>
+                        <div className="col-span-2">
+                        <button className={styles.button}>
+                                <span>Confirmar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    );
+}

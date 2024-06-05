@@ -12,8 +12,8 @@ export default function CustomizeFooter({ router, pageProps }: AppProps) {
             <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8 justify-center items-center" />
                 <div className="py-6 w-full">
                     <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 justify-items-center">
-                        <div>
-                            <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">{t('our_services')}</h3>
+                        <div className="text-customGray">
+                            <h3 className="mb-6 text-sm font-semibold text-customGray uppercase ">{t('our_services')}</h3>
                             <ul>
                                 <li className="mb-4">
                                     <a href="/login" className="hover:underline">{t('signin')}</a>
@@ -26,8 +26,8 @@ export default function CustomizeFooter({ router, pageProps }: AppProps) {
                                 </li>
                             </ul>
                         </div>
-                        <div>
-                            <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">{t('legal')}</h3>
+                        <div className="text-customGray">
+                            <h3 className="mb-6 text-sm font-semibold uppercase ">{t('legal')}</h3>
                             <ul>
                                 <li className="mb-4">
                                     <a href="/legal" className="hover:underline">{t('legal_notice')}</a>
@@ -40,8 +40,8 @@ export default function CustomizeFooter({ router, pageProps }: AppProps) {
                                 </li>
                             </ul>
                         </div>
-                        <div>
-                            <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">{t('about')}</h3>
+                        <div className="text-customGray">
+                            <h3 className="mb-6 text-sm font-semibold text-customGray uppercase ">{t('about')}</h3>
                             <ul>
                                 <li className="mb-4">
                                     <a href="/contact" className="hover:underline">{t('contact_us')}</a>

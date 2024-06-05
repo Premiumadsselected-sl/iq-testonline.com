@@ -15,7 +15,7 @@ const config: Config = {
         'font-family': 'Subjectivity-ExtraBold !important'
       },
       colors: {
-        customGray: '#444',
+        customGray: '#666',
       },
     },
   },

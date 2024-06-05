@@ -31,7 +31,7 @@ export default function OurTest({ pageProps }: Props) {
                                 <div className="px-8 py-4 text-start">
                                     <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card1Text1')}</h5>
                                     <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card1Text2')}</h6>
-                                    <p className="mb-3 text-[16px] font-normal text-gray-700 ">{t('card1Text3')}.</p>
+                                    <p className="mb-3 text-[16px] font-normal text-customGray ">{t('card1Text3')}.</p>
                                 </div>
                             </div>
                             <div >
@@ -40,7 +40,7 @@ export default function OurTest({ pageProps }: Props) {
                                     <div className="px-8 py-4 text-start">
                                         <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card2Text1')}</h5>
                                         <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card2Text2')}</h6>
-                                        <p className="mb-3 text-[16px] font-normal text-gray-700 ">{t('card2Text3')}.</p>
+                                        <p className="mb-3 text-[16px] font-normal text-customGray ">{t('card2Text3')}.</p>
                                     </div>
                                 </div>
                                 <button className={styles.buttonStartTest}>
@@ -52,7 +52,7 @@ export default function OurTest({ pageProps }: Props) {
                                 <div className="px-8 py-4 text-start">
                                     <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card3Text1')}</h5>
                                     <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card3Text2')}</h6>
-                                    <p className="mb-3 text-[16px] font-normal text-gray-700 ">{t('card3Text3')}.</p>
+                                    <p className="mb-3 text-[16px] font-normal text-customGray ">{t('card3Text3')}.</p>
                                 </div>
                             </div>
                             <button className={styles.buttonStartTestMobile}>
