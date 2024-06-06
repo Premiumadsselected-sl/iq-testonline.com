@@ -18,7 +18,7 @@ export default function TermsConditionsComponent({ pageProps }: Props) {
             <Head>
                 <meta name="robots" content="noindex" />
             </Head>
-            <h1 className="text-6xl font-extrabold mb-8">{t('title')}</h1>
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-8">{t('title')}</h1>
             <p className="mb-6">{t('terms')}</p>
             <h3 className="text-3xl font-extrabold">{t('title2')}</h3>
             <a href="#Descripción-del-Servicio" className="text-blue-600 cursor-pointer">{t('content_link1')}</a>

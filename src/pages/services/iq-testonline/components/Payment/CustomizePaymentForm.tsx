@@ -24,6 +24,7 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
     }
 
     const [showDialog, setDialog] = useState(true)
+    const [checkbox, setCheckbox] = useState(true)
 
     return (
         <div className="grid grid-cols-3 gap-x-0 gap-y-10">
@@ -33,12 +34,45 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
 
                     <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                <div className='p-4 sm:px-8 sm:py-4'>
+                            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-[50vw]">
+                                <div className='grid grid-cols-1 px-4 py-4 sm:px-8 sm:py-4 gap-6'>
                                     <LegalNoticeComponent {...pageProps} />
-                                </div>
-                                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                    <button type="button" onClick={()=>{setDialog(!showDialog)}} className="inline-flex w-full justify-center rounded-md bg-[#7e22ce] px-3 py-2 text-sm font-semibold text-white shadow-sm">{t('accept_conditions')}</button>
+                                    <div className=" inline-flex items-center">
+                                        <label
+                                            className="relative flex cursor-pointer items-center rounded-full mr-2"
+                                        >
+                                            <input
+                                                id="checkbox"
+                                                type="checkbox"
+                                                className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-[#7e22ce] checked:bg-[#7e22ce] checked:before:bg-[#7e22ce] hover:before:opacity-10"
+                                                onClick={() => setCheckbox(!checkbox)}
+                                            />
+                                            <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    className="h-3.5 w-3.5"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                    stroke="currentColor"
+                                                    stroke-width="1"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                        clip-rule="evenodd"
+                                                    ></path>
+                                                </svg>
+                                            </div>
+                                        </label>
+                                        <label
+                                            className="mt-px cursor-pointer select-none font-light text-gray-700"
+                                        >
+                                            {t('accept_conditions')}
+                                        </label>
+                                    </div>
+                                    <div className="bg-gray-50 sm:flex sm:flex-row-reverse">
+                                        <button type="button" disabled={checkbox} onClick={() => { setDialog(!showDialog) }} className={`inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm ${checkbox ? 'bg-gray-400' : 'bg-[#7e22ce]'}`}>{t('continue')}</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

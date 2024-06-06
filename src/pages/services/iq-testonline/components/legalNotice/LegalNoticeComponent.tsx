@@ -18,7 +18,7 @@ export default function LegalNoticeComponent({ pageProps }: Props) {
             <Head>
                 <meta name="robots" content="noindex" />
             </Head>
-            <h1 className="text-5xl md:text-6xl font-extrabold mb-2">{t('title')}</h1>
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-8">{t('title')}</h1>
             <p className="mb-6">{t('legal_notice')}</p>
             <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title2')}</h3>
             <p className="mb-6">{t('intellectual_property')}</p>
@@ -33,7 +33,7 @@ export default function LegalNoticeComponent({ pageProps }: Props) {
             <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title7')}</h3>
             <p className="mb-6">{t('changes_legalNotice')}</p>
             <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }}>{t('title8')}</h3>
-            <p className="mb-6">{t('Contact')}</p>
+            <p>{t('Contact')}</p>
         </div>
     );
 }
