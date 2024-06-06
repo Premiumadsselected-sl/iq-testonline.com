@@ -1,13 +1,11 @@
 'use client'
-import { IoMdArrowBack, IoMdArrowRoundForward } from "react-icons/io";
-import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css';
-import { useTranslations } from "next-intl";
-import { AppProps } from "next/app";
-import Question from "./Question";
-import Answer from "./Answer";
-import { useEffect, useState } from "react";
-
-
+import { IoMdArrowBack, IoMdArrowRoundForward } from "react-icons/io"
+import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css'
+import { useTranslations } from "next-intl"
+import { AppProps } from "next/app"
+import Question from "./Question"
+import Answer from "./Answer"
+import { useEffect, useState } from "react"
 
 // Import ServicesAsyncRequest utility, auth from firebase and resolve from url
 import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
@@ -15,10 +13,9 @@ import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
 import { resolve } from 'url'
 
 //Context
-import { useDispatch, useSelector } from "react-redux";
-import { progressTest } from '@/pages/context/iqTestSlice'
-import AnalyzeTest from "./AnalyzeTest";
-
+import { useDispatch, useSelector } from "react-redux"
+import { progressTest } from '@/contexts/redux/iqTestSlice'
+import AnalyzeTest from "./AnalyzeTest"
 
 type Props = AppProps & {
     t: any

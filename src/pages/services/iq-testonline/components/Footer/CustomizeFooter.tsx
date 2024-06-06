@@ -1,7 +1,7 @@
 import { AppProps } from "next/app"
 import { useLocale, useTranslations, useMessages, useTimeZone } from 'next-intl'
 
-export default function CustomizeFooter({ router, pageProps }: AppProps) {
+export default function CustomizeFooter({ pageProps }: AppProps) {
 
     const t = useTranslations('Footer') 
     const messages = useMessages()

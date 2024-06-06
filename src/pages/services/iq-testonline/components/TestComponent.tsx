@@ -1,8 +1,7 @@
 'use client'
 
-import { changeEmail} from "@/pages/context/serviceSlice"
-import { useDispatch, useSelector } from "react-redux"
-
+import { changeEmail} from '@/contexts/redux/serviceSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function TestComponent() {
 

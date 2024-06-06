@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 // Import the context hooks
 import {useSelector, useDispatch} from 'react-redux'
-import {changeEmail} from './context/serviceSlice'
+import {changeEmail} from '@/contexts/redux/serviceSlice'
 
 // Import the component
 import TestComponent from './services/iq-testonline/components/TestComponent'

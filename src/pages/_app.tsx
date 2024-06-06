@@ -3,7 +3,7 @@ import {AppProps} from 'next/app'
 import {useRouter} from 'next/router'
 import {Provider} from 'react-redux'
 import {NextIntlClientProvider} from 'next-intl'
-import strore from './context/store'
+import strore from '../contexts/redux/store'
 import Header from '@/components/client/Header'
 import Footer from '@/components/client/Footer'
 
@@ -14,9 +14,9 @@ export const Metadata = {
   author: process.env.NEXT_PUBLIC_APP_AUTHOR
 } 
 
-export default function App({Component, pageProps}: AppProps) {
+export default function App({Component, router, pageProps}: AppProps) {
   
-  const router = useRouter()
+  //const router = useRouter()
 
   return (
     <PGlobal>
@@ -29,10 +29,17 @@ export default function App({Component, pageProps}: AppProps) {
           <Provider store={strore}>
           
             <Header />
+
             <main className="flex flex-col mx-4 text-center justify-center h-full" >
               <Component {...pageProps} />
             </main>
-            <Footer />
+
+            <Footer 
+              pageProps={pageProps}  
+              Component={Component}
+              router={router}
+              children={null}
+            />
             
             
           </Provider>
