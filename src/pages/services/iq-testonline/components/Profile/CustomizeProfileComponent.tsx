@@ -31,7 +31,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
     const route = useRouter()
     const [path, setPath] = useState('#Information')
-    const [componentToShow, setComponentToShow] = useState(<Information />)
+    const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
 
     useEffect(() => {
         route.push('#Information');
@@ -42,9 +42,9 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
         setPath(pathSelected);
 
-        if (pathSelected === '#Information') setComponentToShow(<Information />);
-        if (pathSelected === '#Update-Password') setComponentToShow(<UpdatePassword  />);
-        if (pathSelected === '#My-Offer') setComponentToShow(<MyOffer />);
+        if (pathSelected === '#Information') setComponentToShow(<Information {...pageProps} />);
+        if (pathSelected === '#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
+        if (pathSelected === '#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
 
     }, [route.asPath])
 

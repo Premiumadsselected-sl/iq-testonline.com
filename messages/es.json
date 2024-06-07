@@ -276,7 +276,10 @@
         "invalid-email": "Correo electrónico inválido",
         "invalid-name": "Nombre inválido",
         "success_message": "Perfil actualizado con éxito",
-        "error": "Error al actualizar el perfil"
+        "error": "Error al actualizar el perfil",
+        "my_bill": "Mis facturas",
+        "my_offer": "Mi oferta",
+        "unsubscribe": "Desuscribirse"
     },
 
     "Pricing": {

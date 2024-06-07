@@ -1,16 +1,28 @@
+import { AppProps } from "next/app";
+import { useLocale, useTimeZone, useTranslations } from "next-intl";
 import { FaFileDownload } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 
-export default function MyOffer() {
+export default function MyOffer({ router, pageProps }: AppProps) {
+
+    const locale = useLocale()
+    const t = useTranslations('Profile')
+    const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
+
+    pageProps = {
+        ...pageProps,
+        ...router,
+        t: t,
+        locale: locale,
+        timeZone: Zone
+    }
+
     return (
 
         <div className="w-full lg:max-w-full lg:flex h-auto">
             <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">
                 <div className="grid grid-cols-1" >
-                    <span className="col-span-1 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight">Mis facturas</span>
-
-
-
+                    <span className="col-span-1 text-xl md:text-2xl  text-customGray font-bold leading-none tracking-tight">{t('my_bill')}</span>
                     <div className="m-2 space-y-2">
                         <div
                             className="group flex flex-col gap-2 rounded-lg bg-gray-100 p-5 text-customGray"
@@ -96,7 +108,7 @@ export default function MyOffer() {
                                                     <td className="whitespace-nowrap">1</td>
                                                     <td className="whitespace-nowrap">21%</td>
                                                     <td className="whitespace-nowrap">0.09€</td>
-                                                    <td className="whitespace-nowrap">0.50€</td>1047.9
+                                                    <td className="whitespace-nowrap">0.50€</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -107,9 +119,17 @@ export default function MyOffer() {
                         </div>
                     </div>
 
+                    {/* <hr className="m-2 space-y-2" style={{ borderTop: ".5px dashed #c7c7c7" }} /> */}
 
+                    <h2 className="col-span-1 text-xl md:text-2xl  text-customGray font-bold leading-none tracking-tight mt-8 mb-4">{t('my_offer')}</h2>
 
-
+                    <div className="grid grid-cols-1 gap-0 m-2 space-y-2">
+                        <p className="text-start col-span-2 md:col-span-1"><span className="font-bold">Oferta actual:</span> BrainTester</p>
+                        <p className="text-start col-span-2 md:col-span-1"><span className="font-bold">Próximo pago:</span> 03/07/2024</p>
+                        <div className="text-start">
+                            <button type="button" className={`inline-flex w-full md:w-1/4 justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm bg-gray-400 hover:bg-white hover:text-gray-400 hover:border-gray-400 border-2 border-transparent`}>{t('unsubscribe')}</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

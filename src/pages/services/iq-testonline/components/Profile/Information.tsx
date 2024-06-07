@@ -1,8 +1,23 @@
 
+import { AppProps } from 'next/app'
+import { useLocale, useTimeZone, useTranslations } from 'next-intl'
+
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
 
-export default function Information() {
+export default function Information({ router, pageProps }: AppProps) {
+    const locale = useLocale()
+    const t = useTranslations('Profile')
+    const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
+
+    pageProps = {
+        ...pageProps,
+        ...router,
+        t: t,
+        locale: locale,
+        timeZone: Zone
+    }
+    
     return (
         <form
             // action="/api/auth/callback/credentials"

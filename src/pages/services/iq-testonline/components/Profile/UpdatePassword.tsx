@@ -1,8 +1,24 @@
 
+import { AppProps } from 'next/app'
+import { useLocale, useTimeZone, useTranslations } from 'next-intl'
+
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
 
-export default function UpdatePassword() {
+export default function UpdatePassword({ router, pageProps }: AppProps) {
+
+    const locale = useLocale()
+    const t = useTranslations('Profile')
+    const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
+
+    pageProps = {
+        ...pageProps,
+        ...router,
+        t: t,
+        locale: locale,
+        timeZone: Zone
+    }
+
     return (
         <form
             // action="/api/auth/callback/credentials"
@@ -16,16 +32,16 @@ export default function UpdatePassword() {
                     <div className="grid grid-cols-1 gap-2" >
                         <span className="col-span-2 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight">Restablecer mi contraseña</span>
                         <div className=" col-span-2 text-start">
-                            <input type="password" id="old_password" className={styles.inputForm} placeholder={"Contraseña actual"} required  />
+                            <input type="password" id="old_password" className={styles.inputForm} placeholder={"Contraseña actual"} required />
                         </div>
                         <div className=" col-span-2 text-start">
-                            <input type="password" id="new_password" className={styles.inputForm} placeholder={"Nueva contraseña"} required  />
+                            <input type="password" id="new_password" className={styles.inputForm} placeholder={"Nueva contraseña"} required />
                         </div>
                         <div className=" col-span-2 text-start">
-                            <input type="password" id="confirm_password" className={styles.inputForm} placeholder={"Confirmar contraseña"} required  />
+                            <input type="password" id="confirm_password" className={styles.inputForm} placeholder={"Confirmar contraseña"} required />
                         </div>
                         <div className="col-span-2">
-                        <button className={styles.button}>
+                            <button className={styles.button}>
                                 <span>Confirmar</span>
                             </button>
                         </div>
