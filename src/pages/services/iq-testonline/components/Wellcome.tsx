@@ -1,6 +1,11 @@
+'use client'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
-import {AppProps} from 'next/app'
+import { AppProps } from "next/app"
+import { GetStaticPropsContext } from 'next'
 
+type Props = AppProps & {
+    t: any
+}
 
 export default function Wellcome({ router, pageProps }: AppProps) {
     
@@ -29,4 +34,16 @@ export default function Wellcome({ router, pageProps }: AppProps) {
 
     </>)
 
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Wellcome', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

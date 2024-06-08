@@ -6,6 +6,7 @@ import { AppProps } from "next/app"
 import Question from "./Question"
 import Answer from "./Answer"
 import { useEffect, useState } from "react"
+import { GetStaticPropsContext } from 'next'
 
 // Import ServicesAsyncRequest utility, auth from firebase and resolve from url
 import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
@@ -146,4 +147,16 @@ export default function TestSection({ pageProps }: Props) {
 
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Test', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

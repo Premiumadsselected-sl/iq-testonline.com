@@ -1,9 +1,15 @@
+'use client'
 import { AppProps } from 'next/app'
 import { FormEvent } from 'react'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { GetStaticPropsContext } from 'next'
+
+type Props = AppProps & {
+    children: React.ReactNode
+}
 
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/LoginStyles.module.css'
@@ -162,4 +168,16 @@ export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
         </section>
     )
 
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Login', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

@@ -2,6 +2,12 @@
 
 import { changeEmail} from '@/contexts/redux/serviceSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { AppProps } from "next/app"
+import { GetStaticPropsContext } from 'next'
+
+type Props = AppProps & {
+    t: any
+}
 
 export default function TestComponent() {
 
@@ -32,4 +38,16 @@ export default function TestComponent() {
         </div>
     )
 
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

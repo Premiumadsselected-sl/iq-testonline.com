@@ -1,3 +1,4 @@
+'use client'
 import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import PWrapper from '@/pages/providers/client/PWrapper'
@@ -9,9 +10,7 @@ type Props = AppProps & {
 }
 
 export default function Thanks({ Component, router, pageProps }: Props) {
-
     
-
     return (
         <PWrapper
             Component={Thanks}
@@ -27,16 +26,16 @@ export default function Thanks({ Component, router, pageProps }: Props) {
                 pageProps={pageProps}
             />
             
-
         </PWrapper>
     )
 
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`../../messages/${locale}.json`)).default
     return {
         props: {
-            messages: (await import(`../../messages/${locale}.json`)).default,
+            messages: messages,
             translationNamespace: 'Thanks',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE

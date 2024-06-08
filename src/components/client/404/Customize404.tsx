@@ -2,7 +2,7 @@ import Error from 'next/error'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import {AppProps} from 'next/app'
 
-export default function Wellcome({ router, pageProps }: AppProps) {
+export default function NotFound({ router, pageProps }: AppProps) {
     
     const locale = useLocale()
     const t = useTranslations('NotFound') 
@@ -22,7 +22,7 @@ export default function Wellcome({ router, pageProps }: AppProps) {
         <body>
             <h1>{t('title')}</h1>
             <p> {t('description')} </p>
-            <Error statusCode={404} />
+            {/* <Error statusCode={404} /> */}
         </body>
         </html>
 

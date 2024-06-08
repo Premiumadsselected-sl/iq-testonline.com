@@ -1,10 +1,16 @@
+'use client'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl';
 import Image from 'next/image'
 import { AppProps } from 'next/app';
 import { FaRegCircleCheck } from 'react-icons/fa6';
+import { GetStaticPropsContext } from 'next'
 
 //Styles
 import styles  from '@/pages/services/iq-testonline/styles/PaymentStyles.module.css'
+
+type Props = AppProps & {
+    children: React.ReactNode
+}
 
 export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
 
@@ -59,4 +65,16 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
         </div >
     )
 
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Payment', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

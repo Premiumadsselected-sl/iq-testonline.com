@@ -1,3 +1,4 @@
+'use client'
 import { AppProps } from 'next/app'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
@@ -6,9 +7,14 @@ import { MdLocalOffer } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { GetStaticPropsContext } from 'next'
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
+
+type Props = AppProps & {
+    t: any
+}
 
 //Components
 import Information from './Information'
@@ -84,4 +90,16 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
     </>)
 
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Profile', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

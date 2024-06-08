@@ -1,3 +1,4 @@
+'use client'
 import { AppProps } from 'next/app'
 import { FormEvent } from 'react'
 import { signIn } from 'next-auth/react'
@@ -5,9 +6,14 @@ import { useState } from 'react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
 import Link from 'next/link'
+import { GetStaticPropsContext } from 'next'
 
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/RegisterStyles.module.css'
+
+type Props = AppProps & {
+    t: any
+}
 
 export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
 
@@ -100,7 +106,9 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                     <div className="bg-white p-4 flex flex-col leading-normal rounded-l-lg rounded-r-lg lg:rounded-r-none w-full border-customBorderGray border-[1px] shadow-md">
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6" >
 
-                            <span className={styles.titleForm}>{t('title')}</span>
+                            <span className={styles.titleForm}>
+                                {t('title')}
+                            </span>
 
                             <div className="w-full col-span-2 lg:col-span-1">
                                 <input
@@ -178,4 +186,16 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
 
     )
 
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

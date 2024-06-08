@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styles from '@/pages/services/iq-testonline/styles/ForgotPasswordStyles.module.css'
 import { AppProps } from 'next/app';
 import { useTranslations } from 'next-intl';
+import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
     t: any
@@ -47,4 +48,16 @@ export default function ForgotPasswordForm({ pageProps }: Props) {
             </form>
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'ForgotPassword', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

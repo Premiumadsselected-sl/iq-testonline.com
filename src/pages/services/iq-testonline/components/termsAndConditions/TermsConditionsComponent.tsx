@@ -1,10 +1,13 @@
+'use client'
 import { useTranslations } from "next-intl"
-import { AppProps } from "next/app"
 import Link from "next/link"
+import { AppProps } from "next/app"
+import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
     t: any
 }
+
 export default function TermsConditionsComponent({ pageProps }: Props) {
 
     const t = useTranslations('Terms')
@@ -69,4 +72,16 @@ export default function TermsConditionsComponent({ pageProps }: Props) {
         </div>
 
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Terms', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

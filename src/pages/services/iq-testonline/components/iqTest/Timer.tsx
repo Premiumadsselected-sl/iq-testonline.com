@@ -4,6 +4,13 @@ import { MdTimer } from "react-icons/md";
 import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css';
 import CGlobal from "@/contexts/global/CGlobal";
 import { useSelector } from "react-redux";
+import { GetStaticPropsContext } from 'next'
+import { AppProps } from "next/app";
+
+type Props = AppProps & {
+    t: any
+    pageProps: AppProps
+}
 
 const Timer: React.FC = () => {
     const totalTime = 20 * 60; // 20 minutes
@@ -74,3 +81,15 @@ const Timer: React.FC = () => {
 };
 
 export default Timer;
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
+}

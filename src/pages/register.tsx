@@ -36,9 +36,10 @@ export default function Register({ Component, router, pageProps }: Props) {
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`../../messages/${locale}.json`)).default
     return {
         props: {
-            messages: (await import(`../../messages/${locale}.json`)).default,
+            messages: messages,
             translationNamespace: 'Register',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE

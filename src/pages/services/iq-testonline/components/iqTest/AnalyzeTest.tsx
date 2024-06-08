@@ -1,6 +1,13 @@
+'use client'
 import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useRouter } from 'next/navigation'
+import { GetStaticPropsContext } from 'next'
+import { AppProps } from 'next/app'
+
+type Props = AppProps & {
+    children: React.ReactNode
+}
 
 export default function AnalyzeTest() {
 
@@ -23,15 +30,9 @@ export default function AnalyzeTest() {
         if (temp === 501) router.push('/register');
     }, [temp])
 
-
-
-
     return (
         <>
             <span className="text-4xl  font-extrabold leading-none tracking-tight text-customGray" >Analizando tus resultados</span>
-
-
-
             <div>
                 <div role="status" className="flex flex-wrap items-center justify-center">
                     {temp >= 500 ?
@@ -114,6 +115,18 @@ export default function AnalyzeTest() {
             </div>
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }
 
 

@@ -1,3 +1,10 @@
+'use client'
+import { GetStaticPropsContext } from 'next'
+import { AppProps } from "next/app";
+
+type Props = AppProps & {
+    t: any
+}
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
@@ -34,4 +41,16 @@ export default function UpdatePassword() {
             </div>
         </form>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

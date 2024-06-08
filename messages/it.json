@@ -1,0 +1,382 @@
+{
+    "LocaleSwitcher": {
+        "es": "Spagnolo",
+        "fr": "Francese",
+        "ae": "Emirati Arabi Uniti",
+        "de": "Tedesco", 
+        "it": "Italiano",
+        "nl": "Olandese",
+        "ie": "Irlandese",
+        "uk": "Regno Unito"
+    },
+    
+    "Index": {
+        "title": "Esplora le tue abilità con il nostro test di QI",
+        "subtitle": "Valuta il tuo Quoziente Intellettivo ora",
+        "button_test": "INIZIA IL TEST DI QI",
+        "test_today": "Test effettuati oggi",
+        "average_today": "Media di QI oggi",
+        "qty_questions": "Numero di Domande",
+        "max_minutes": "Tempo Massimo",
+        "precision": "Precisione"
+    },
+
+    "Menu": {
+        "profile": "Profilo",
+        "register": "Registrati",
+        "login": "Accedi",
+        "contact": "Contatto",
+        "logout": "Esci", 
+        "weating-locale": "Caricamento sessione..."
+    },
+
+    "Login": {
+        "title": "Accedi",
+        "password": "Password",
+        "submit": "Accedi",
+        "error": "{error, select, CredentialsSignin {Nome utente o password non validi} other {Errore sconosciuto}}",
+        "invalid-login-credentials": "Nome utente o password non validi",
+        "too-many-requests": "Troppe richieste, riprova più tardi",
+        "Unknown": "Errore sconosciuto",
+        "success_message": "Accesso riuscito",
+        "user_email": "Email",
+        "email_holder": "Inserisci la tua email",
+        "password_holder": "Inserisci la tua password",
+        "invalid-email": "Email non valida",
+        "question_account": "Non hai un account?",
+        "login_button": "Registrati",
+        "forgot_password": "Hai dimenticato la password?"
+    },
+
+    "Register": {
+        "title": "Registrati",
+        "user_name": "Nome utente",
+        "user_email": "Email",
+        "password": "Password",
+        "submit": "Registrati",
+        "Unknown": "Errore sconosciuto",
+        "success_message": "Registrazione riuscita",
+        "email-already-in-use": "Email già in uso",
+        "invalid-email": "Email non valida",
+        "weak-password": "Password debole",
+        "error": "{error, select, CredentialsSignup {Nome utente già preso} other {Errore sconosciuto}}",
+        "user_holder": "Inserisci il tuo nome utente",
+        "email_holder": "Inserisci la tua email",
+        "password_holder": "Inserisci la tua password",
+        "name_holder": "Inserisci il tuo nome",
+        "register_button": "Registrati",
+        "answer_account": "Hai già un account?",
+        "login_link": "Accedi"
+    },
+
+    "About": {
+            "title": "Informazioni",
+            "lastUpdated": "Questo esempio è stato aggiornato {lastUpdatedRelative} ({lastUpdated, date, short})."
+        },
+
+        "Contact": {
+            "title": "Contattaci",
+            "description": "Se hai domande, non esitare a contattarci.",
+            "submit": "Invia",
+            "message": "Messaggio",
+            "name": "Nome",
+            "email": "Email",
+            "invalid-email": "Email non valida",
+            "invalid-name": "Nome non valido",
+            "invalid-message": "Messaggio non valido",
+            "success_message": "Messaggio inviato con successo",
+            "error": "Errore nell'invio del messaggio",
+            "name_holder": "Nome completo",
+            "email_holder": "Email",
+            "topic_holder": "Oggetto",
+            "message_holder": "Messaggio",
+            "contact_button": "Invia",
+            "text_aviable": "Siamo disponibili via email:",
+            "contact_email": "support@iq-testonline.com"
+        },
+
+        "Cookies": {
+            "accept": "Accetta",
+            "decline": "Rifiuta",
+            "message": "Questo sito web utilizza i cookie per garantirti la migliore esperienza sul nostro sito web.",
+            "link": "Maggiori informazioni"
+        },
+
+        "Logout": {
+            "title": "Esci",
+            "description": "Sei sicuro di voler uscire?"
+        },
+
+        "Payment": {
+            "title": "Pagamento",
+            "description": "Per favore, inserisci i tuoi dati di pagamento.",
+            "submit": "Paga",
+            "card": "Numero della carta",
+            "expiration": "Data di scadenza",
+            "cvc": "CVC",
+            "invalid-card": "Numero della carta non valido",
+            "invalid-expiration": "Data di scadenza non valida",
+            "invalid-cvc": "CVC non valido",
+            "success_message": "Pagamento riuscito",
+            "error": "Errore nel processamento del pagamento",
+            "title_page": "Scopri il tuo QI ora",
+            "sumary": "Riepilogo",
+            "check_text1": "Risultato del tuo test QI",
+            "check_text2": "Certificato PDF del tuo test QI scaricabile",
+            "check_text3": "Link per condividere il risultato del tuo test QI",
+            "check_text4": "Spazio di allenamento per migliorare il tuo punteggio",
+            "check_text5": "Spazio di analisi per ottenere consigli di miglioramento",
+            "check_text6": "Monitoraggio dei progressi in ogni nuovo test",
+            "check_text7": "Risorse di apprendimento e giochi per il cervello",
+            "progressive_level": "Livello Progressivo dei Test QI:",
+            "progressive_level_text": "Per aiutarti a perfezionarti, i test QI diventano sempre più difficili man mano che progredisci.",
+            "best_plan": "Piano di miglioramento personalizzato:",
+            "best_plan_text": "A partire dai risultati del test QI, ti forniamo un piano di miglioramento personalizzato per concentrarti sulle tue aree deboli.",
+            "brain_games": "Giochi di allenamento cerebrale:",
+            "brain_games_text": "Con una varietà di giochi e attività che aiutano a allenare il cervello, come puzzle, giochi di memoria, problemi di logica, puoi allenarti in qualsiasi momento.",
+            "learn_resources": "Risorse di apprendimento:",
+            "learn_resources_text": "Hai a disposizione una biblioteca di risorse per aiutarti a capire il QI, la sua importanza, e come potresti lavorare per migliorarlo.",
+            "trial": "Periodo di prova di 2 giorni poi 49,90€ / mese per continuare a beneficiare della tua offerta",
+            "secure_payment": "Pagamento sicuro tramite SSL"
+        },
+
+        "Thanks": {
+            "title": "Grazie",
+            "description": "Grazie per aver visitato il nostro sito web."
+        },
+        
+        "Results": {
+            "title": "Risultati",
+            "description": "Il tuo punteggio di QI è {score} su 160.",
+            "submit": "Visualizza risultati",
+            "error": "Errore durante il caricamento dei risultati"
+        },  
+        
+        "Privacy": {
+            "title": "Informativa sulla privacy",
+            "policy": "La privacy dei nostri utenti è di estrema importanza per noi. Questa Informativa sulla privacy descrive come [Nome del Servizio] (di seguito \"noi\", \"nostro\" o \"la piattaforma\") raccoglie, utilizza e condivide le informazioni personali degli utenti che utilizzano il nostro servizio.",
+            "title2": "Indice",
+            "content_link1": "Informazioni che raccogliamo",
+            "content_link2": "Utilizzo delle informazioni",
+            "content_link3": "Condivisione delle informazioni",
+            "content_link4": "Cookie e tecnologie simili",
+            "content_link5": "Sicurezza delle informazioni",
+            "content_link6": "Diritti sulla privacy degli utenti",
+            "content_link7": "Modifiche all'Informativa sulla privacy",
+            "content_link8": "Contatti",
+            "title3": "Informazioni che raccogliamo",
+            "information_collect_text1": "Informazioni di registrazione: Quando crei un account su [Nome del Servizio], raccogliamo informazioni personali come il tuo nome, indirizzo email e password.",
+            "information_collect_text2": "Informazioni sull'utilizzo: Possiamo raccogliere informazioni su come utilizzi il nostro servizio, come le pagine che visiti, il tempo trascorso sul sito e altre attività legate alla tua interazione con la piattaforma.",
+            "information_collect_text3": "Informazioni di pagamento: Se decidi di sottoscrivere il nostro servizio a pagamento, raccoglieremo le informazioni di pagamento necessarie per elaborare le tue transazioni, come i dettagli della tua carta di credito o le informazioni di fatturazione.",
+            "information_collect_text4": "Informazioni sul dispositivo: Possiamo raccogliere informazioni sul dispositivo che utilizzi per accedere al nostro servizio, inclusi il tuo indirizzo IP, il tipo di dispositivo, il sistema operativo e il browser web.",
+            "title4": "Utilizzo delle informazioni",
+            "use_information_text1": "Utilizziamo le informazioni raccolte per i seguenti scopi:",
+            "use_information_text2": "Fornire e mantenere il nostro servizio.",
+            "use_information_text3": "Personalizzare la tua esperienza e offrirti contenuti e funzionalità specifici.",
+            "use_information_text4": "Elaborare transazioni e pagamenti.",
+            "use_information_text5": "Analizzare l'utilizzo del servizio e migliorarne la funzionalità.",
+            "use_information_text6": "Adempiere ai nostri obblighi legali e risolvere eventuali dispute o reclami.",
+            "title5": "Condivisione delle informazioni",
+            "share_information_text1": "Non condividiamo informazioni personali con terze parti, tranne nei seguenti casi:",
+            "share_information_text2": "Con fornitori di servizi che ci aiutano a gestire il nostro servizio, svolgere funzioni per nostro conto o fornire servizi correlati al servizio.",
+            "share_information_text3": "Quando è necessario per adempiere alla legge, rispondere a processi legali o proteggere i nostri diritti, la nostra proprietà o la nostra sicurezza o quella degli altri.",
+            "share_information_text4": "In relazione a una fusione, acquisizione, riorganizzazione o vendita di attività, nel qual caso potremmo trasferire informazioni personali alla parte pertinente coinvolta nella transazione.",
+            "title6": "Cookie e tecnologie simili",
+            "cookies_text": "Utilizziamo cookie e tecnologie simili per migliorare l'esperienza dell'utente e analizzare l'utilizzo del servizio. Puoi controllare l'utilizzo dei cookie tramite le impostazioni del tuo browser e revocare il tuo consenso in qualsiasi momento.",
+            "title7": "Sicurezza delle informazioni",
+            "security_information": "Implementiamo misure di sicurezza ragionevoli per proteggere le informazioni personali dei nostri utenti da accessi non autorizzati, divulgazione, alterazione o distruzione.",
+            "title8": "Diritti sulla privacy degli utenti",
+            "privacy_rights": "Gli utenti hanno determinati diritti riguardo alle proprie informazioni personali, inclusi il diritto di accedere, correggere, eliminare o limitare il trattamento delle proprie informazioni personali. Per esercitare questi diritti, contattaci tramite i dati di contatto forniti alla fine di questa Informativa sulla privacy.",
+            "title9": "Modifiche all'Informativa sulla privacy",
+            "changes_privacy_policy": "Ci riserviamo il diritto di aggiornare questa Informativa sulla privacy in qualsiasi momento. Ti informeremo di eventuali modifiche pubblicando l'Informativa sulla privacy aggiornata sul nostro sito web. Ti verrà chiesto di rivedere e accettare le modifiche prima di continuare a utilizzare il nostro servizio.",
+            "title10": "Contatti",
+            "contact": "Se hai domande su questa Informativa sulla privacy, contattaci all'indirizzo email [indirizzo email di contatto].",
+            "update_page_privacy_policy": "Questo documento è stato aggiornato l'ultima volta il 30 maggio 2024."
+        
+        },
+        
+        "Terms": {
+            "title": "Termini e Condizioni",
+            "terms": "Benvenuto su [Nome del Servizio], un servizio fornito da ADS DIGITAL L-714323-H, con sede in Carrer Esteve Albert, R. la Roureda, bloc A, 1-2a, AD500 Santa Coloma, Andorra La Vella, PRINCIPAT D’ANDORRA. Accedendo e utilizzando il nostro sito web e i nostri servizi, accetti di rispettare e essere vincolato da questi Termini e Condizioni. Leggili attentamente.",
+            "title2": "Indice",
+            "content_link1": "Descrizione del Servizio",
+            "content_link2": "Utilizzo del Servizio",
+            "content_link3": "Proprietà Intellettuale",
+            "content_link4": "Limitazione di Responsabilità",
+            "content_link5": "Modifiche al Servizio e ai Prezzi",
+            "content_link6": "Terminazione",
+            "content_link7": "Sottoscrizione e Pagamento",
+            "content_link8": "Legge Applicabile e Risoluzione delle Controversie",
+            "content_link9": "Conformità Legale",
+            "content_link10": "Esclusione di Responsabilità",
+            "content_link11": "Indennizzo",
+            "title3": "Descrizione del Servizio",
+            "descriptio_service": "[Nome del Servizio] offre agli utenti la possibilità di svolgere un test di Quoziente Intellettivo (QI) tramite un modulo di 20 domande. Per ottenere i risultati del test, è necessario sottoscrivere il nostro piano unico.",
+            "title4": "Utilizzo del Servizio",
+            "use_service_text1": "Idoneità: Per utilizzare i nostri servizi, devi avere almeno 18 anni o avere il consenso di un genitore o tutore legale.",
+            "use_service_text2": "Account dell'Utente: Gli utenti devono creare un account per accedere ai risultati del test. Le informazioni fornite devono essere accurate e aggiornate.",
+            "use_service_text3": "Responsabilità dell'Utente: Sei responsabile della riservatezza del tuo account e della password, nonché di tutte le attività che si verificano con il tuo account.",
+            "title5": "Proprietà Intellettuale",
+            "intellectual_property": "Tutti i contenuti del sito web, inclusi ma non limitati a testi, grafica, loghi, immagini e software, sono di proprietà di ADS DIGITAL o dei suoi fornitori di contenuti e sono protetti da leggi sul diritto d'autore e altre leggi sulla proprietà intellettuale.",
+            "title6": "Limitazione di Responsabilità",
+            "limitation_liability": "ADS DIGITAL non sarà responsabile per eventuali danni diretti, indiretti, incidentali, speciali o consequenziali derivanti dall'uso o dall'incapacità di utilizzare il servizio. Inoltre, la piattaforma non garantisce l'accuratezza, completezza o utilità delle informazioni fornite nel test di QI o in qualsiasi altra parte del servizio. Gli utenti comprendono e accettano che l'uso del servizio avviene a proprio rischio e responsabilità.",
+            "title7": "Modifiche al Servizio e ai Prezzi",
+            "pricing_and_service": "ADS DIGITAL si riserva il diritto di modificare o interrompere il servizio (o qualsiasi parte del contenuto) senza preavviso in qualsiasi momento. I prezzi di tutti i servizi sono soggetti a modifiche con o senza preavviso. La piattaforma non sarà responsabile nei confronti degli utenti o di terzi per eventuali modifiche, sospensioni o interruzioni del servizio.",
+            "title8": "Terminazione",
+            "termination_text": "ADS DIGITAL si riserva il diritto di sospendere o terminare l'account e l'accesso al servizio di qualsiasi utente che violi questi Termini e Condizioni. La piattaforma non sarà responsabile per le conseguenze derivanti dalla chiusura degli account o dall'accesso al servizio.",
+            "title9": "Sottoscrizione e Pagamento",
+            "suscription_pay_text1": "Piano di Sottoscrizione: Il servizio viene offerto tramite un piano unico che consente l'accesso completo per un periodo iniziale di 24 ore al costo di 0,60€.",
+            "suscription_pay_text2": "Rinnovo Automatico: Se la sottoscrizione non viene cancellata prima della scadenza delle 24 ore, verrà rinnovata automaticamente con un piano mensile al costo di 49,90€, addebitato con lo stesso metodo di pagamento utilizzato inizialmente.",
+            "suscription_pay_text3": "Cancellazione: Gli utenti possono cancellare la sottoscrizione in qualsiasi momento prima del rinnovo automatico per evitare addebiti aggiuntivi. Le istruzioni per la cancellazione sono disponibili nella sezione dell'account dell'utente.",
+            "title10": "Legge Applicabile e Risoluzione delle Controversie",
+            "applicable_law": "Questi Termini e Condizioni saranno regolati e interpretati in conformità alle leggi del Principat d'Andorra. Eventuali controversie derivanti da questi termini saranno sottoposte alla giurisdizione esclusiva dei tribunali del Principat d'Andorra.",
+            "title11": "Conformità Legale",
+            "legal_compliance": "La piattaforma si impegna a rispettare tutte le leggi e i regolamenti applicabili, inclusi ma non limitati alle leggi sulla protezione dei dati e sulla privacy.",
+            "title12": "Esclusione di Responsabilità",
+            "disclaimer": "ADS DIGITAL declina ogni responsabilità per eventuali danni o perdite derivanti dall'uso del servizio da parte degli utenti, inclusa, ma non limitata a, perdita di dati, interruzione del servizio o qualsiasi altro danno diretto o indiretto.",
+            "title13": "Indennizzo",
+            "compensation": "Gli utenti accettano di indennizzare e tenere indenne ADS DIGITAL e le sue affiliate, dipendenti, agenti e rappresentanti da qualsiasi reclamo o richiesta, inclusi gli onorari legali ragionevoli, presentati da terzi a causa del loro utilizzo del servizio, della loro violazione.",
+            "update": "Questo documento è stato aggiornato l'ultima volta il 30 maggio 2024."
+        },
+
+        "Legal": {
+            "title": "Avviso Legale",
+            "legal_notice": "Questo avviso legale stabilisce i termini e le condizioni d'uso del sito web gestito da ADS DIGITAL (di seguito \"noi\", \"nostro\" o \"l'azienda\"). Accedendo e utilizzando il sito web, accetti di rispettare e essere vincolato ai seguenti termini e condizioni d'uso. Se non sei d'accordo con questi termini e condizioni, ti preghiamo di astenerti dall'utilizzare il sito web.",
+            "title2": "Proprietà Intellettuale",
+            "intellectual_property": "Il contenuto del sito web, inclusi ma non limitati a testi, grafica, loghi, immagini, video, software e qualsiasi altro materiale, è protetto da leggi sul diritto d'autore e altre leggi sulla proprietà intellettuale. Tutti i diritti sul contenuto del sito web sono riservati, salvo diversa indicazione. È severamente vietato copiare, modificare, distribuire, trasmettere, visualizzare, pubblicare, vendere o creare opere derivate dal contenuto del sito web senza il previo consenso scritto di ADS DIGITAL.",
+            "title3": "Utilizzo del Sito Web",
+            "use_web_site": "L'utilizzo del sito web avviene a proprio rischio. ADS DIGITAL non si assume alcuna responsabilità per eventuali danni diretti, indiretti, incidentali, speciali o consequenziali derivanti dall'uso o dall'incapacità di utilizzare il sito web. Ci riserviamo il diritto di modificare o interrompere qualsiasi aspetto del sito web in qualsiasi momento senza preavviso.",
+            "title4": "Link a Terze Parti",
+            "links_parties": "Il sito web può contenere link a siti web di terze parti che non sono sotto il nostro controllo. L'inclusione di qualsiasi link non implica necessariamente una raccomandazione o un'approvazione da parte di ADS DIGITAL. Non assumiamo alcuna responsabilità per il contenuto, le politiche sulla privacy o le pratiche di qualsiasi sito web di terze parti.",
+            "title5": "Limitazione di Responsabilità",
+            "limitation_liability": "Nella misura massima consentita dalla legge applicabile, ADS DIGITAL non sarà responsabile per eventuali danni diretti, indiretti, incidentali, speciali o consequenziali derivanti dall'uso o dall'incapacità di utilizzare il sito web, inclusa, ma non limitata a, perdita di dati, interruzione del servizio o qualsiasi altro danno diretto o indiretto.",
+            "title6": "Legge Applicabile e Giurisdizione",
+            "law_jurisdiction": "Questi termini e condizioni saranno disciplinati e interpretati in conformità alle leggi del Principato di Andorra e qualsiasi controversia derivante da o in relazione a questi termini e condizioni sarà sottoposta alla giurisdizione esclusiva dei tribunali del Principato di Andorra.",
+            "title7": "Modifiche all'Avviso Legale",
+            "changes_legalNotice": "Ci riserviamo il diritto di aggiornare, modificare o cambiare qualsiasi parte di questo avviso legale in qualsiasi momento e per qualsiasi motivo senza preavviso. Ti verrà chiesto di rivedere e accettare le modifiche prima di continuare a utilizzare il sito web.",
+            "title8": "Contatto",
+            "Contact": "Se hai domande su questo avviso legale, ti preghiamo di contattarci all'indirizzo support@iq-testonline.com"
+        },
+        
+        "Profile": {
+            "title": "Profilo",
+            "description": "Queste sono le tue informazioni di profilo.",
+            "submit": "Salva",
+            "name": "Nome",
+            "email": "Email",
+            "invalid-email": "Email non valida",
+            "invalid-name": "Nome non valido",
+            "success_message": "Profilo aggiornato con successo",
+            "error": "Errore durante l'aggiornamento del profilo"
+        },
+        
+        "Pricing": {
+            "our_package_text1": "I nostri",
+            "our_package_text2": "pacchetti",
+            "daily_price": "0,60€ Prova di 24 ore | Mensile a",
+            "monthly_price": "49,90€",
+            "package_complete": "Il nostro piano unico è un abbonamento mensile di 49,90€ con l'opzione di annullare entro 24 ore al costo di 0,60€"
+        },
+        
+        "Navigation": {
+            "index": "Home",
+            "about": "Informazioni",
+            "switchLocale": "Cambia a {locale, select, de {Tedesco} en {Inglese} other {Sconosciuto}}"
+        },
+        
+        "Footer": {
+            "our_services": "I NOSTRI SERVIZI",
+            "signin": "Accedi",
+            "signup": "Registrati",
+            "test": "Test di CI",
+            "legal": "LEGALI",
+            "legal_notice": "Avvisi legali",
+            "general_conditions": "Condizioni generali",
+            "privacy_policy": "Informativa sulla privacy",
+            "about": "INFORMAZIONI",
+            "offers": "Offerte",
+            "contact_us": "Contattaci",
+            "rights": "Copyright © 2024 Tutti i diritti riservati da IQes"
+        },
+        
+        "FrequentQuestions": {
+            "title": "Domande frequenti",
+            "subtitle": "ECCO LE NOSTRE RISPOSTE ALLE DOMANDE PIÙ FREQUENTI.",
+            "question1": "Come viene valutato il mio risultato?",
+            "answer1": "La valutazione del tuo CI si basa sulla popolazione e sulle statistiche globali, con un CI medio di circa 100. Se ottieni un punteggio superiore a 100, hai superato la persona media, con un massimo valutato di 139.",
+            "question2": "Come viene presentata la valutazione del mio CI?",
+            "answer2": "Verrai valutato attraverso 25 domande, progressivamente più complesse. Devi trovare la risposta corretta tra le diverse opzioni possibili. Puoi saltare le domande e tornare ad esse in seguito.",
+            "question3": "Quanti esami posso fare?",
+            "answer3": "Diventando membro, potrai fare quanti esami desideri e praticare con una varietà di test tematici.",
+            "question4": "Come garantite l'accuratezza di questo test?",
+            "answer4": "Il nostro test di CI è progettato secondo gli standard internazionali. Le domande sono formulate per misurare in modo affidabile le capacità cognitive.",
+            "buttonTest": "INIZIA IL TEST ORA"
+        },
+        
+        "ForgotPassword": {
+            "forgotTitle": "Recupera password",
+            "placeholderEmail": "Email",
+            "forgotButton": "Recupera",
+            "questionForgot": "Non hai un account?",
+            "registerLink": "Registrati"
+        },
+        
+        "Wellcome": {
+            "title": "Benvenuto",
+            "description": "Benvenuto su IQes! La tua piattaforma di allenamento per il CI. Inizia il tuo allenamento ora!"
+        },
+        
+        "StrictTypes": {
+            "nested": {
+              "hello": "Ciao",
+              "another": {
+            "level": "Livello"
+              }
+            }
+        },
+        
+        "NotFound": {
+            "title": "Pagina non trovata",
+            "description": "Spiacenti, la pagina che stai cercando non esiste."
+        },
+        
+        "Default": {
+            "title": "Benvenuto",
+            "description": "Questo è un messaggio predefinito."
+        },
+        
+        "PageLayout": {
+            "title": "next-intl"
+        },
+        
+        "Test": {
+            "title": "Test",
+            "preview": "Indietro",
+            "next": "Avanti"
+        },
+        
+        "OurTest": {
+            "title": "Dettagli sul nostro Test di CI",
+            "subtitle": "Ti forniamo una Misurazione Numerica della tua Intelligenza in Relazione al tuo Gruppo di Età.",
+            "card1Text1": "ISTANTANEO",
+            "card1Text2": "Cos'è il CI?",
+            "card1Text3": "CI sta per Quoziente Intellettivo, una misura della tua intelligenza espressa in un numero.",
+            "card2Text1": "FACILE",
+            "card2Text2": "Come viene calcolato?",
+            "card2Text3": "Il CI viene determinato attraverso un test di intelligenza.",
+            "card3Text1": "VELOCE",
+            "card3Text2": "I risultati",
+            "card3Text3": "Il CI medio è 100. Un punteggio superiore a 100 indica una performance superiore alla media.",
+            "buttonTest": "INIZIA IL TEST ORA"
+        }
+
+
+
+
+
+
+
+
+
+
+}

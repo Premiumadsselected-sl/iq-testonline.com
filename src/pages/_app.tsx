@@ -19,7 +19,9 @@ export default function App({Component, router, pageProps}: AppProps) {
   //const router = useRouter()
 
   return (
+
     <PGlobal>
+        
         <NextIntlClientProvider
           locale={router.locale}
           messages={pageProps.messages}
@@ -28,23 +30,23 @@ export default function App({Component, router, pageProps}: AppProps) {
       
           <Provider store={strore}>
           
-            <Header />
+              <Header />
 
-            <main className="flex flex-col mx-4 text-center justify-center h-full" >
-              <Component {...pageProps} />
-            </main>
+              <main className="flex flex-col mx-4 lg:mx-40 text-center justify-center h-full" >
+                <Component {...pageProps} />
+              </main>
 
-            <Footer 
-              pageProps={pageProps}  
-              Component={Component}
-              router={router}
-              children={null}
-            />
-            
+              <Footer 
+                pageProps={pageProps}  
+                Component={Component}
+                router={router}
+                children={null}
+              />
             
           </Provider>
   
       </NextIntlClientProvider>
+
     </PGlobal>
 
   )

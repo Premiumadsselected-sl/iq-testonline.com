@@ -1,7 +1,9 @@
+'use client'
 import { useTranslations } from "next-intl"
 import { AppProps } from "next/app"
 import styles from '@/pages/services/iq-testonline/styles/IndexStyles.module.css'
 import Image from 'next/image';
+import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
     t: any
@@ -68,4 +70,16 @@ export default function OurTest({ pageProps }: Props) {
 
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'OurTest', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }

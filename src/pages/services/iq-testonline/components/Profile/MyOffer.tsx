@@ -1,9 +1,15 @@
+'use client'
 import { FaFileDownload } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import { GetStaticPropsContext } from 'next'
+import { AppProps } from "next/app";
+
+type Props = AppProps & {
+    t: any
+}
 
 export default function MyOffer() {
     return (
-
         <div className="w-full lg:max-w-full lg:flex h-auto">
             <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">
                 <div className="grid grid-cols-1" >
@@ -114,4 +120,16 @@ export default function MyOffer() {
             </div>
         </div>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+        }
+    }
 }
