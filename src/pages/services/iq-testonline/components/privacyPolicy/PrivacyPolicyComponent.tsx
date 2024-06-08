@@ -1,8 +1,12 @@
 'use client'
 import { useTranslations } from "next-intl"
 import { AppProps } from "next/app"
+<<<<<<< HEAD
 import Link from "next/link"
 import { GetStaticPropsContext } from 'next'
+=======
+import Head from 'next/head';
+>>>>>>> origin/dev
 
 type Props = AppProps & {
     t: any
@@ -10,7 +14,7 @@ type Props = AppProps & {
 
 export default function PrivacyPolicyComponent({ pageProps }: Props) {
 
-    const t = useTranslations('Privacy') 
+    const t = useTranslations('Privacy')
     pageProps = {
         ...pageProps,
         t: t,
@@ -18,7 +22,10 @@ export default function PrivacyPolicyComponent({ pageProps }: Props) {
 
     return (
         <div className="flex flex-col flex-wrap justify-start items-start text-left text-customGray">
-            <h1 className="text-6xl font-extrabold mb-8">{t('title')}</h1>
+            <Head>
+                <meta name="robots" content="noindex" />
+            </Head>
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-8">{t('title')}</h1>
             <p className="mb-6">{t('policy')}</p>
             <h3 className="text-3xl font-extrabold">{t('title2')}</h3>
             <a href="#Información-que-Recopilamos" className="text-blue-600 cursor-pointer">{t('content_link1')}</a>

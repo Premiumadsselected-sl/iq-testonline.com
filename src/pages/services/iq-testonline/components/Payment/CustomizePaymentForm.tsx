@@ -6,7 +6,10 @@ import { FaRegCircleCheck } from 'react-icons/fa6';
 import { GetStaticPropsContext } from 'next'
 
 //Styles
-import styles  from '@/pages/services/iq-testonline/styles/PaymentStyles.module.css'
+import styles from '@/pages/services/iq-testonline/styles/PaymentStyles.module.css'
+import { GiPadlock } from 'react-icons/gi';
+import LegalNoticeComponent from '../legalNotice/LegalNoticeComponent';
+import { useState } from 'react';
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -26,16 +29,79 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
         timeZone: Zone
     }
 
+    const [showDialog, setDialog] = useState(true)
+    const [checkbox, setCheckbox] = useState(true)
+
     return (
         <div className="grid grid-cols-3 gap-x-0 gap-y-10">
+            {showDialog &&
+                <div className="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-[50vw]">
+                                <div className='grid grid-cols-1 px-4 py-4 sm:px-8 sm:py-4 gap-6'>
+                                    <LegalNoticeComponent {...pageProps} />
+                                    <div className=" inline-flex items-center">
+                                        <label
+                                            className="relative flex cursor-pointer items-center rounded-full mr-2"
+                                        >
+                                            <input
+                                                id="checkbox"
+                                                type="checkbox"
+                                                className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-[#7e22ce] checked:bg-[#7e22ce] checked:before:bg-[#7e22ce] hover:before:opacity-10"
+                                                onClick={() => setCheckbox(!checkbox)}
+                                            />
+                                            <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    className="h-3.5 w-3.5"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                    stroke="currentColor"
+                                                    stroke-width="1"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                        clip-rule="evenodd"
+                                                    ></path>
+                                                </svg>
+                                            </div>
+                                        </label>
+                                        <label
+                                            className="mt-px cursor-pointer select-none font-light text-gray-700"
+                                        >
+                                            {t('accept_conditions')}
+                                        </label>
+                                    </div>
+                                    <div className="bg-gray-50 sm:flex sm:flex-row-reverse">
+                                        <button type="button" disabled={checkbox} onClick={() => { setDialog(!showDialog) }} className={`inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm ${checkbox ? 'bg-gray-400' : 'bg-[#7e22ce]'}`}>{t('continue')}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
             <div className="col-span-3 justify-center items-center  ">
                 <h1 className="text-3xl md:text-5xl font-extrabold text-customGray">{t('title_page')}</h1>
             </div>
 
             <div className="col-span-3 md:col-span-2 justify-center items-center md:pr-36">
                 <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md h-[70vh]">
-                    {/* Aquí va formulario de pago */}
+                    {/* Formulario de pago */}
+                    <div className='grid grid-cols-1 text-start text-customGray gap-2'>
+                        <div>
+                            <h1 className='text-xl font-semibold md:text-3xl'>{t('title_form_pay')}</h1>
+                            <p className='inline-flex items-center text-sm md:text-base'> <GiPadlock size={18} className='mr-1' />{t('subtitle_form_pay')}</p>
+                        </div>
+                        <div className="text-start">
+                            <label className="required font-semibold text-sm">{t('input1_form_pay')}</label>
+                            <input type="name_lastname" id="name_lastname" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-purple-700 focus:border-none block w-full mt-0 p-3.5" placeholder={t('input1_form_pay_placeholder')} />
+                        </div>
+                    </div>
                 </div>
             </div>
 

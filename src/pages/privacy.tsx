@@ -22,7 +22,7 @@ export default function Privacy({ Component, router, pageProps }: Props) {
         >
         {/* Los componentes deven ser renderizados aqui */}
 
-        <div className='w-full items-start px-6 pt-10 md:px-24 md:pt-20'>
+        <div className='w-full items-start px-6 md:px-24 md:pt-20'>
             <PrivacyPolicyComponent {...pageProps} />
         </div>
 

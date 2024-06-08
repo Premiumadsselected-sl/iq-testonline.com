@@ -27,7 +27,7 @@ export default function AnalyzeTest() {
     }, [temp]);
 
     useEffect(() => {
-        if (temp === 501) router.push('/register');
+        if (temp === 501) router.push('/payment');
     }, [temp])
 
     return (
