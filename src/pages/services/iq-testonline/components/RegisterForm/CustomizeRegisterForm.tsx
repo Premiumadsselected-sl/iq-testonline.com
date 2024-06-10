@@ -31,17 +31,18 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
     }
 
     function onSubmit(event: FormEvent<HTMLFormElement>) {
+        
         event.preventDefault()
 
         if (error) setError(undefined)
 
         const formData = new FormData(event.currentTarget)
 
-        signIn('Register', {
+        signIn('credentials', {
             user_name: formData.get('user_name'),
             user_email: formData.get('user_email'),
             password: formData.get('password'),
-            redirect: true
+            redirect: false
         }).then(async (result) => {
 
             if (result?.error) {
@@ -50,22 +51,9 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                 return false
             }
 
-            const query = await ServicesAsyncRequest({
-                method: 'POST',
-                path: '/api/auth/auth-subscription',
-                body: JSON.stringify({
-                    user: result
-                })
-            })
-
-            const response = await query.json()
-
-            if (!response.ok)
-                return errorMessage(response.error)
-
-            return successMessage().then(() => {
-                return response.resolve()
-            })
+            console.log(result)
+            
+           
 
         })
 
@@ -177,8 +165,6 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                     id="register-error-paragraph">
                     {t('error', { error })}
                 </p>}
-
-
 
             </form>
 

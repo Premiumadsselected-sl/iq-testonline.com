@@ -1,12 +1,10 @@
 'use client'
-import { GetStaticPropsContext } from 'next'
-
 import { AppProps } from 'next/app'
+import { GetStaticPropsContext } from 'next'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
-import { AppProps } from 'next/app'
 
 type Props = AppProps & {
     t: any

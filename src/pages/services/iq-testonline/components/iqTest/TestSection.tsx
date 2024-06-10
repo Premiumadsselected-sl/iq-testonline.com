@@ -75,6 +75,7 @@ export default function TestSection({ pageProps }: Props) {
     };
 
     const validateFinishTest = async (updatedAnswers: { [key: string]: { [key: string]: boolean } }) => {
+        
         if (Object.keys(updatedAnswers).length === 20) {
 
             // Get the response from the server
@@ -92,6 +93,8 @@ export default function TestSection({ pageProps }: Props) {
             // Resolve the response
             // const res = await req.json()
             // return resolve(process.env.NEXT_PUBLIC_SERVICE_DOMAIN as string, res.url)
+
+            
 
         }
     }

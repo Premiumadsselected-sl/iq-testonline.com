@@ -123,8 +123,8 @@
         "continue": "Continuar",
         "title_form_pay": "Monto a pagar: 0.60€",
         "subtitle_form_pay": "Pago seguro y cifrado por SSL",
-        "input1_form_pay": "NOMBRE EN LA TARJETA",
-        "input1_form_pay_placeholder": "Nombre y apellido",
+        "name_label": "NOMBRE EN LA TARJETA",
+        "name_holder": "Nombre y apellido",
         "title_page": "Descubre tu CI ahora",
         "sumary": "Resumen",
         "check_text1": "Resultado de tu test de CI",
@@ -365,6 +365,12 @@
         "title": "Prueba",
         "preview": "Atrás",
         "next": "Siguiente"
+    },
+
+    "Training": {
+        "title": "Entrenamiento",
+        "subtitle": "¡Entrena tu cerebro con nuestros juegos y actividades!",
+        "button": "Comenzar a entrenar"
     },
 
     "OurTest": {

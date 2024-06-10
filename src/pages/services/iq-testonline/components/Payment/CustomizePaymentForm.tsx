@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { AppProps } from 'next/app';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import { GetStaticPropsContext } from 'next'
+import TefpayPaymentForm from '@/components/private/Payments/tefpay/TefpayPaymentForm'
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/PaymentStyles.module.css'
@@ -91,16 +92,17 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
 
             <div className="col-span-3 md:col-span-2 justify-center items-center md:pr-36">
                 <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md h-[70vh]">
-                    {/* Formulario de pago */}
+                   
                     <div className='grid grid-cols-1 text-start text-customGray gap-2'>
+                        
                         <div>
                             <h1 className='text-xl font-semibold md:text-3xl'>{t('title_form_pay')}</h1>
                             <p className='inline-flex items-center text-sm md:text-base'> <GiPadlock size={18} className='mr-1' />{t('subtitle_form_pay')}</p>
                         </div>
-                        <div className="text-start">
-                            <label className="required font-semibold text-sm">{t('input1_form_pay')}</label>
-                            <input type="name_lastname" id="name_lastname" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-purple-700 focus:border-none block w-full mt-0 p-3.5" placeholder={t('input1_form_pay_placeholder')} />
-                        </div>
+                        
+                        {/* Formulario de pago */}
+                        <TefpayPaymentForm />
+
                     </div>
                 </div>
             </div>

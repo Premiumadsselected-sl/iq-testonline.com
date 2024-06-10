@@ -1,13 +1,11 @@
 'use client'
+import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
-import { AppProps } from "next/app";
+import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 
 type Props = AppProps & {
     t: any
 }
-
-import { AppProps } from 'next/app'
-import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
@@ -56,7 +54,7 @@ export default function UpdatePassword({ router, pageProps }: AppProps) {
                 </div>
             </div>
         </form>
-    );
+    )
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {

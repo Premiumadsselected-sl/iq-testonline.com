@@ -354,6 +354,12 @@
             "preview": "Indietro",
             "next": "Avanti"
         },
+
+        "Training": {
+            "title": "Allenamento",
+            "subtitle": "Allenati il tuo cervello con i nostri giochi e attività!",
+            "button": "Inizia l'allenamento"
+        },
         
         "OurTest": {
             "title": "Dettagli sul nostro Test di CI",

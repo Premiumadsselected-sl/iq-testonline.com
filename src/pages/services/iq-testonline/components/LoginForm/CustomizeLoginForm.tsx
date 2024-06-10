@@ -34,10 +34,9 @@ export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
 
         if (error) setError(undefined)
 
-        const locale = useLocale()
         const formData = new FormData(event.currentTarget)
 
-        signIn('Login', {
+        signIn('credentials', {
             user_email: formData.get('user_email'),
             password: formData.get('password'),
             redirect: false
@@ -49,9 +48,11 @@ export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
                 return false
             }
 
-            return successMessage().then(() => {
-                return router.push(`/${locale}`)
-            })
+            console.log(result)
+
+            // return successMessage().then(() => {
+            //    return router.push(`/${locale}`)
+            // })
 
         })
 
