@@ -12,10 +12,10 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 }
 
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
-const auth = getAuth(app)
+//const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
+//const auth = getAuth(app)
 
-let analytics:string | null = null
+//let analytics:string | null = null
 // Todo: Fix this error: "Cannot use import statement outside a module" and 
 // add the following code to the if statement:
 // if (typeof window !== 'undefined') {
@@ -25,4 +25,4 @@ let analytics:string | null = null
 //     }
 // }
 
-export { app, auth, analytics }
+//export { app, auth, analytics }
