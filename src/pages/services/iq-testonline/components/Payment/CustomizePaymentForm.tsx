@@ -95,7 +95,7 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
                    
                     <div className='grid grid-cols-1 text-start text-customGray gap-2'>
                         
-                        <div>
+                        <div className='px-20'>
                             <h1 className='text-xl font-semibold md:text-3xl'>{t('title_form_pay')}</h1>
                             <p className='inline-flex items-center text-sm md:text-base'> <GiPadlock size={18} className='mr-1' />{t('subtitle_form_pay')}</p>
                         </div>
