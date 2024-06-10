@@ -1,15 +1,12 @@
 import { AbstractIntlMessages, NamespaceKeys, useLocale, useMessages, useTimeZone, useTranslations } from "next-intl"
 import { AppProps } from "next/app"
 import styles from '@/pages/services/iq-testonline/styles/IndexStyles.module.css'
-import Image from 'next/image';
 
 type Props = AppProps & {
     t: any
 }
 
 export default function FrequentQuestions({ pageProps }: Props) {
-
-    //TODO: aplicar el json translate al documento !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Para la internalizacion cada pagina debe tener su propio archivo de mensajes
     const t = useTranslations('FrequentQuestions') // consulta /messages/[locale].json

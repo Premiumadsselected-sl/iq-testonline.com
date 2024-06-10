@@ -21,7 +21,7 @@ export default function PricingComponent({ pageProps }: Props) {
       <div className="w-10 h-1 bg-violet-700 rounded-full mb-6"></div>
 
       <p>{t('daily_price')} <strong>{t('monthly_price')}</strong></p>
-      <p className="mb-20">{t('package_complete')}</p>
+      <p>{t('package_complete')}</p>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import IndexComponent from './services/iq-testonline/components/indexPage/IndexC
 import OurTest from './services/iq-testonline/components/indexPage/OurTest';
 import FrequentQuestions from './services/iq-testonline/components/indexPage/FrequentQuestions'
 import PricingComponent from './services/iq-testonline/components/pricing/PricingComponent'
+import Testimonial from './services/iq-testonline/components/indexPage/Testimonial';
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -28,6 +29,7 @@ export default function Index({ Component, router, pageProps }: Props) {
                 <IndexComponent {...pageProps} />
                 <OurTest {...pageProps} />
                 <PricingComponent {...pageProps}/>
+                {/* <Testimonial {...pageProps}/> */}
             </div>
             {/* ------------------------------------------- */}
 

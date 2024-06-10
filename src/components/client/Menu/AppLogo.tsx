@@ -18,8 +18,8 @@ const AppLogo = () => {
                     <Image 
                         src={process.env.NEXT_PUBLIC_APP_LOGO as string}
                         alt="logo" 
-                        width={100} 
-                        height={100} 
+                        width={512} 
+                        height={76} 
                         priority={true}
                         // layout="responsive" 
                         id="img-logo"
