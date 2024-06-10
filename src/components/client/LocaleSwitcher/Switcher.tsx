@@ -7,7 +7,7 @@ const Switcher = ({ props }: { props: any }) => {
 
     const {currentLocale, locales, translations} = props
     const [isWrapperVisible, setIsWrapperVisible] = useState(false)
-    const flags_path = process.env.NEXT_PUBLIC_APP_LOCALE_FLAGS_PATH
+    const flags_path = '/assets/locale/flags/'
    
     const handleClick = () => 
     setIsWrapperVisible( !isWrapperVisible )
