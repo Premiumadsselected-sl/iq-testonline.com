@@ -7,8 +7,10 @@ import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
+
+//TODO: agregar internacionalización a los textos
 
 export default function Information({ router, pageProps }: AppProps) {
     const locale = useLocale()

@@ -19,8 +19,7 @@ import { progressTest } from '@/contexts/redux/iqTestSlice'
 import AnalyzeTest from "./AnalyzeTest"
 
 type Props = AppProps & {
-    t: any
-    pageProps: AppProps
+    children: React.ReactNode
 }
 
 export default function TestSection({ pageProps }: Props) {

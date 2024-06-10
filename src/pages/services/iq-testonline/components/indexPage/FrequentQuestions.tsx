@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function FrequentQuestions({ pageProps }: Props) {

@@ -3,12 +3,14 @@ import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 
-type Props = AppProps & {
-    t: any
-}
-
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
+
+type Props = AppProps & {
+    children: React.ReactNode
+}
+
+//TODO: Agregar internacionalización a los textos
 
 export default function UpdatePassword({ router, pageProps }: AppProps) {
 
@@ -62,7 +64,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Index', 
+            translationNamespace: 'Index',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

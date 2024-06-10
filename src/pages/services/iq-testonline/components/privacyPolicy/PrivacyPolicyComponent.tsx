@@ -6,7 +6,7 @@ import { GetStaticPropsContext } from 'next'
 import Head from 'next/head'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function PrivacyPolicyComponent({ pageProps }: Props) {

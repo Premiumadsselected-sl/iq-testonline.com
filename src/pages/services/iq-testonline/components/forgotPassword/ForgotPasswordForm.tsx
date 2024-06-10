@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function ForgotPasswordForm({ pageProps }: Props) {

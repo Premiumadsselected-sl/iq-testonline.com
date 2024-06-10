@@ -12,7 +12,7 @@ import { GetStaticPropsContext } from 'next'
 import styles from '@/pages/services/iq-testonline/styles/RegisterStyles.module.css'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
@@ -179,7 +179,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Index', 
+            translationNamespace: 'Register', 
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

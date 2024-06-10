@@ -6,8 +6,9 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaCircleArrowLeft, FaCircleArrowRight } from "react-icons/fa6";
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
+
 export default function Testimonial({ pageProps }: Props) {
     const t = useTranslations('FrequentQuestions') // consulta /messages/[locale].json
     pageProps = {

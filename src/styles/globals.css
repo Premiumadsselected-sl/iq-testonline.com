@@ -11,13 +11,12 @@
 @media (prefers-color-scheme: light ) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
@@ -28,12 +27,10 @@ body {
 
 header {
   background: rgb(var(--background-start-rgb));
-  color: rgb(var(--foreground-rgb));
 }
 
 footer {
   background: rgb(var(--background-start-rgb));
-  color: rgb(var(--foreground-rgb));
 }
 
 #page-layout{

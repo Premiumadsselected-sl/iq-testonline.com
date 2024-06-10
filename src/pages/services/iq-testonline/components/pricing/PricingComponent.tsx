@@ -5,10 +5,10 @@ import { useTranslations } from "next-intl";
 import { AppProps } from "next/app";
 import { GetStaticPropsContext } from 'next'
 
-
 type Props = AppProps & {
-  t: any
+  children: React.ReactNode
 }
+
 export default function PricingComponent({ pageProps }: Props) {
 
   // Para la internalizacion cada pagina debe tener su propio archivo de mensajes
