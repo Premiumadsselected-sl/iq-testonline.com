@@ -3,7 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth'
 import {SignInCredentials, SignUpCredentials} from '@/interfaces/IAuthCredentials'
 import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
-import {app, auth, analytics} from '@/configs/firebase/config'
+// import {app, auth, analytics} from '@/configs/firebase/config'
 
 const Authentication: AuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
