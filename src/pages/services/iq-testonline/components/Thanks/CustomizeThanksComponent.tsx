@@ -46,7 +46,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
             messages: messages,
             translationNamespace: 'Thanks', 
             locale: locale,
-            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }
     }
 }
