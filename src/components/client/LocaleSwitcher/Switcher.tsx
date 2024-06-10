@@ -7,6 +7,7 @@ const Switcher = ({ props }: { props: any }) => {
 
     const {currentLocale, locales, translations} = props
     const [isWrapperVisible, setIsWrapperVisible] = useState(false)
+    const flags_path = process.env.NEXT_PUBLIC_APP_LOCALE_FLAGS_PATH
    
     const handleClick = () => 
     setIsWrapperVisible( !isWrapperVisible )
@@ -16,7 +17,7 @@ const Switcher = ({ props }: { props: any }) => {
         <section className="flex flex-col justify-center p-1 w-14" id="locale-switcher">
             <button onClick={handleClick}>
                 <Image 
-                    src={`${process.env.NEXT_PUBLIC_APP_LOCALE_FLAGS_PATH}${currentLocale}.svg`}
+                    src={`${flags_path}${currentLocale}.svg`}
                     alt={currentLocale} 
                     width={100} 
                     height={100} 
@@ -30,7 +31,7 @@ const Switcher = ({ props }: { props: any }) => {
                         ( locale !== currentLocale ) &&  
                         <Link key={locale} href={locale} locale={locale} className='my-2 text-xs text-black' > 
                             <Image 
-                                src={`${process.env.NEXT_PUBLIC_APP_LOCALE_FLAGS_PATH}${locale}.svg`}
+                                src={`${flags_path}${locale}.svg`}
                                 alt={locale} 
                                 width={100} 
                                 height={100}
