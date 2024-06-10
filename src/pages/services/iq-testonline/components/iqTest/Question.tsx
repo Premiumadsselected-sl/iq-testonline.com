@@ -1,5 +1,11 @@
-
+'use client'
 import Image from 'next/image'
+import { GetStaticPropsContext } from 'next'
+import { AppProps } from 'next/app'
+
+type Props = AppProps & {
+    children: React.ReactNode
+}
 
 type PageProps = {
     page: number;
@@ -16,4 +22,16 @@ export default function Question({ page }: PageProps) {
             />
         </div>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }

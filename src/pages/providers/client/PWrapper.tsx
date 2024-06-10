@@ -43,15 +43,14 @@ export default function PWrapper({Component, children, router, translations, tim
 
 }
 
-export async function getStaticProps({locale, pageProps}: GetStaticPropsContext & Props) { 
-  
-    return {
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+  const messages = (await import(`/messages/${locale}.json`)).default
+  return {
       props: {
-        messages: (await import(`../../../../messages/${locale}.json`)).default,
-        translationNamespace: pageProps.translations,
-        locale: locale,
-        timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+          messages: messages,
+          translationNamespace: 'Index', 
+          locale: locale,
+          timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
       }
-    }
-
+  }
 }

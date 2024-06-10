@@ -1,10 +1,14 @@
+'use client'
 import { useTranslations } from "next-intl"
 import { AppProps } from "next/app"
-import Head from 'next/head';
+import Link from "next/link"
+import { GetStaticPropsContext } from 'next'
+import Head from 'next/head'
 
 type Props = AppProps & {
     t: any
 }
+
 export default function PrivacyPolicyComponent({ pageProps }: Props) {
 
     const t = useTranslations('Privacy')
@@ -58,21 +62,44 @@ export default function PrivacyPolicyComponent({ pageProps }: Props) {
                     <li>{t('share_information_text4')}</li>
                 </ul>
             </div>
-            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Cookies-y-Tecnologías-Similares">{t('title6')}</h3>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Cookies-y-Tecnologías-Similares">
+                {t('title6')}
+            </h3>
             <p className="mb-6">{t('cookies_text')}</p>
-            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Seguridad-de-la-Información">{t('title7')}</h3>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Seguridad-de-la-Información">
+                {t('title7')}
+            </h3>
             <p className="mb-6">{t('security_information')}</p>
-            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Derechos-de-Privacidad-de-los-Usuarios">{t('title8')}</h3>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Derechos-de-Privacidad-de-los-Usuarios">
+                {t('title8')}
+            </h3>
             <p className="mb-6">{t('privacy_rights')}</p>
-            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Cambios-en-la-Política-de-Privacidad">{t('title9')}</h3>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Cambios-en-la-Política-de-Privacidad">
+                {t('title9')}
+            </h3>
             <p className="mb-6">{t('changes_privacy_policy')}</p>
-            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Contacto">{t('title10')}</h3>
+            <h3 className="text-3xl font-extrabold mb-6" style={{ scrollMarginTop: '80px' }} id="Contacto">
+                {t('title10')}
+            </h3>
             <p className="mb-6">{t('contact')}</p>
             <p className="mb-6">{t('update_page_privacy_policy')}</p>
 
-
             <style jsx global>{`html {scroll-behavior: smooth;}`}</style>
+
         </div>
 
-    );
+    )
+
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Privacy', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }

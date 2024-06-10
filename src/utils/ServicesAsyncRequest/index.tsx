@@ -9,7 +9,7 @@ const ServicesAsyncRequest = async ( { method, path, body } : ServicesAsyncReque
         method: method,
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.ENDPOINT_API_KEY}`
+            'Authorization': `Bearer ${process.env.ENDPOINT_API_KEY}`
         },
         body: body
     })

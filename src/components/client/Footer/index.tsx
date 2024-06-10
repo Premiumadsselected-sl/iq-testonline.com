@@ -13,15 +13,13 @@ const Footer = ({ Component, router, pageProps }: Props) => {
     return (
         <>
             <footer id="footer">
+                
                 <section id="service-footer" className="mt-8 text-center justify-center items-center">
-
                     <CustomizeFooter
                         Component={Footer}
-                        router={router}
-                        pageProps={pageProps}
-
+                        pageProps={pageProps} 
+                        router={router}                    
                     />
-
                 </section>
 
                 <section className="flex flex-col m-4 mt-8 text-center text-customGray" id="copy-footer">
@@ -31,6 +29,7 @@ const Footer = ({ Component, router, pageProps }: Props) => {
             </footer>
         </>
     )
+
 }
 
 export default Footer

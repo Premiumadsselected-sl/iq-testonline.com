@@ -1,7 +1,10 @@
+'use client'
 import { FaCheck } from "react-icons/fa";
 import styles from './PrincingStyles.module.css'
 import { useTranslations } from "next-intl";
 import { AppProps } from "next/app";
+import { GetStaticPropsContext } from 'next'
+
 
 type Props = AppProps & {
   t: any
@@ -24,4 +27,16 @@ export default function PricingComponent({ pageProps }: Props) {
       <p>{t('package_complete')}</p>
     </div>
   );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+  const messages = (await import(`/messages/${locale}.json`)).default
+  return {
+      props: {
+          messages: messages,
+          translationNamespace: 'Pricing', 
+          locale: locale,
+          timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+      }
+  }
 }

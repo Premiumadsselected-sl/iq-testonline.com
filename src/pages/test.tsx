@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 // Import the context hooks
 import {useSelector, useDispatch} from 'react-redux'
-import {changeEmail} from './context/serviceSlice'
+import {changeEmail} from '@/contexts/redux/serviceSlice'
 
 // Import the component
 import TestComponent from './services/iq-testonline/components/TestComponent'
@@ -71,12 +71,13 @@ export default function Test({ Component, router, pageProps }: Props) {
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`../../messages/${locale}.json`)).default
     return {
         props: {
-            messages: (await import(`../../messages/${locale}.json`)).default,
+            messages: messages,
             translationNamespace: 'Test', 
             locale: locale,
-            timeZone: process.env.NEXT_PUBLIC_TIMEZONE
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }
     }
 }

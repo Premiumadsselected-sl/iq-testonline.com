@@ -1,10 +1,13 @@
+'use client'
 import { useTranslations } from "next-intl";
 import { AppProps } from "next/app";
+import { GetStaticPropsContext } from 'next'
 import Head from 'next/head';
 
 type Props = AppProps & {
     t: any
 }
+
 export default function LegalNoticeComponent({ pageProps }: Props) {
 
     const t = useTranslations('Legal')
@@ -36,4 +39,16 @@ export default function LegalNoticeComponent({ pageProps }: Props) {
             <p>{t('Contact')}</p>
         </div>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }

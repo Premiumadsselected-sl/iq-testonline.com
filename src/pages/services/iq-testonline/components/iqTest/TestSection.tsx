@@ -1,13 +1,12 @@
 'use client'
-import { IoMdArrowBack, IoMdArrowRoundForward } from "react-icons/io";
-import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css';
-import { useTranslations } from "next-intl";
-import { AppProps } from "next/app";
-import Question from "./Question";
-import Answer from "./Answer";
-import { useEffect, useState } from "react";
-
-
+import { IoMdArrowBack, IoMdArrowRoundForward } from "react-icons/io"
+import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css'
+import { useTranslations } from "next-intl"
+import { AppProps } from "next/app"
+import Question from "./Question"
+import Answer from "./Answer"
+import { useEffect, useState } from "react"
+import { GetStaticPropsContext } from 'next'
 
 // Import ServicesAsyncRequest utility, auth from firebase and resolve from url
 import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
@@ -15,10 +14,9 @@ import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
 import { resolve } from 'url'
 
 //Context
-import { useDispatch, useSelector } from "react-redux";
-import { progressTest } from '@/pages/context/iqTestSlice'
-import AnalyzeTest from "./AnalyzeTest";
-
+import { useDispatch, useSelector } from "react-redux"
+import { progressTest } from '@/contexts/redux/iqTestSlice'
+import AnalyzeTest from "./AnalyzeTest"
 
 type Props = AppProps & {
     t: any
@@ -77,6 +75,7 @@ export default function TestSection({ pageProps }: Props) {
     };
 
     const validateFinishTest = async (updatedAnswers: { [key: string]: { [key: string]: boolean } }) => {
+        
         if (Object.keys(updatedAnswers).length === 20) {
 
             // Get the response from the server
@@ -94,6 +93,8 @@ export default function TestSection({ pageProps }: Props) {
             // Resolve the response
             // const res = await req.json()
             // return resolve(process.env.NEXT_PUBLIC_SERVICE_DOMAIN as string, res.url)
+
+            
 
         }
     }
@@ -149,4 +150,16 @@ export default function TestSection({ pageProps }: Props) {
 
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Test', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }

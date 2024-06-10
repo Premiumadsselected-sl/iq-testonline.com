@@ -1,6 +1,8 @@
 import { useLocale } from 'next-intl'
 import { NextResponse, NextRequest } from 'next/server'
 
+export { default } from "next-auth/middleware"
+
 export async function middleware(request: NextRequest) {
     
     const cookies = request.cookies

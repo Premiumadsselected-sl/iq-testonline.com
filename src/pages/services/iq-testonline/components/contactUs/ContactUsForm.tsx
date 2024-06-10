@@ -1,6 +1,8 @@
+'use client'
 import Link from 'next/link';
 import { AppProps } from 'next/app';
 import { useTranslations } from 'next-intl';
+import { GetStaticPropsContext } from 'next'
 
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/ContactUsStyles.module.css'
@@ -81,4 +83,16 @@ export default function ContactUsForm({ pageProps }: Props) {
             </form>
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Contact', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }

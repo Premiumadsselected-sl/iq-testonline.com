@@ -1,6 +1,9 @@
+'use client'
 import { AbstractIntlMessages, NamespaceKeys, useLocale, useMessages, useTimeZone, useTranslations } from "next-intl"
 import { AppProps } from "next/app"
 import styles from '@/pages/services/iq-testonline/styles/IndexStyles.module.css'
+import Image from 'next/image';
+import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
     t: any
@@ -50,4 +53,16 @@ export default function FrequentQuestions({ pageProps }: Props) {
             </section>
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'FrequentQuestions', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }

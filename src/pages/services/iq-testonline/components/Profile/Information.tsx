@@ -1,9 +1,14 @@
-
+'use client'
 import { AppProps } from 'next/app'
+import { GetStaticPropsContext } from 'next'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
+
+type Props = AppProps & {
+    t: any
+}
 
 export default function Information({ router, pageProps }: AppProps) {
     const locale = useLocale()
@@ -49,3 +54,16 @@ export default function Information({ router, pageProps }: AppProps) {
         </form>
     );
 }
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Index', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
+}
+

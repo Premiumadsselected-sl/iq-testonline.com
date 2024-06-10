@@ -1,7 +1,13 @@
+'use client'
 import { AppProps } from "next/app"
 import { useLocale, useTranslations, useMessages, useTimeZone } from 'next-intl'
+import { GetStaticPropsContext } from 'next'
 
-export default function CustomizeFooter({ router, pageProps }: AppProps) {
+type Props = AppProps & {
+    children: React.ReactNode
+}
+
+export default function CustomizeFooter({ pageProps }: AppProps) {
 
     const t = useTranslations('Footer') 
     const messages = useMessages()
@@ -54,4 +60,16 @@ export default function CustomizeFooter({ router, pageProps }: AppProps) {
         </>
     )
 
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'Footer', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }
