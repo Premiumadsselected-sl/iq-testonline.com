@@ -176,7 +176,7 @@ export const TefpayPaymentForm = () => {
 
     return (<>
 
-        { loading ? <div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div></div> : null }
+        {/* { loading ? <div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div></div> : null } */}
 
         <form className="p-2 mb-2 payment-form" role="form" id="tefpayData" autoComplete="true" >
 
