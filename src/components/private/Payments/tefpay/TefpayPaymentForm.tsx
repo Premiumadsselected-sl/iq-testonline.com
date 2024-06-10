@@ -35,8 +35,8 @@ export const TefpayPaymentForm = () => {
     const [ payment_description, setPaymentDescription ] = useState('')
     const [ suscription_account, setSuscriptionAccount ] = useState('')
     const [ suscription_description, setSuscriptionDescription ] = useState('')
-    const [ user_name, setUserName ] = useState('')
-    const [ user_email, setUserEmail ] = useState('')
+    const [ user_name, setUserName ] = useState('prueba')
+    const [ user_email, setUserEmail ] = useState('prueba@prueba.com')
     
     const [dsmerchant_terminal, setDsMerchantTerminal] = useState('00000001')
     const [dsmerchant_terminalauth, setDsMerchantTerminalAuth] = useState('00000001')
@@ -157,7 +157,9 @@ export const TefpayPaymentForm = () => {
         setDsMerchantTerminalAuth(terminals[locale])
 
         document.body.appendChild(script).onload = () => {
+            
             const TefpayIframe = window.TefpayIframe
+            
             if (TefpayIframe) {
                 if (TefpayIframe.init()) {
                     TefpayIframe.configure(iframe_configure_url, "100%")
@@ -166,6 +168,7 @@ export const TefpayPaymentForm = () => {
             }
 
             setLoading(false)
+
         }
 
         return () => {
