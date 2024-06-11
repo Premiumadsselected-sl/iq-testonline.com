@@ -1,3 +1,4 @@
+'use client'
 import { AppProps } from "next/app";
 import { GetStaticPropsContext } from "next";
 
@@ -14,13 +15,13 @@ type Card = {
 };
 
 type CardTestTrainingProps = {
-    cards: Card[];
+    cards?: Card[];
 };
 
 const CardTestTraining: React.FC<CardTestTrainingProps> = ({ cards }) => {
 
     return (
-        cards.map(element => (
+        cards?.map(element => (
             <div aria-label="Card" className="card bg-base-100 shadow-xl transition-transform duration-300 transform hover:scale-105 cursor-pointer text-customGray">
                 <div className="card-body gap-2 p-3">
                     <div className="flex justify-between">

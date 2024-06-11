@@ -1,5 +1,6 @@
+import { AppProps } from "next/app"
+import { GetStaticPropsContext } from 'next'
 import { useTranslations } from "next-intl";
-import { AppProps } from "next/app";
 import styles from '@/pages/services/iq-testonline/styles/IndexStyles.module.css'
 import { useEffect, useRef, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
@@ -134,4 +135,16 @@ export default function Testimonial({ pageProps }: Props) {
             </section>
         </>
     );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+    const messages = (await import(`/messages/${locale}.json`)).default
+    return {
+        props: {
+            messages: messages,
+            translationNamespace: 'FrequentQuestions', 
+            locale: locale,
+            timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+        }
+    }
 }

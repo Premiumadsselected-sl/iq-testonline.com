@@ -1,9 +1,9 @@
 'use client'
-import { useTranslations } from "next-intl"
 import { AppProps } from "next/app"
+import { GetStaticPropsContext } from 'next'
+import { useTranslations } from "next-intl"
 import styles from '@/pages/services/iq-testonline/styles/IndexStyles.module.css'
 import Image from 'next/image';
-import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
     children: React.ReactNode
