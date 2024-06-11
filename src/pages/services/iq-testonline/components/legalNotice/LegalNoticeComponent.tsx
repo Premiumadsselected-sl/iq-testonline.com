@@ -5,7 +5,7 @@ import { GetStaticPropsContext } from 'next'
 import Head from 'next/head';
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function LegalNoticeComponent({ pageProps }: Props) {
@@ -46,7 +46,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Index', 
+            translationNamespace: 'Legal', 
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

@@ -6,12 +6,10 @@ import Image from 'next/image';
 import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function FrequentQuestions({ pageProps }: Props) {
-
-    //TODO: aplicar el json translate al documento !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Para la internalizacion cada pagina debe tener su propio archivo de mensajes
     const t = useTranslations('FrequentQuestions') // consulta /messages/[locale].json

@@ -1,12 +1,11 @@
 'use client'
-import { useLocale, useTimeZone, useTranslations } from "next-intl"
 import { AppProps } from "next/app"
 import { GetStaticPropsContext } from 'next'
+import { useLocale, useTimeZone, useTranslations } from "next-intl"
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
-
 
 // Styles
 

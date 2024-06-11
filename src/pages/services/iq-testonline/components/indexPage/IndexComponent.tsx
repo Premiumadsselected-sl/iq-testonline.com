@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { GetStaticPropsContext } from 'next'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function IndexComponent({ pageProps }: Props) {
@@ -55,7 +55,7 @@ export default function IndexComponent({ pageProps }: Props) {
 
                     <div className="place-self-stretch xl:place-self-center col-span-2 lg:col-span-1">
                         <Link href="/app" className="hidden md:inline-block place-self-center w-[80%] xl:w-[80%]">
-                            <Image src="/assets/home/IndexImg.png" alt="hero image" width={800} height={600} className="shadow-2xl transition-transform duration-300 transform hover:scale-110 rounded-[20px]" style={{ boxShadow: "-8px -8px 30px 0px rgb(126 34 206 / 30%), 0 0px 0px -5px rgb(126 34 206 / 35%)" }} />
+                            <Image src="/assets/index/IndexImg.png" alt="hero image" width={800} height={600} className="shadow-2xl transition-transform duration-300 transform hover:scale-110 rounded-[20px]" style={{ boxShadow: "-8px -8px 30px 0px rgb(126 34 206 / 30%), 0 0px 0px -5px rgb(126 34 206 / 35%)" }} />
                         </Link>
                     </div>
                     <div className="flex flex-wrap justify-center gap-10 col-span-2">

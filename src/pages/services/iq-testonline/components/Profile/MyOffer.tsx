@@ -6,8 +6,10 @@ import { GetStaticPropsContext } from 'next'
 import { AppProps } from "next/app";
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
+
+//TODO: Agregar internacionalización a los textos
 
 export default function MyOffer({ router, pageProps }: AppProps) {
 

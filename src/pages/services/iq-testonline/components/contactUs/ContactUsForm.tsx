@@ -8,7 +8,7 @@ import { GetStaticPropsContext } from 'next'
 import styles from '@/pages/services/iq-testonline/styles/ContactUsStyles.module.css'
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function ContactUsForm({ pageProps }: Props) {

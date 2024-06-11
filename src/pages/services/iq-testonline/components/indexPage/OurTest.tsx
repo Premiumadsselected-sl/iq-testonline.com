@@ -1,12 +1,13 @@
 'use client'
-import { useTranslations } from "next-intl"
 import { AppProps } from "next/app"
+import { GetStaticPropsContext } from 'next'
+import { useTranslations } from "next-intl"
 import styles from '@/pages/services/iq-testonline/styles/IndexStyles.module.css'
 import Image from 'next/image';
-import { GetStaticPropsContext } from 'next'
+import Link from "next/link";
 
 type Props = AppProps & {
-    t: any
+    children: React.ReactNode
 }
 
 export default function OurTest({ pageProps }: Props) {
@@ -45,9 +46,11 @@ export default function OurTest({ pageProps }: Props) {
                                         <p className="mb-3 text-[16px] font-normal text-customGray ">{t('card2Text3')}.</p>
                                     </div>
                                 </div>
-                                <button className={styles.buttonStartTest}>
-                                    <span>{t('buttonTest')}</span>
-                                </button>
+                                <Link href="/app" >
+                                    <button className={styles.buttonStartTest}>
+                                        <span>{t('buttonTest')}</span>
+                                    </button>
+                                </Link>
                             </div>
                             <div className="w-full bg-[#ffffff3e] border border-gray-200 rounded-lg shadow">
                                 <Image className="rounded-t-lg" src="/assets/login/cosmos.jpg" alt="" width={800} height={400} />
@@ -57,9 +60,11 @@ export default function OurTest({ pageProps }: Props) {
                                     <p className="mb-3 text-[16px] font-normal text-customGray ">{t('card3Text3')}.</p>
                                 </div>
                             </div>
-                            <button className={styles.buttonStartTestMobile}>
-                                <span>{t('buttonTest')}</span>
-                            </button>
+                            <Link href="/app" >
+                                <button className={styles.buttonStartTestMobile}>
+                                    <span>{t('buttonTest')}</span>
+                                </button>
+                            </Link>
 
                         </div>
                     </div>
@@ -77,7 +82,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'OurTest', 
+            translationNamespace: 'OurTest',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

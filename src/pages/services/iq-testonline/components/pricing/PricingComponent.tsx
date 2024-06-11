@@ -5,10 +5,10 @@ import { useTranslations } from "next-intl";
 import { AppProps } from "next/app";
 import { GetStaticPropsContext } from 'next'
 
-
 type Props = AppProps & {
-  t: any
+  children: React.ReactNode
 }
+
 export default function PricingComponent({ pageProps }: Props) {
 
   // Para la internalizacion cada pagina debe tener su propio archivo de mensajes
@@ -24,7 +24,7 @@ export default function PricingComponent({ pageProps }: Props) {
       <div className="w-10 h-1 bg-violet-700 rounded-full mb-6"></div>
 
       <p>{t('daily_price')} <strong>{t('monthly_price')}</strong></p>
-      <p className="mb-20">{t('package_complete')}</p>
+      <p>{t('package_complete')}</p>
     </div>
   );
 }

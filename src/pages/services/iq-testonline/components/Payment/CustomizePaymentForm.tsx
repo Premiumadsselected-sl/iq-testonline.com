@@ -1,9 +1,10 @@
 'use client'
+import { AppProps } from 'next/app';
+import { GetStaticPropsContext } from 'next'
+
 import { useLocale, useTimeZone, useTranslations } from 'next-intl';
 import Image from 'next/image'
-import { AppProps } from 'next/app';
 import { FaRegCircleCheck } from 'react-icons/fa6';
-import { GetStaticPropsContext } from 'next'
 import TefpayPaymentForm from '@/components/private/Payments/tefpay/TefpayPaymentForm'
 
 //Styles
