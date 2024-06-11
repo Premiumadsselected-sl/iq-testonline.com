@@ -29,7 +29,7 @@ export default function Index({ Component, router, pageProps }: Props) {
         >
 
             {/* Los componentes deven ser renderizados aqui */}
-            <div className='w-full justify-center items-center px-4 pt-4 md:px-36 md:pt-4'>
+            <div className='w-full justify-center items-center px-4 md:px-36'>
                 <Timer />
                 <TestSection {...pageProps} />
             </div>
