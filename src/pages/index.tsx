@@ -6,9 +6,9 @@ import PWrapper from '@/pages/providers/client/PWrapper'
 // Importa los componentes del servicio
 import IndexComponent from './services/iq-testonline/components/indexPage/IndexComponent'
 import OurTest from './services/iq-testonline/components/indexPage/OurTest';
-import FrequentQuestions from './services/iq-testonline/components/indexPage/FrequentQuestions'
 import PricingComponent from './services/iq-testonline/components/pricing/PricingComponent'
 import Testimonial from './services/iq-testonline/components/indexPage/Testimonial';
+import Insights from './services/iq-testonline/components/indexPage/Insights'
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -30,7 +30,8 @@ export default function Index({ Component, router, pageProps }: Props) {
                 <IndexComponent {...pageProps} />
                 <OurTest {...pageProps} />
                 <PricingComponent {...pageProps}/>
-                {/* <Testimonial {...pageProps}/> */}
+                <Testimonial {...pageProps}/>
+                <Insights {...pageProps}/>
             </div>
             {/* ------------------------------------------- */}
 

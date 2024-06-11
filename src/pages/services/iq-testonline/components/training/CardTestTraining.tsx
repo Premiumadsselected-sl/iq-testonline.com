@@ -22,7 +22,7 @@ const CardTestTraining: React.FC<CardTestTrainingProps> = ({ cards }) => {
 
     return (
         cards?.map(element => (
-            <div aria-label="Card" className="card bg-base-100 shadow-xl transition-transform duration-300 transform hover:scale-105 cursor-pointer text-customGray">
+            <div className="card bg-base-100 shadow-xl transition-transform duration-300 transform hover:scale-105 cursor-pointer text-customGray force-dark-mode">
                 <div className="card-body gap-2 p-3">
                     <div className="flex justify-between">
                         <p className="font-medium text-base-content/70 cursor-pointer text-start">{element.cardHeader}</p>

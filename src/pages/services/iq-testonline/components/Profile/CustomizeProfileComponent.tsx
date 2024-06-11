@@ -44,13 +44,14 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     }, []);
 
     useEffect(() => {
-        const pathSelected = route.asPath.split('/')[2];
+        const pathSelected = route.asPath;
 
         setPath(pathSelected);
-
-        if (pathSelected === '#Information') setComponentToShow(<Information {...pageProps} />);
-        if (pathSelected === '#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
-        if (pathSelected === '#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
+console.log(pathSelected)
+console.log(route)
+        if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
+        if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
+        if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
 
     }, [route.asPath])
 

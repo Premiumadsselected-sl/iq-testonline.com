@@ -114,7 +114,7 @@ export default function TestSection({ pageProps }: Props) {
                             <IoMdArrowRoundForward className="mt-0.5 ml-1" />
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10  items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10  items-center justify-center">
                         <Question page={page} />
                         <div className="grid grid-cols-3 gap-4">
                             {arrPictures.map((picture, i) => (
