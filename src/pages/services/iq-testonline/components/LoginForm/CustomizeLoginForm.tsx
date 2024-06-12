@@ -151,7 +151,7 @@ export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
                         </div>
                     </div>
                     <div
-                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }}
+                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
                         title="Woman holding a mug"
                     >
                     </div>

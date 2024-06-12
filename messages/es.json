@@ -277,8 +277,19 @@
         "invalid-name": "Nombre inválido",
         "success_message": "Perfil actualizado con éxito",
         "error": "Error al actualizar el perfil",
+        "title_information_card" : "Información personal",
+        "label1_information_card" : "Nombre",
+        "placeholder1_information_card" : "asd",
+        "label2_information_card" : "Correo electrónico",
+        "placeholder2_information_card" : "asd",
+        "title_updatepass_card": "Restablecer mi contraseña",
+        "placeholder1_updatepass_card": "Contraseña actual",
+        "placeholder2_updatepass_card": "Nueva contraseña",
+        "placeholder3_updatepass_card": "Confirmar contraseña",
         "my_bill": "Mis facturas",
         "my_offer": "Mi oferta",
+        "label_offer": "Oferta actual",
+        "label_next_pay": "Próximo pago",
         "unsubscribe": "Desuscribirse"
     },
 
@@ -386,6 +397,24 @@
         "card3Text2": "Los resultados",
         "card3Text3": "El CI promedio es 100. Una puntuación superior a 100 indica un rendimiento por encima del promedio.",
         "buttonTest": "INICIAR TEST AHORA"
+    },
+
+    "Insights": {
+        "client_number": "1000",
+        "client_text": "Clientes satisfechos",
+        "languages_number": "10",
+        "languages_text": "Idiomas",
+        "tests_number": "100k",
+        "tests_text": "Test por mes",
+        "visitors_number": "500k",
+        "visitors_text": "Visitantes"
+    },
+
+    "Testimonial": {
+        "title_section": "Lo que dicen de nosotros",
+        "text_user1": "Los test de IQ son precisos y los entrenamientos son desafiantes. El seguimiento detallado es genial para ver mis mejoras.",
+        "text_user2": "Esta web es fantástica. Los test de IQ y los entrenamientos me han ayudado a mejorar mi mente, y el seguimiento me permite ver mi progreso día a día.",
+        "text_user3": "Me encanta esta app. Los test y entrenamientos me mantienen motivada, y el seguimiento me muestra claramente mi progreso."
     }
 
     

@@ -14,16 +14,10 @@ type Props = AppProps & {
 
 export default function UpdatePassword({ router, pageProps }: AppProps) {
 
-    const locale = useLocale()
     const t = useTranslations('Profile')
-    const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
-
     pageProps = {
         ...pageProps,
-        ...router,
         t: t,
-        locale: locale,
-        timeZone: Zone
     }
 
     return (
@@ -37,15 +31,15 @@ export default function UpdatePassword({ router, pageProps }: AppProps) {
             <div className="w-full lg:max-w-full lg:flex h-auto">
                 <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">
                     <div className="grid grid-cols-1 gap-2" >
-                        <span className="col-span-2 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight">Restablecer mi contraseña</span>
+                        <span className="col-span-2 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight">{t('title_updatepass_card')}</span>
                         <div className=" col-span-2 text-start">
-                            <input type="password" id="old_password" className={styles.inputForm} placeholder={"Contraseña actual"} required />
+                            <input type="password" id="old_password" className={styles.inputForm} placeholder={t('placeholder1_updatepass_card')} required />
                         </div>
                         <div className=" col-span-2 text-start">
-                            <input type="password" id="new_password" className={styles.inputForm} placeholder={"Nueva contraseña"} required />
+                            <input type="password" id="new_password" className={styles.inputForm} placeholder={t('placeholder2_updatepass_card')} required />
                         </div>
                         <div className=" col-span-2 text-start">
-                            <input type="password" id="confirm_password" className={styles.inputForm} placeholder={"Confirmar contraseña"} required />
+                            <input type="password" id="confirm_password" className={styles.inputForm} placeholder={t('placeholder3_updatepass_card')} required />
                         </div>
                         <div className="col-span-2">
                             <button className={styles.button}>

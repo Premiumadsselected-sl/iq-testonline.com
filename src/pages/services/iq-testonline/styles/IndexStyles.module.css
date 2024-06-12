@@ -3,7 +3,7 @@
 }
 
 .OurTestSection {
-  @apply text-customGray md:px-8;
+  @apply text-customGray;
 }
 
 .divSection {

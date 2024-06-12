@@ -9,20 +9,12 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-//TODO: Agregar internacionalización a los textos
-
 export default function MyOffer({ router, pageProps }: AppProps) {
 
-    const locale = useLocale()
     const t = useTranslations('Profile')
-    const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
-
     pageProps = {
         ...pageProps,
-        ...router,
         t: t,
-        locale: locale,
-        timeZone: Zone
     }
 
     return (
@@ -131,8 +123,8 @@ export default function MyOffer({ router, pageProps }: AppProps) {
                     <h2 className="col-span-1 text-xl md:text-2xl  text-customGray font-bold leading-none tracking-tight mt-8 mb-4">{t('my_offer')}</h2>
 
                     <div className="grid grid-cols-1 gap-0 m-2 space-y-2">
-                        <p className="text-start col-span-2 md:col-span-1"><span className="font-bold">Oferta actual:</span> BrainTester</p>
-                        <p className="text-start col-span-2 md:col-span-1"><span className="font-bold">Próximo pago:</span> 03/07/2024</p>
+                        <p className="text-start col-span-2 md:col-span-1"><span className="font-bold">{t('label_offer')}:</span> BrainTester</p>
+                        <p className="text-start col-span-2 md:col-span-1"><span className="font-bold">{t('label_next_pay')}:</span> 03/07/2024</p>
                         <div className="text-start">
                             <button type="button" className={`inline-flex w-full md:w-1/4 justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm bg-gray-400 hover:bg-white hover:text-gray-400 hover:border-gray-400 border-2 border-transparent`}>{t('unsubscribe')}</button>
                         </div>

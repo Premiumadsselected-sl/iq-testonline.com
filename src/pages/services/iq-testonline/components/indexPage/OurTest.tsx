@@ -27,10 +27,10 @@ export default function OurTest({ pageProps }: Props) {
                         <h1 className="text-4xl font-extrabold">{t('title')}</h1>
                         <h3 className="text-lg ">{t('subtitle')}</h3>
                     </div>
-                    <div className="col-span-1 px-4 lg:px-24">
+                    <div className="col-span-1 px-4 xl:px-16 lg:px-24">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8">
                             <div className="w-full   bg-[#ffffff3e] border border-gray-200 rounded-lg shadow">
-                                <Image className="rounded-t-lg" src="/assets/login/cosmos.jpg" alt="" width={800} height={400} />
+                                <Image className="rounded-t-lg" src="/assets/index/artificial-intelligence-3382507_640.jpg" alt="" width={800} height={400} />
                                 <div className="px-8 py-4 text-start">
                                     <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card1Text1')}</h5>
                                     <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card1Text2')}</h6>
@@ -39,7 +39,7 @@ export default function OurTest({ pageProps }: Props) {
                             </div>
                             <div >
                                 <div className="w-full h-max  border border-gray-200 rounded-lg shadow lg:-mt-8 lg:mb-8">
-                                    <Image className="rounded-t-lg" src="/assets/login/cosmos.jpg" alt="" width={800} height={400} />
+                                    <Image className="rounded-t-lg" src="/assets/index/line-7146714_640.jpg" alt="" width={800} height={400} />
                                     <div className="px-8 py-4 text-start">
                                         <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card2Text1')}</h5>
                                         <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card2Text2')}</h6>
@@ -53,7 +53,7 @@ export default function OurTest({ pageProps }: Props) {
                                 </Link>
                             </div>
                             <div className="w-full bg-[#ffffff3e] border border-gray-200 rounded-lg shadow">
-                                <Image className="rounded-t-lg" src="/assets/login/cosmos.jpg" alt="" width={800} height={400} />
+                                <Image className="rounded-t-lg" src="/assets/index/artificial-intelligence-7450797_640.jpg" alt="" width={800} height={400} />
                                 <div className="px-8 py-4 text-start">
                                     <h5 className="text-[16px] font-medium tracking-tight text-purple-700  mb-4">{t('card3Text1')}</h5>
                                     <h6 className="text-[clamp(16px,3vw,24px)] font-extrabold">{t('card3Text2')}</h6>
