@@ -9,8 +9,9 @@ import TefpayPaymentForm from '@/components/private/Payments/tefpay/TefpayPaymen
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/PaymentStyles.module.css'
 import { GiPadlock } from 'react-icons/gi';
-import LegalNoticeComponent from '../legalNotice/LegalNoticeComponent';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import GeneralConditions from './GeneralConditions';
+import Fade from '../transitions/Fade';
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -36,6 +37,7 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
     return (
         <div className="grid grid-cols-3 gap-x-0 gap-y-10">
             {showDialog &&
+
                 <div className="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
@@ -43,7 +45,7 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
                         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                             <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-[50vw]">
                                 <div className='grid grid-cols-1 px-4 py-4 sm:px-8 sm:py-4 gap-6'>
-                                    <LegalNoticeComponent {...pageProps} />
+                                    <GeneralConditions {...pageProps} />
                                     <div className=" inline-flex items-center">
                                         <label
                                             className="relative flex cursor-pointer items-center rounded-full mr-2"
@@ -85,6 +87,7 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
                         </div>
                     </div>
                 </div>
+
             }
             <div className="col-span-3 justify-center items-center  ">
                 <h1 className="text-3xl md:text-5xl font-extrabold text-customGray">{t('title_page')}</h1>
@@ -92,14 +95,14 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
 
             <div className="col-span-3 md:col-span-2 justify-center items-center md:pr-36">
                 <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md h-[70vh]">
-                   
+
                     <div className='grid grid-cols-1 text-start text-customGray gap-2'>
-                        
+
                         <div className='px-3'>
                             <h1 className='text-xl font-semibold md:text-3xl'>{t('title_form_pay')}</h1>
                             <p className='inline-flex items-center text-sm md:text-base'> <GiPadlock size={18} className='mr-1' />{t('subtitle_form_pay')}</p>
                         </div>
-                        
+
                         {/* Formulario de pago */}
                         <TefpayPaymentForm />
 
@@ -140,7 +143,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Payment', 
+            translationNamespace: 'Payment',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

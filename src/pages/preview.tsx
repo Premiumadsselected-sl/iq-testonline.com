@@ -3,21 +3,16 @@ import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import PWrapper from '@/pages/providers/client/PWrapper'
 
-// Importa los componentes del servicio
-import Timer from './services/iq-testonline/components/iqTest/Timer'
-import AnalyzeTest from './services/iq-testonline/components/iqTest/AnalyzeTest'
-import TestSection from './services/iq-testonline/components/iqTest/TestSection'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+// - Delete this line.
+import PreviewCustomizeComponent from './services/iq-testonline/components/preview/PreviewCustomizeComponent'
 import Fade from './services/iq-testonline/components/transitions/Fade'
-
+import { useEffect, useState } from 'react'
 
 type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function Index({ Component, router, pageProps }: Props) {
-
+export default function Preview({ Component, router, pageProps }: Props) {
     const [showComponent, setShowComponent] = useState(false);
 
     useEffect(() => {
@@ -26,21 +21,23 @@ export default function Index({ Component, router, pageProps }: Props) {
 
     return (
         <PWrapper
-            Component={Index}
+            Component={Preview}
             pageProps={pageProps}
             router={router}
-            translations="Index"
+            translations="Preview"
             timeZone={process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'}
         >
-
-            {/* Los componentes deven ser renderizados aqui */}
             <div className='w-full justify-center items-center px-4 md:px-36'>
                 <Fade in={showComponent}>
-                    <Timer />
-                    <TestSection {...pageProps} />
+                    <PreviewCustomizeComponent
+                        Component={Preview}
+                        router={router}
+                        pageProps={pageProps}
+                    />
                 </Fade>
             </div>
-            {/* ------------------------------------------- */}
+
+
 
         </PWrapper>
     )
@@ -52,7 +49,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Index',
+            translationNamespace: 'Preview',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }
