@@ -53,9 +53,9 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
         
             console.log(result)
         
-            return successMessage().then(() => {
-               return router.push(`/${locale}`)
-            })
+            // return successMessage().then(() => {
+            //    return router.push(`/${locale}`)
+            // })
         
         })
 
