@@ -4,6 +4,7 @@ import { FormEvent } from 'react'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { GetStaticPropsContext } from 'next'
 
@@ -14,12 +15,13 @@ type Props = AppProps & {
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/LoginStyles.module.css'
 
-export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
+export default function CustomizeLoginForm({ pageProps }: AppProps) {
 
     const locale = useLocale()
     const t = useTranslations('Login')
     const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
     const [error, setError] = useState<string>()
+    const router = useRouter()
 
     pageProps = {
         ...pageProps,
@@ -41,19 +43,19 @@ export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
             password: formData.get('password'),
             redirect: false
         }).then((result) => {
-
+        
             if (result?.error) {
                 setError(result.error)
                 errorMessage(result.error)
-                return false
+                return
             }
-
+        
             console.log(result)
-
-            // return successMessage().then(() => {
-            //    return router.push(`/${locale}`)
-            // })
-
+        
+            return successMessage().then(() => {
+               return router.push(`/${locale}`)
+            })
+        
         })
 
         return false
@@ -77,7 +79,7 @@ export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
     }
 
     async function successMessage() {
-        throw new Error(t('success_message'))
+        alert(t('success_message'))
     }
 
     return (
@@ -151,7 +153,7 @@ export default function CustomizeLoginForm({ router, pageProps }: AppProps) {
                         </div>
                     </div>
                     <div
-                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }}
+                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
                         title="Woman holding a mug"
                     >
                     </div>

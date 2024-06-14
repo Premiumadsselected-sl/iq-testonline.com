@@ -172,4 +172,3 @@ const Authentication: AuthOptions = {
 }
 
 export default Authentication
-
