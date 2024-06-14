@@ -228,8 +228,6 @@ export const TefpayPaymentForm = () => {
 
         </form>  
 
-
-
     </>)
 
 }

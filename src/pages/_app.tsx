@@ -32,7 +32,7 @@ export default function App({Component, router, pageProps}: AppProps) {
           
               <Header />
 
-              <main className="flex flex-col mx-4 lg:mx-40 text-center justify-center h-full" >
+              <main className="flex flex-col mx-4 text-center justify-center h-full" >
                 <Component {...pageProps} />
               </main>
 

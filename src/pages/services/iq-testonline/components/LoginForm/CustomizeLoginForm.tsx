@@ -1,5 +1,14 @@
 'use client'
 import { AppProps } from 'next/app'
+<<<<<<< HEAD
+=======
+import { FormEvent } from 'react'
+import { signIn } from 'next-auth/react'
+import { useState } from 'react'
+import { useLocale, useTimeZone, useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+>>>>>>> main
 import { GetStaticPropsContext } from 'next'
 import { FormEvent, useState } from 'react'
 import { signIn } from 'next-auth/react'
@@ -15,6 +24,10 @@ type Props = AppProps & {
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/LoginStyles.module.css'
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 export default function CustomizeLoginForm({ pageProps }: AppProps) {
 
     const locale = useLocale()
@@ -44,7 +57,7 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
             redirect: false
         }).then((result) => {
         
-            if ( result?.error ) {
+            if (result?.error) {
                 setError(result.error)
                 errorMessage(result.error)
                 return
@@ -52,9 +65,9 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
         
             console.log(result)
         
-            return successMessage().then(() => {
-               return router.push(`/${locale}`)
-            })
+            // return successMessage().then(() => {
+            //    return router.push(`/${locale}`)
+            // })
         
         })
 
@@ -79,8 +92,12 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
     }
 
     async function successMessage() {
+<<<<<<< HEAD
         //TODO: ADD ALERTS SYSTEM OR LIBS
         console.log(t('success_message'))
+=======
+        alert(t('success_message'))
+>>>>>>> main
     }
 
     return (
@@ -154,8 +171,12 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
                         </div>
                     </div>
                     <div
+<<<<<<< HEAD
                         className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" 
                         style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }}
+=======
+                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
+>>>>>>> main
                         title="Woman holding a mug"
                     >
                     </div>

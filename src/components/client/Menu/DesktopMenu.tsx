@@ -11,6 +11,8 @@ const DeskTopMenu = () => {
     const {data: session, status} = useSession()
     const t = useTranslations('Menu')
     const router = useRouter()
+
+    console.log({session, status})
     
     if (status === 'loading') return (<>
         <section className="hidden lg:flex md:hidden sm:hidden justify-between w-3/5" id="menu-desktop">
