@@ -15,6 +15,7 @@ type Props = AppProps & {
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/LoginStyles.module.css'
 
+
 export default function CustomizeLoginForm({ pageProps }: AppProps) {
 
     const locale = useLocale()
