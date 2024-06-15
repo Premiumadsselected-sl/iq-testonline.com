@@ -1,21 +1,12 @@
 'use client'
 import { AppProps } from 'next/app'
-<<<<<<< HEAD
-=======
-import { FormEvent } from 'react'
-import { signIn } from 'next-auth/react'
-import { useState } from 'react'
-import { useLocale, useTimeZone, useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
->>>>>>> main
 import { GetStaticPropsContext } from 'next'
 import { FormEvent, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-// TODO: ADD ANY LIB TO SHOW MESAGGES LIKE TOAST-JS
+import { toast } from 'react-toastify'
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -24,10 +15,6 @@ type Props = AppProps & {
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/LoginStyles.module.css'
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 export default function CustomizeLoginForm({ pageProps }: AppProps) {
 
     const locale = useLocale()
@@ -44,30 +31,28 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
         timeZone: Zone
     }
 
-    function onSubmit(event: FormEvent<HTMLFormElement>) {
+    async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
         if (error) setError(undefined)
 
         const formData = new FormData(event.currentTarget)
 
-        signIn('credentials', {
-            user_email: formData.get('user_email'),
+        await signIn('credentials', {
+            email: formData.get('email'),
             password: formData.get('password'),
             redirect: false
-        }).then((result) => {
+        }).then((res) => {
         
-            if (result?.error) {
-                setError(result.error)
-                errorMessage(result.error)
+            if (res?.error) {
+                setError(res.error)
+                errorMessage(res.error)
                 return
             }
         
-            console.log(result)
-        
-            // return successMessage().then(() => {
-            //    return router.push(`/${locale}`)
-            // })
+            return successMessage().then(() => {
+               return router.push(`/${locale}`)
+            })
         
         })
 
@@ -76,28 +61,12 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
     }
 
     async function errorMessage(error: string) {
-
-        // Todo: add alerts system or libs
-        if (error === 'invalid-login-credentials')
-            throw new Error(t('invalid-login-credentials'))
-
-        else if (error === 'too-many-requests')
-            throw new Error(t('too-many-requests'))
-
-        else if (error === 'invalid-email')
-            throw new Error(t('invalid-email'))
-
-        else throw new Error(t('error'))
+        return toast.error(t('error', { error }))
 
     }
 
     async function successMessage() {
-<<<<<<< HEAD
-        //TODO: ADD ALERTS SYSTEM OR LIBS
-        console.log(t('success_message'))
-=======
-        alert(t('success_message'))
->>>>>>> main
+        toast.success(t('success_message'))
     }
 
     return (
@@ -119,9 +88,9 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
 
                             <div className="w-full col-span-2">
                                 <input
-                                    type="text"
-                                    id="user_email"
-                                    name="user_email"
+                                    type="email"
+                                    id="email"
+                                    name="email"
                                     className={styles.inputForm}
                                     placeholder={t('email_holder')}
                                     required />
@@ -171,12 +140,7 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
                         </div>
                     </div>
                     <div
-<<<<<<< HEAD
-                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" 
-                        style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }}
-=======
                         className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
->>>>>>> main
                         title="Woman holding a mug"
                     >
                     </div>

@@ -1,6 +1,5 @@
-// import { initializeApp, getApps, getApp } from "firebase/app"
-// import { getAuth } from "firebase/auth"
-
+import { initializeApp, getApps, getApp } from "firebase/app"
+import { getAuth } from "firebase/auth"
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,17 +11,18 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 }
 
-//const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
-//const auth = getAuth(app)
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
+const auth = getAuth(app)
 
-//let analytics:string | null = null
-// Todo: Fix this error: "Cannot use import statement outside a module" and 
-// add the following code to the if statement:
-// if (typeof window !== 'undefined') {
-//     const { getAnalytics, isSupported } = require("firebase/analytics")
-//     if (isSupported()) {
-//         analytics = getAnalytics(app)
-//     }
-// }
+let analytics:string | null = null
 
-//export { app, auth, analytics }
+//Todo: Fix this error: "Cannot use import statement outside a module" and 
+//add the following code to the if statement:
+if (typeof window !== 'undefined') {
+    const { getAnalytics, isSupported } = require("firebase/analytics")
+    if (isSupported()) {
+        analytics = getAnalytics(app)
+    }
+}
+
+export { app, auth, analytics }

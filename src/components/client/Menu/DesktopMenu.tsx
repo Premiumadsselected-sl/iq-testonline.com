@@ -52,7 +52,9 @@ const DeskTopMenu = () => {
                 
                  } </>)}
 
-                 { session ? <button className={`min-w-40 mx-4 menu-link ${styles.menuLink} menu-logout-link`} onClick={()=>signOut()}>{t('logout')}</button> : null }
+                { session ? <button className={`min-w-40 mx-4 menu-link ${styles.menuLink} menu-logout-link`} onClick={()=>signOut()} >
+                    {t('logout')}
+                </button> : null }
 
             </div>
         </section>

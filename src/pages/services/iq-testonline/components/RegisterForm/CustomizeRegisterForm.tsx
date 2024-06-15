@@ -1,12 +1,13 @@
 'use client'
+import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
 import { AppProps } from 'next/app'
+import { GetStaticPropsContext } from 'next'
 import { FormEvent } from 'react'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
-import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
+import { toast } from 'react-toastify'
 import Link from 'next/link'
-import { GetStaticPropsContext } from 'next'
 
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/RegisterStyles.module.css'
@@ -30,7 +31,7 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
         timeZone: Zone
     }
 
-    function onSubmit(event: FormEvent<HTMLFormElement>) {
+    async function onSubmit(event: FormEvent<HTMLFormElement>) {
         
         event.preventDefault()
 
@@ -38,23 +39,38 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
 
         const formData = new FormData(event.currentTarget)
 
-        signIn('credentials', {
-            user_name: formData.get('user_name'),
-            user_email: formData.get('user_email'),
+        const new_register = await ServicesAsyncRequest({
+            method: 'POST', 
+            path:'new-register',
+            body: JSON.stringify({ 
+                name: formData.get('user_name'),
+                email: formData.get('email'), 
+                password: formData.get('password')
+            })
+        })
+          
+        if ( !new_register.ok ) {
+            setError(new_register.error)
+            errorMessage(new_register.error)
+            return false
+        }
+          
+        await signIn('credentials', {
+            email: formData.get('email'),
             password: formData.get('password'),
             redirect: false
-        }).then(async (result) => {
-
-            if (result?.error) {
-                setError(result.error)
-                errorMessage(result.error)
-                return false
+        }).then((res) => {
+        
+            if (res?.error) {
+                setError(res.error)
+                errorMessage(res.error)
+                return
             }
-
-            console.log(result)
-            
-           
-
+        
+            return successMessage().then(() => {
+               return router.push( `/${locale}/payment`)
+            })
+        
         })
 
         return false
@@ -62,23 +78,11 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
     }
 
     async function errorMessage(error: string) {
-
-        // Todo: add alerts system or libs
-
-        if (error === 'email-already-in-use')
-            throw new Error(t('email-already-in-use'))
-
-        else if (error === 'invalid-email')
-            throw new Error(t('invalid-email'))
-
-        else if (error === 'weak-password')
-            throw new Error(t('weak-password'))
-
-
+        return toast.error(t('error', { error }))
     }
 
     async function successMessage() {
-        throw new Error(t('success_message'))
+        toast.success(t('success_message'))
     }
 
     return (
