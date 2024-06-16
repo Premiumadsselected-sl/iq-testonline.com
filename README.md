@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-Hola mundo!
-```
-=======
 # Project Name
 
 ## Description
@@ -24,4 +20,3 @@ Include information about the license under which your project is distributed.
 
 ## Contact
 Provide contact information for users to reach out to you.
->>>>>>> 6752622 (Iniciando...)

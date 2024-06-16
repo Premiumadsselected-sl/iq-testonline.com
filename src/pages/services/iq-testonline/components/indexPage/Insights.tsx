@@ -9,11 +9,9 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-//TODO: agregar internacionalización a los textos
-
 export default function Insights({ pageProps }: Props) {
 
-    const t = useTranslations('FrequentQuestions') // consulta /messages/[locale].json
+    const t = useTranslations('Insights') // consulta /messages/[locale].json
     pageProps = {
         ...pageProps,
         t: t,
@@ -24,34 +22,34 @@ export default function Insights({ pageProps }: Props) {
             <div className={styles.numbersWrapper}>
                 <div className={styles.divNumber}>
                     <div className={styles.numberWrapper}>
-                        <div className={styles.highlightNumber} data-purecounter-duration="0">1000</div>
+                        <div className={styles.highlightNumber} >{t('client_number')}</div>
                         <div className={styles.highlightNumber}>+</div>
                     </div>
-                    <div className={styles.subtitleMedium}>Clientes satisfechos</div>
+                    <div className={styles.subtitleMedium}>{t('client_text')}</div>
                 </div>
                 <div className={styles.divVerticalDivider} style={{color: "#7e22ce !important"}}></div>
                 <div className={styles.divNumber}>
                     <div className={styles.numberWrapper}>
-                        <div className={styles.highlightNumber} data-purecounter-duration="0">10</div>
+                        <div className={styles.highlightNumber} >{t('languages_number')}</div>
                         <div className={styles.highlightNumber} >+</div>
                     </div>
-                    <div className={styles.subtitleMedium}>Idiomas</div>
+                    <div className={styles.subtitleMedium}>{t('languages_text')}</div>
                 </div>
                 <div className={styles.divVerticalDivider}></div>
                 <div className={styles.divNumber}>
                     <div className={styles.numberWrapper}>
-                        <div className={styles.highlightNumber} data-purecounter-duration="0">100k</div>
+                        <div className={styles.highlightNumber} >{t('tests_number')}</div>
                         <div className={styles.highlightNumber}>+</div>
                     </div>
-                    <div className={styles.subtitleMedium}>Test por mes</div>
+                    <div className={styles.subtitleMedium}>{t('tests_text')}</div>
                 </div>
                 <div className={styles.divVerticalDivider}></div>
                 <div className={styles.divNumber}>
                     <div className={styles.numberWrapper}>
-                        <div className={styles.highlightNumber} data-purecounter-duration="0">500k</div>
+                        <div className={styles.highlightNumber} >{t('visitors_number')}</div>
                         <div className={styles.highlightNumber}>+</div>
                     </div>
-                    <div className={styles.subtitleMedium}>Visitantes</div>
+                    <div className={styles.subtitleMedium}>{t('visitors_text')}</div>
                 </div>
             </div >
         </section>
@@ -63,7 +61,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Index',
+            translationNamespace: 'Insights',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

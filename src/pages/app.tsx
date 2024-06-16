@@ -8,6 +8,8 @@ import Timer from './services/iq-testonline/components/iqTest/Timer'
 import AnalyzeTest from './services/iq-testonline/components/iqTest/AnalyzeTest'
 import TestSection from './services/iq-testonline/components/iqTest/TestSection'
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import Fade from './services/iq-testonline/components/transitions/Fade'
 
 
 type Props = AppProps & {
@@ -16,8 +18,11 @@ type Props = AppProps & {
 
 export default function Index({ Component, router, pageProps }: Props) {
 
-    // Get the context Redux
-    const { totalAnswerTest } = useSelector((state: any) => state.iqTestStore)
+    const [showComponent, setShowComponent] = useState(false);
+
+    useEffect(() => {
+        setShowComponent(true);
+    }, []);
 
     return (
         <PWrapper
@@ -30,8 +35,10 @@ export default function Index({ Component, router, pageProps }: Props) {
 
             {/* Los componentes deven ser renderizados aqui */}
             <div className='w-full justify-center items-center px-4 md:px-36'>
-                <Timer />
-                <TestSection {...pageProps} />
+                <Fade in={showComponent}>
+                    <Timer />
+                    <TestSection {...pageProps} />
+                </Fade>
             </div>
             {/* ------------------------------------------- */}
 

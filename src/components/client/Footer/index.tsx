@@ -23,7 +23,7 @@ const Footer = ({ Component, router, pageProps }: Props) => {
                 </section>
 
                 <section className="flex flex-col m-4 mt-8 text-center text-customGray" id="copy-footer">
-                    &copy; ADSSELECTED S.L. All rights reserved. {dateYear}
+                    &copy; ADS DIGITAL All rights reserved. {dateYear}
                 </section>
 
             </footer>

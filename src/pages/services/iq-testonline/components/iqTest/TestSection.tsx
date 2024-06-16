@@ -1,12 +1,8 @@
 'use client'
-import { IoMdArrowBack, IoMdArrowRoundForward } from "react-icons/io"
-import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css'
 import { useTranslations } from "next-intl"
 import { AppProps } from "next/app"
-import Question from "./Question"
-import Answer from "./Answer"
-import { useEffect, useState } from "react"
 import { GetStaticPropsContext } from 'next'
+import { useEffect, useState } from "react"
 
 // Import ServicesAsyncRequest utility, auth from firebase and resolve from url
 import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
@@ -16,7 +12,16 @@ import { resolve } from 'url'
 //Context
 import { useDispatch, useSelector } from "react-redux"
 import { progressTest } from '@/contexts/redux/iqTestSlice'
+
+//Components
+import Question from "./Question"
+import Answer from "./Answer"
 import AnalyzeTest from "./AnalyzeTest"
+import { IoMdArrowBack, IoMdArrowRoundForward } from "react-icons/io"
+
+//Styles
+import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css'
+
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -44,7 +49,18 @@ export default function TestSection({ pageProps }: Props) {
     }
 
     const next = (): void => {
-        if (page < 20) setPage(page + 1)
+        const answersObj = { ...answers }
+        const nextPage = page + 1;
+
+        if (answersObj[nextPage]) {
+            const nextMissingPage = findNextMissingKey(answersObj);
+            setPage(nextMissingPage);
+        } else if (page < 20) {
+            setPage(nextPage);
+        } else {
+            const nextMissingPage = findNextMissingKey(answersObj);
+            setPage(nextMissingPage);
+        }
     }
 
     const back = (): void => {
@@ -73,8 +89,20 @@ export default function TestSection({ pageProps }: Props) {
 
     };
 
+    const findNextMissingKey = (obj: { [key: string]: { [key: string]: boolean } }) => {
+        const keysArray = Object.keys(obj).map(Number).sort((a, b) => a - b);
+
+        for (let i = 0; i < keysArray.length; i++) {
+            if (keysArray[i] !== i + 1) {
+                return i + 1;
+            }
+        }
+
+        return keysArray.length + 1;
+    }
+
     const validateFinishTest = async (updatedAnswers: { [key: string]: { [key: string]: boolean } }) => {
-        
+
         if (Object.keys(updatedAnswers).length === 20) {
 
             // Get the response from the server
@@ -93,9 +121,10 @@ export default function TestSection({ pageProps }: Props) {
             // const res = await req.json()
             // return resolve(process.env.NEXT_PUBLIC_SERVICE_DOMAIN as string, res.url)
 
-            
-
+            return true
         }
+
+        return false
     }
 
     return (
@@ -156,7 +185,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Test', 
+            translationNamespace: 'Test',
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

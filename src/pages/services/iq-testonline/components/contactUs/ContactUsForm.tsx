@@ -76,7 +76,7 @@ export default function ContactUsForm({ pageProps }: Props) {
                     </div>
                     <div
                         className=" lg:w-[50%] flex-none bg-cover rounded-r-lg text-center"
-                        style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }}
+                        style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
                         title="Woman holding a mug">
                     </div>
                 </div>

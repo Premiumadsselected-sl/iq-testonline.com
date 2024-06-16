@@ -22,7 +22,7 @@ const ServicesAsyncRequest = async ( { token, method, path, body } : ServicesAsy
 
     catch ( error ) {
         return error
-    }
+    } 
 
 }
 

@@ -13,11 +13,9 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-//TODO: agregar internacionalización a los textos
-
 export default function Testimonial({ pageProps }: Props) {
 
-    const t = useTranslations('FrequentQuestions') // consulta /messages/[locale].json
+    const t = useTranslations('Testimonial') // consulta /messages/[locale].json
     pageProps = {
         ...pageProps,
         t: t,
@@ -29,19 +27,19 @@ export default function Testimonial({ pageProps }: Props) {
         {
             id: 1,
             name: "John Doe",
-            text: "Los test de IQ son precisos y los entrenamientos son desafiantes. El seguimiento detallado es genial para ver mis mejoras.",
+            text: t('text_user1'),
             img: "/assets/index/man-3803551_640.jpg"
         },
         {
             id: 2,
             name: "Alice Johnson",
-            text: "Esta web es fantástica. Los test de IQ y los entrenamientos me han ayudado a mejorar mi mente, y el seguimiento me permite ver mi progreso día a día.",
+            text: t('text_user2'),
             img: "/assets/index/woman-7165664_640.jpg"
         },
         {
             id: 3,
             name: "Juan González",
-            text: "Me encanta esta app. Los test y entrenamientos me mantienen motivada, y el seguimiento me muestra claramente mi progreso.",
+            text: t('text_user3'),
             img: "/assets/index/latino-2716421_640.jpg"
         }
     ];
@@ -68,7 +66,7 @@ export default function Testimonial({ pageProps }: Props) {
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 3l-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3ZM5 3v4m14 10v4M3 5h4m10 14h4"></path>
                         </svg>
                     </div>
-                    <h2 className="mt-1 text-3xl font-semibold">Lo que dicen de nosotros</h2>
+                    <h2 className="mt-1 text-3xl font-semibold">{t('title_section')}</h2>
                 </div>
                 <div className="grid grid-cols-3 items-center">
                     <FaCircleArrowLeft onClick={previous} size={40} className="rounded-full cursor-pointer place-self-center justify-self-start sm:justify-self-center" />
@@ -127,7 +125,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'FrequentQuestions',
+            translationNamespace: 'Testimonial', 
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

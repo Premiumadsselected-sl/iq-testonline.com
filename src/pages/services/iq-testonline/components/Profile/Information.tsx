@@ -10,19 +10,12 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-//TODO: agregar internacionalización a los textos
-
 export default function Information({ router, pageProps }: AppProps) {
-    const locale = useLocale()
-    const t = useTranslations('Profile')
-    const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
 
+    const t = useTranslations('Profile')
     pageProps = {
         ...pageProps,
-        ...router,
         t: t,
-        locale: locale,
-        timeZone: Zone
     }
     
     return (
@@ -36,18 +29,18 @@ export default function Information({ router, pageProps }: AppProps) {
             <div className="w-full lg:max-w-full lg:flex h-auto">
                 <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">
                     <div className="grid grid-cols-2 gap-4 md:gap-6" >
-                        <span className="col-span-2 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight">Información personal</span>
+                        <span className="col-span-2 text-xl md:text-3xl  text-customGray font-bold leading-none tracking-tight">{t('title_information_card')}</span>
                         <div className=" col-span-2 md:col-span-1 text-start">
-                            <label className="required font-semibold">Nombre</label>
-                            <input type="text" id="name" className={styles.inputForm} placeholder={"Contraseña actual"} required value={"Nombre Apellido"} />
+                            <label className="required font-semibold">{t('label1_information_card')}</label>
+                            <input type="text" id="name" className={styles.inputForm} placeholder={t('placeholder1_information_card')} required value={"Nombre Apellido"} />
                         </div>
                         <div className="col-span-2 md:col-span-1 text-start">
-                            <label className="required font-semibold">Correo electrónico</label>
-                            <input type="email" id="email" disabled className={styles.inputForm} placeholder={"Nueva contraseña"} value={"correo@correo.com"} />
+                            <label className="required font-semibold">{t('label2_information_card')}</label>
+                            <input type="email" id="email" disabled className={styles.inputForm} placeholder={t('placeholder2_information_card')} value={"correo@correo.com"} />
                         </div>
                         <div className="col-span-2">
                             <button className={styles.button}>
-                                <span>Confirmar</span>
+                                <span>{t('submit')}</span>
                             </button>
                         </div>
                     </div>
@@ -62,7 +55,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
     return {
         props: {
             messages: messages,
-            translationNamespace: 'Index', 
+            translationNamespace: 'Profile', 
             locale: locale,
             timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
         }

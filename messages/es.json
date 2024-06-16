@@ -116,7 +116,7 @@
         "invalid-cvc": "CVC inválido",
         "success_message": "Pago exitoso",
         "error": "Error al procesar el pago",
-        "accept_conditions": "Acepto términos y condiciones",
+        "accept_conditions": "Al continuar, usted declara su conformidad con los términos y condiciones descritos anteriormente.",
         "continue": "Continuar",
         "title_form_pay": "Monto a pagar: 0.60€",
         "subtitle_form_pay": "Pago seguro y cifrado por SSL",
@@ -274,8 +274,19 @@
         "invalid-name": "Nombre inválido",
         "success_message": "Perfil actualizado con éxito",
         "error": "Error al actualizar el perfil",
+        "title_information_card" : "Información personal",
+        "label1_information_card" : "Nombre",
+        "placeholder1_information_card" : "asd",
+        "label2_information_card" : "Correo electrónico",
+        "placeholder2_information_card" : "asd",
+        "title_updatepass_card": "Restablecer mi contraseña",
+        "placeholder1_updatepass_card": "Contraseña actual",
+        "placeholder2_updatepass_card": "Nueva contraseña",
+        "placeholder3_updatepass_card": "Confirmar contraseña",
         "my_bill": "Mis facturas",
         "my_offer": "Mi oferta",
+        "label_offer": "Oferta actual",
+        "label_next_pay": "Próximo pago",
         "unsubscribe": "Desuscribirse"
     },
 
@@ -383,7 +394,54 @@
         "card3Text2": "Los resultados",
         "card3Text3": "El CI promedio es 100. Una puntuación superior a 100 indica un rendimiento por encima del promedio.",
         "buttonTest": "INICIAR TEST AHORA"
+    },
+
+    "Insights": {
+        "client_number": "1000",
+        "client_text": "Clientes satisfechos",
+        "languages_number": "10",
+        "languages_text": "Idiomas",
+        "tests_number": "100k",
+        "tests_text": "Test por mes",
+        "visitors_number": "500k",
+        "visitors_text": "Visitantes"
+    },
+
+    "Testimonial": {
+        "title_section": "Lo que dicen de nosotros",
+        "text_user1": "Los test de IQ son precisos y los entrenamientos son desafiantes. El seguimiento detallado es genial para ver mis mejoras.",
+        "text_user2": "Esta web es fantástica. Los test de IQ y los entrenamientos me han ayudado a mejorar mi mente, y el seguimiento me permite ver mi progreso día a día.",
+        "text_user3": "Me encanta esta app. Los test y entrenamientos me mantienen motivado, y el seguimiento me muestra claramente mi progreso."
+    },
+
+    "GeneralConditionsPopup": {
+        "title": "Términos y Condiciones del Servicio",
+        "subtitle": "Antes de proceder, por favor, lea detenidamente y acepte los siguientes términos y condiciones:",
+        "title_text1": "Prueba de CI:",
+        "text1": "Prueba de CI: La prueba de coeficiente intelectual (CI) disponible en nuestra página web consiste en 25 preguntas que deben ser completadas en un tiempo máximo de 20 minutos. Es imperativo destacar que esta prueba no constituye una evaluación oficial de CI y los resultados obtenidos son exclusivamente orientativos. Los resultados no deben ser considerados como una medida precisa del CI ni utilizados en contextos clínicos, diagnósticos o de evaluación psicológica oficial.",
+        "title_text2": "Naturaleza del Certificado:",
+        "text2": "Al finalizar la prueba, se generará un certificado que reflejará únicamente los resultados obtenidos dentro de nuestra plataforma. Este certificado carece de cualquier validez oficial o legal y no debe ser empleado como documento acreditativo en ningún ámbito formal, profesional, académico o legal. El certificado emitido tiene un propósito meramente informativo y orientativo, y no confiere ningún derecho o reconocimiento oficial.",
+        "title_text3": "Limitaciones de Uso:",
+        "text3": "Los resultados de la prueba y el certificado emitido son estrictamente para uso personal y no deben ser utilizados como base para tomar decisiones críticas en áreas tales como empleo, educación, diagnósticos médicos o psicológicos. Está terminantemente prohibido emplear los resultados de esta prueba en cualquier proceso de selección de personal, evaluaciones educativas, decisiones médicas, procesos judiciales o cualquier otro contexto que requiera una medición precisa y validada del coeficiente intelectual.",
+        "title_text4": "Periodo de Prueba y Suscripción:",
+        "text4": "Tras completar la prueba, se le ofrecerá un periodo de prueba de 24 horas para acceder a nuestros servicios adicionales, durante el cual se aplicará un cargo simbólico de 0,6€. Si no se realiza la cancelación de la suscripción dentro de las 24 horas posteriores a la finalización del periodo de prueba, la suscripción se renovará automáticamente de forma mensual con un coste de 49,90€. La cancelación debe ser realizada dentro del periodo de prueba para evitar cualquier cargo adicional.",
+        "title_text5": "Renuncia de Responsabilidad:",
+        "text5": "Nuestra plataforma no asume ninguna responsabilidad por la interpretación, uso o consecuencias derivadas de los resultados de la prueba de CI. La información proporcionada por la prueba y el certificado no debe considerarse como asesoramiento profesional, médico o psicológico. No ofrecemos garantías sobre la precisión, validez o aplicabilidad de los resultados para ningún propósito específico. La utilización de los resultados queda a la exclusiva responsabilidad del usuario, y la plataforma renuncia a cualquier responsabilidad derivada de su uso indebido o inapropiado.",
+        "title_text6": "Servicios Adicionales para Usuarios Suscritos:",
+        "text6": "Una vez suscrito, el usuario podrá disfrutar de una gama completa de servicios diseñados para la mejora del CI personal y otras habilidades cognitivas. Estos servicios incluyen:",
+        "subtitle1_text6": "Test de Entrenamiento:",
+        "subtext1_text6": "Pruebas regulares con corrección automática para ayudar a mejorar el rendimiento en diversas áreas cognitivas.",
+        "subtitle2_text6": "Test de Examen:",
+        "subtext2_text6": "Pruebas más formales que incluyen una gráfica de progresión personal, la cual registrará y mostrará el avance del usuario en función de los resultados obtenidos en los exámenes.",
+        "subtitle3_text6": "Mejora del CI Personal:",
+        "subtext3_text6": "Herramientas y recursos para mejorar la fluidez cognitiva, inteligencia espacial, cálculo, razonamiento lógico, memoria y otras habilidades cognitivas.",
+        "subtitle4_text6": "Análisis de Progreso:",
+        "subtext4_text6": "Informes detallados que permiten al usuario seguir su evolución y mejorar continuamente sus habilidades cognitivas.",
+        "title_text7": "Modificaciones y Actualizaciones:",
+        "text7": "Nos reservamos el derecho de modificar o actualizar estos términos y condiciones en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en nuestro sitio web. Se recomienda revisar periódicamente esta sección para estar al tanto de cualquier modificación.",
+        "title_text8": "Consentimiento y Aceptación:",
+        "text8": "Al hacer clic en \"Aceptar\" y continuar, usted confirma que ha leído, comprendido y aceptado estos términos y condiciones en su totalidad. Su aceptación es necesaria para proceder con el uso de nuestros servicios. Si no acepta estos términos, por favor, absténgase de utilizar nuestros servicios.",
+        "final_text": "Si tiene alguna pregunta o requiere más información sobre estos términos y condiciones, no dude en contactarnos antes de proceder."
     }
 
-    
 }

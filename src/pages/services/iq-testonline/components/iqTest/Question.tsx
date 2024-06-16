@@ -1,7 +1,7 @@
 'use client'
-import Image from 'next/image'
 import { GetStaticPropsContext } from 'next'
 import { AppProps } from 'next/app'
+import Image from 'next/image'
 
 type Props = AppProps & {
     children: React.ReactNode
