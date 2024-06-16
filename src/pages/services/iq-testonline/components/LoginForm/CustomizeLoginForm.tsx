@@ -5,15 +5,13 @@ import { FormEvent, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import { toast } from 'react-toastify'
+import Link from 'next/link'
+import styles from '@/pages/services/iq-testonline/styles/LoginStyles.module.css'
 
 type Props = AppProps & {
     children: React.ReactNode
 }
-
-// Styles
-import styles from '@/pages/services/iq-testonline/styles/LoginStyles.module.css'
 
 export default function CustomizeLoginForm({ pageProps }: AppProps) {
 
@@ -62,7 +60,6 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
 
     async function errorMessage(error: string) {
         return toast.error(t('error', { error }))
-
     }
 
     async function successMessage() {
@@ -140,18 +137,24 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
                         </div>
                     </div>
                     <div
-                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
+                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" 
+                        style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
                         title="Woman holding a mug"
                     >
                     </div>
                 </div>
 
-                {/* TODO: RENDER FORM ERRORS WITH STYLED ALERTS */}
-                {error && <p
+                {/* SHOW ERROR  WITH TOAST */}
+                { error && toast.error( t('error', { error }) ) }
+
+                {/* SHOW ERROR ON PAGE */}
+                {/* {error && <p
                     className="login-error-paragraph"
                     id="login-error-paragraph">
                     {t('error', { error })}
-                </p>}
+                </p>} */}
+
+                    
 
 
             </form>

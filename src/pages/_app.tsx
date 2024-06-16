@@ -42,6 +42,7 @@ export default function App({Component, router, pageProps}: AppProps) {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
+                limit={1}
               />
 
               <Header />
