@@ -95,7 +95,7 @@ export default function AnalyzeTest({ pageProps }: Props) {
 
                             <div className="flex flex-wrap justify-center gap-2">
                                 <span className="text-customGray text-sm md:text-normal lg:text-normal xl:text-xl">
-                                    {t('test_in_progressF')}
+                                    {t('test_in_progress')}
                                     <progress className="progress  w-full justify-self-center" style={{ '--progress-color': '#7e22ce' } as React.CSSProperties} ></progress>
                                 </span>
 
