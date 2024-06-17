@@ -8,6 +8,7 @@ import Image from 'next/image'
 import PreviewCustomizeComponent from './services/iq-testonline/components/preview/PreviewCustomizeComponent'
 import Fade from './services/iq-testonline/components/transitions/Fade'
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -74,6 +75,13 @@ const nombresOriginales: Nombre[] = [
 
 export default function Preview({ Component, router, pageProps }: Props) {
 
+    const t = useTranslations('Preview')
+
+    pageProps = {
+        ...pageProps,
+        t: t,
+    }
+    
     const [showComponent, setShowComponent] = useState(false);
     const [nombreActual, setNombreActual] = useState<Nombre | null>(null);
 
@@ -113,11 +121,7 @@ export default function Preview({ Component, router, pageProps }: Props) {
         >
             <div className='w-full justify-center items-center px-4 md:px-36'>
                 <Fade in={showComponent}>
-                    <PreviewCustomizeComponent
-                        Component={Preview}
-                        router={router}
-                        pageProps={pageProps}
-                    />
+                    <PreviewCustomizeComponent {...pageProps} />
                 </Fade>
             </div>
 
@@ -136,26 +140,11 @@ export default function Preview({ Component, router, pageProps }: Props) {
                         </div>
                         <div className="ml-3 text-sm font-normal">
                             <div className="text-md font-bold text-white">{nombreActual.name}</div>
-                            <div className="text-sm font-extralight text-white">Acaba de comprar una evaluación</div>
+                            <div className="text-sm font-extralight text-white">{t('recent_buy')}</div>
                         </div>
                     </div>
                 </div>
             )}
-
-
-            {/*
-            Emily Johnson California, Estados Unidos
-            Satoshi Yamamoto Tokio, Japón
-            Jordi López Cataluña, España
-            Klaus Müller Baviera, Alemania
-            Liam Thompson Queensland, Australia
-            Philippe Leblanc Quebec, Canadá
-            Priya Patel Rajastán, India
-            Thiago Silva São Paulo, Brasil
-            Elena Conti Toscana, Italia
-            Sipho Mkhize Gauteng, Sudáfrica
-             */}
-
         </PWrapper>
     )
 

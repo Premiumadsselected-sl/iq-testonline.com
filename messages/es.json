@@ -445,6 +445,30 @@
         "title_text8": "Consentimiento y Aceptación:",
         "text8": "Al hacer clic en \"Aceptar\" y continuar, usted confirma que ha leído, comprendido y aceptado estos términos y condiciones en su totalidad. Su aceptación es necesaria para proceder con el uso de nuestros servicios. Si no acepta estos términos, por favor, absténgase de utilizar nuestros servicios.",
         "final_text": "Si tiene alguna pregunta o requiere más información sobre estos términos y condiciones, no dude en contactarnos antes de proceder."
+    },
+
+    "Preview": {
+        "recent_buy": "Acaba de comprar una evaluación",
+        "geometric_intuition": "Intuición geométrica",
+        "conceptualization": "Conceptualización",
+        "mental_visualization": "Visualización mental",
+        "sequential_analysis": "Análisis secuencial",
+        "cognitive_fluency": "Fluidez cognitiva",
+        "test_in_progress": "La evaluación de su prueba está en curso",
+        "category_breakdown": "Desglose de categorías",
+        "sumary": "Resultado completo de su prueba",
+        "puntuation": "Puntuación del CI",
+        "text_puntuation": "Obtén tu puntuación de CI y un informe detallado sobre tus puntos fuertes y débiles",
+        "certificate": "Certificado del CI",
+        "text_certificate": "Dado que el coeficiente intelectual esta vinculado a la personalidad, haz un test de personalidad para saber quien eres realmente.",
+        "button_continue": "Continuar",
+        "opinions_title": "Opiniones y comentarios",
+        "time_opinion1": "hace 38 minutos",
+        "text_opinion1": "Me siento muy satisfecho con este análisis directo; los resultados detallados inmediatamente resonaron con mi perfil. Al principio, tenía mis dudas, pero una vez que revisé el informe, aproveché esta oportunidad única para evaluar mi potencial al máximo.",
+        "time_opinion2": "hace 2 horas",
+        "text_opinion2": "Esta evaluación tiene un enfoque muy profesional, y he podido compartir los resultados con mis amigos y familiares para comparar y desafiar mutuamente nuestros resultados. Me ha resultado especialmente interesante comparar mis resultados con el promedio en distintas categorías profesionales de la población.",
+        "time_opinion3": "hace 6 horas",
+        "text_opinion3": "¡Qué sorpresa! No esperaba mucho y, por primera vez, he obtenido una evaluación brillante de mi coeficiente intelectual. Estoy encantada con los resultados."    
     }
 
 }

@@ -171,7 +171,7 @@ export default function TestSection({ pageProps }: Props) {
                 :
 
                 <div className="grid grid-rows-1 gap-4">
-                    <AnalyzeTest />
+                    <AnalyzeTest {...pageProps}/>
                 </div>
 
             }

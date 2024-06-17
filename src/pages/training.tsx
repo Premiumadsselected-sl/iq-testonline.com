@@ -18,28 +18,23 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
+//TODO: agregar internacionalización
+
 export default function Training({ Component, router, pageProps }: Props) {
 
     //Arreglo de ejemplo para el uso del componente CardTestTraining
     const objCard = [
         {
+            "cardHeader": "Exámen",
+            "cardBody": "Exámenes",
+            "icon": <TbBrain size={25} />,
+            "cardFooter": "8/10 respuestas",
+            "cardFooter2": "la última vez"
+        },
+        {
             "cardHeader": "Entrenamiento",
-            "cardBody": "Box Clever Test",
+            "cardBody": "Entrenamientos",
             "icon": <LiaDumbbellSolid size={25} />,
-            "cardFooter": "8/10 respuestas",
-            "cardFooter2": "la última vez"
-        },
-        {
-            "cardHeader": "Exámen",
-            "cardBody": "Test IQ formas",
-            "icon": <TbBrain size={25} />,
-            "cardFooter": "8/10 respuestas",
-            "cardFooter2": "la última vez"
-        },
-        {
-            "cardHeader": "Exámen",
-            "cardBody": "Test IQ preguntas",
-            "icon": <TbBrain size={25} />,
             "cardFooter": "8/10 respuestas",
             "cardFooter2": "la última vez"
         }
@@ -54,11 +49,11 @@ export default function Training({ Component, router, pageProps }: Props) {
             translations="Training"
             timeZone={process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'}
         >
-            <div className='grid grid-cols-1 gap-10 w-full'>
-                <div className="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5 w-full md:px-20 lg:px-30">
+            <div className='grid grid-cols-1 gap-10 w-full 2xl:px-28'>
+                <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 w-full md:px-20 lg:px-30">
                     <CardTestTraining cards={objCard} />
                 </div>
-                <div className="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-14 w-full md:px-20 lg:px-20">
+                <div className="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5 w-full md:px-20 lg:px-20">
                     <ChartArea title="Resultados Exámenes"/>
                     <ChartArea title="Resultados Entrenamientos"/>
                 </div>
