@@ -1,12 +1,13 @@
 'use client'
 import { AppProps } from 'next/app'
+import { GetStaticPropsContext } from 'next'
 import { FormEvent } from 'react'
 import { signIn } from 'next-auth/react'
+import { signUp } from '@/components/private/Register' 
 import { useState } from 'react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
-import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
+import { toast } from 'react-toastify'
 import Link from 'next/link'
-import { GetStaticPropsContext } from 'next'
 
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/RegisterStyles.module.css'
@@ -30,7 +31,7 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
         timeZone: Zone
     }
 
-    function onSubmit(event: FormEvent<HTMLFormElement>) {
+    async function onSubmit(event: FormEvent<HTMLFormElement>) {
         
         event.preventDefault()
 
@@ -38,22 +39,35 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
 
         const formData = new FormData(event.currentTarget)
 
-        signIn('credentials', {
+        await signUp(JSON.stringify({ 
             user_name: formData.get('user_name'),
-            user_email: formData.get('user_email'),
-            password: formData.get('password'),
-            redirect: false
-        }).then(async (result) => {
+            email: formData.get('email'), 
+            password: formData.get('password')
+        })).then( async ( res ) => {
 
-            if (result?.error) {
-                setError(result.error)
-                errorMessage(result.error)
-                return false
+            if (res?.error) {
+                setError(res.error)
+                errorMessage(res.error)
+                return
             }
 
-            console.log(result)
+            await signIn('credentials', {
+                email: formData.get('email'),
+                password: formData.get('password'),
+                redirect: false
+            }).then((res) => {
             
-           
+                if (res?.error) {
+                    setError(res.error)
+                    errorMessage(res.error)
+                    return
+                }
+                
+                return successMessage().then(() => {
+                   return router.push( `/${locale}/payment`)
+                })
+            
+            })
 
         })
 
@@ -62,32 +76,23 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
     }
 
     async function errorMessage(error: string) {
-
-        // Todo: add alerts system or libs
-
-        if (error === 'email-already-in-use')
-            throw new Error(t('email-already-in-use'))
-
-        else if (error === 'invalid-email')
-            throw new Error(t('invalid-email'))
-
-        else if (error === 'weak-password')
-            throw new Error(t('weak-password'))
-
-
+        return toast.error(t('error', { error }))
     }
 
     async function successMessage() {
-        throw new Error(t('success_message'))
+        toast.success(t('success_message'))
     }
 
     return (
+
         <section>
 
             <form
                 action="/api/auth/callback/credentials"
                 method="post"
                 onSubmit={onSubmit}
+                id="register-form"
+                className="register-form"
             >
 
                 <div className="w-full lg:max-w-full lg:flex h-[55vh]">
@@ -111,8 +116,8 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                             <div className="w-full col-span-2 lg:col-span-1">
                                 <input
                                     type="text"
-                                    id="user_email"
-                                    name="user_email"
+                                    id="email"
+                                    name="email"
                                     className={styles.inputForm}
                                     placeholder={t('email_holder')}
                                     required />
@@ -139,7 +144,6 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                             </div>
 
                             <div className="w-full col-span-2">
-
                                 <span className='text-customGray'>
                                     {t('answer_account')}&nbsp;
                                     <Link
@@ -149,22 +153,29 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                                         {t('login_link')}
                                     </Link>
                                 </span>
-
                             </div>
+
                         </div>
+
                     </div>
+
                     <div
-                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" style={{ backgroundImage: 'url(/assets/login/brain-5870352_640.jpg)' }}
+                        className="lg:w-[50%] flex-none bg-cover rounded-r-lg text-center" 
+                        style={{ backgroundImage: 'url(/assets/login/cosmos.jpg)' }}
                         title="Woman holding a mug">
                     </div>
+
                 </div>
 
-                {/* TODO: RENDER FORM ERRORS WITH STYLED ALERTS */}
-                {error && <p
+                {/* SHOW ERROR  WITH TOAST */}
+                { error && toast.error( t('error', { error }) ) }
+
+                {/* SHOW ERROR ON PAGE */}
+                {/* {error && <p
                     className="register-error-paragraph"
                     id="register-error-paragraph">
                     {t('error', { error })}
-                </p>}
+                </p>} */}
 
             </form>
 

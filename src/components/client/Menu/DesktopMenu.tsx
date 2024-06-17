@@ -11,6 +11,8 @@ const DeskTopMenu = () => {
     const {data: session, status} = useSession()
     const t = useTranslations('Menu')
     const router = useRouter()
+
+    console.log({session, status})
     
     if (status === 'loading') return (<>
         <section className="hidden lg:flex md:hidden sm:hidden justify-between w-3/5" id="menu-desktop">
@@ -50,7 +52,9 @@ const DeskTopMenu = () => {
                 
                  } </>)}
 
-                 { session ? <button className={`min-w-40 mx-4 menu-link ${styles.menuLink} menu-logout-link`} onClick={()=>signOut()}>{t('logout')}</button> : null }
+                { session ? <button className={`min-w-40 mx-4 menu-link ${styles.menuLink} menu-logout-link`} onClick={()=>signOut()} >
+                    {t('logout')}
+                </button> : null }
 
             </div>
         </section>

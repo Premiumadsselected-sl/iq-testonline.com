@@ -23,8 +23,8 @@ export const TefpayPaymentForm = () => {
     const tefpay_notyfi_url = process.env.NEXT_PUBLIC_TEFPAY_NOTYFI_URL
     const hostname = process.env.NEXT_PUBLIC_HOSTNAME 
     
-    const locale = useLocale()
     const { data: session, status } = useSession()
+    const locale = useLocale()
     const t = useTranslations('Payment')
 
     const [ loading, setLoading ] = useState(false)
@@ -107,7 +107,7 @@ export const TefpayPaymentForm = () => {
 
     useEffect(() => {
 
-        if (status === "loading") 
+        if ( status === "loading" ) 
             setLoading(true)
 
         else if ( status === "authenticated" ) {
@@ -128,6 +128,7 @@ export const TefpayPaymentForm = () => {
             matchingData as string,
             merchantURL as string
         )
+        
         const paymentToken = `${matchingData}-${signature}`
 
         setSignature( signature )
@@ -227,8 +228,6 @@ export const TefpayPaymentForm = () => {
             <div id="tefpayBox"></div>
 
         </form>  
-
-
 
     </>)
 

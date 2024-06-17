@@ -39,6 +39,14 @@ header {
 
 footer {
   background: rgb(var(--background-start-rgb));
+  min-height: 34vh;
+}
+
+#copy-footer{
+  background: #7e22ce;
+  color: white;
+  margin: 0;
+  padding: 2.5rem 0px;
 }
 
 #page-layout{
@@ -62,7 +70,6 @@ footer {
 .locale-wrapper{
   inline-size: min-content;
 }
-
 
 .menu-link{}
 .menu-profile-link{}

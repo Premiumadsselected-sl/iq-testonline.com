@@ -1,10 +1,12 @@
 'use client'
-import { useTranslations } from "next-intl";
 import { AppProps } from "next/app"
 import { GetStaticPropsContext } from 'next'
-import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 import { FaCircleArrowLeft, FaCircleArrowRight } from "react-icons/fa6";
 import Image from 'next/image'
+import styles from '@/pages/services/iq-testonline/styles/IndexStyles.module.css'
 
 
 type Props = AppProps & {
