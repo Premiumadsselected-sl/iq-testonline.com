@@ -299,20 +299,6 @@
             "rights": "Copyright © 2024 Tutti i diritti riservati da IQes"
         },
         
-        "FrequentQuestions": {
-            "title": "Domande frequenti",
-            "subtitle": "ECCO LE NOSTRE RISPOSTE ALLE DOMANDE PIÙ FREQUENTI.",
-            "question1": "Come viene valutato il mio risultato?",
-            "answer1": "La valutazione del tuo CI si basa sulla popolazione e sulle statistiche globali, con un CI medio di circa 100. Se ottieni un punteggio superiore a 100, hai superato la persona media, con un massimo valutato di 139.",
-            "question2": "Come viene presentata la valutazione del mio CI?",
-            "answer2": "Verrai valutato attraverso 25 domande, progressivamente più complesse. Devi trovare la risposta corretta tra le diverse opzioni possibili. Puoi saltare le domande e tornare ad esse in seguito.",
-            "question3": "Quanti esami posso fare?",
-            "answer3": "Diventando membro, potrai fare quanti esami desideri e praticare con una varietà di test tematici.",
-            "question4": "Come garantite l'accuratezza di questo test?",
-            "answer4": "Il nostro test di CI è progettato secondo gli standard internazionali. Le domande sono formulate per misurare in modo affidabile le capacità cognitive.",
-            "buttonTest": "INIZIA IL TEST ORA"
-        },
-        
         "ForgotPassword": {
             "forgotTitle": "Recupera password",
             "placeholderEmail": "Email",
