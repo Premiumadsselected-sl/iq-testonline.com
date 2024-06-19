@@ -13,7 +13,7 @@ type PageProps = {
 
 export default function Question({ page }: PageProps) {
     return (
-        <div className="w-11/12 bg-white border border-gray-200 rounded-lg shadow-xl p-5 justify-self-center">
+        <div className="w-10/12 bg-white border border-gray-200 rounded-lg shadow-xl justify-self-start">
             <Image
                 src={`/assets/imagesTest/step${page}/question.png`}
                 alt={`question${page}.png`}

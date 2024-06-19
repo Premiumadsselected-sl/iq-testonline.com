@@ -25,7 +25,7 @@ export default function PreviewCustomizeComponent({ pageProps }: Props) {
 
     return (
         <>
-            <section className='w-ful text-customGray l'>
+            <section className='w-ful text-customGray 2xl:px-48 xl:px-36 lg:px-28'>
                 <div className="h-auto w-full  xl:px-24 2xl:px-56">
                     <h1 className='text-md md:text-2xl 2xl:text-3xl font-extrabold my-4 md:my-8'>{t('sumary')}</h1>
                     <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">

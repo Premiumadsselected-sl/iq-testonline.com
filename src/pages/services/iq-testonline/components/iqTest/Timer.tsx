@@ -19,10 +19,7 @@ const Timer: React.FC = () => {
     const [gridTemplateColumns, setGridTemplateColumns] = useState<string>('87% auto');
 
     // Get the context Redux
-    const { progressTestPage } = useSelector((state: any) => state.iqTestStore)
-
-    const Context = useContext(CGlobal)
-    const { o }: any = Context
+    const { progressTimerPage } = useSelector((state: any) => state.timerStore)
 
     useEffect(() => {
         let interval: NodeJS.Timeout | null = null;
@@ -60,18 +57,16 @@ const Timer: React.FC = () => {
         return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
-    const progressBarWidth = (timeLeft / totalTime) * 100;
-
     return (
         <>
-            {progressTestPage !== 100 &&
+            {progressTimerPage !== 100 &&
                 <div className="grid grid-cols-4 gap-0 items-center" style={{ gridTemplateColumns: gridTemplateColumns, gridAutoFlow: 'column' }}>
                     <div className={styles.timerProgressBar}>
                         <div className={styles.timerBar}
-                            style={{ width: `${progressTestPage}%` }}
+                            style={{ width: `${progressTimerPage}%` }}
                         ></div>
                     </div>
-                    <div className={styles.percentNumber}>{`${progressTestPage}%`}</div>
+                    <div className={styles.percentNumber}>{`${progressTimerPage}%`}</div>
                     <div className={styles.currentTime}>{`${formatTime(timeLeft)} `}</div>
                     <MdTimer className="mb-3 tex-sm sm:text-lg" />
                 </div>

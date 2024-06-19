@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        '2xl': '1800px', // Define tu breakpoint personalizado
+        '2xl': '1700px', //Breakpoint personalizado
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

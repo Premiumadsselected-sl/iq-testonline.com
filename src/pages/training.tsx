@@ -2,9 +2,6 @@ import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import PWrapper from '@/pages/providers/client/PWrapper'
 
-// Import the context hooks
-import { useSelector, useDispatch } from 'react-redux'
-
 //Icons
 import { TbBrain } from 'react-icons/tb'
 import { LiaDumbbellSolid } from 'react-icons/lia'
@@ -17,8 +14,6 @@ import ChartArea from './services/iq-testonline/components/training/ChartArea'
 type Props = AppProps & {
     children: React.ReactNode
 }
-
-//TODO: agregar internacionalización
 
 export default function Training({ Component, router, pageProps }: Props) {
 
@@ -49,7 +44,7 @@ export default function Training({ Component, router, pageProps }: Props) {
             translations="Training"
             timeZone={process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'}
         >
-            <div className='grid grid-cols-1 gap-10 w-full 2xl:px-28'>
+            <div className='grid grid-cols-1 gap-10 w-full 2xl:px-48 xl:px-28'>
                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 w-full md:px-20 lg:px-30">
                     <CardTestTraining cards={objCard} />
                 </div>

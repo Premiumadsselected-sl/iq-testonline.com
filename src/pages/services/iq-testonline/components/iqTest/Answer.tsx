@@ -14,10 +14,10 @@ type PageProps = {
 
 export default function Answer({ page, picture }: PageProps) {
     return (
-        <div className="w-full bg-white border border-gray-200 rounded-lg shadow-xl p-5">
+        <div className="w-full bg-white border border-gray-200 rounded-lg shadow-xl p-4 2xl:p-8 justify-items-center">
             <span className='text-sm md:text-xl text-customGray font-bold capitalize'>{picture}</span>
             <Image
-                className='mt-4'
+                className='mt-1'
                 src={`/assets/imagesTest/step${page}/${picture}.png`}
                 alt={`step${page}/${picture}.png`}
                 width={500}
