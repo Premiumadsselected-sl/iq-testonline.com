@@ -5,16 +5,16 @@ import PWrapper from '@/pages/providers/client/PWrapper'
 
 // Importa los componentes del servicio
 import Timer from './services/iq-testonline/components/iqTest/Timer'
-import TestSection from './services/iq-testonline/components/iqTest/TestSection'
-import { useEffect, useState } from 'react'
 import Fade from './services/iq-testonline/components/transitions/Fade'
+import { useEffect, useState } from 'react'
+import TrainingSection from './services/iq-testonline/components/cleverBox/TrainingSection'
 
 
 type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function Index({ Component, router, pageProps }: Props) {
+export default function CleverBox({ Component, router, pageProps }: Props) {
 
     const [showComponent, setShowComponent] = useState(false);
 
@@ -24,7 +24,7 @@ export default function Index({ Component, router, pageProps }: Props) {
 
     return (
         <PWrapper
-            Component={Index}
+            Component={CleverBox}
             pageProps={pageProps}
             router={router}
             translations="Index"
@@ -35,7 +35,7 @@ export default function Index({ Component, router, pageProps }: Props) {
             <div className='w-full justify-center items-center px-4 md:px-36 xl:px-56 2xl:px-48'>
                 <Fade in={showComponent}>
                     <Timer />
-                    <TestSection {...pageProps} />
+                    <TrainingSection {...pageProps} />
                 </Fade>
             </div>
             {/* ------------------------------------------- */}

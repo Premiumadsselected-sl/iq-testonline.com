@@ -16,8 +16,8 @@ import { progressTest } from '@/contexts/redux/timerSlice'
 //Components
 import Question from "./Question"
 import Answer from "./Answer"
-import AnalyzeTest from "./AnalyzeTest"
 import { IoMdArrowBack, IoMdArrowRoundForward } from "react-icons/io"
+import AnalyzeTraining from "./AnalyzeTraining"
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css'
@@ -27,22 +27,22 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function TestSection({ pageProps }: Props) {
+export default function TrainingSection({ pageProps }: Props) {
 
     const t = useTranslations('Test');
 
     // Use the context Redux
     const dispatch = useDispatch()
     const { progressTimerPage, totalQuestions } = useSelector((state: any) => state.timerStore)
-    
+
     const [page, setPage] = useState<number>(1);
     const [answers, setAnswers] = useState<{ [key: string]: { [key: string]: boolean } }>({});
-    const [arrPictures] = useState<Array<string>>(['a', 'b', 'c', 'd', 'e', 'f',]);
+    const [arrPictures] = useState<Array<string>>(['a', 'b', 'c', 'd', 'e',]);
+    const [correctAnswer] = useState<Array<string>>(['b', 'e', 'd', 'c', 'd', 'a', 'c', 'd', 'a', 'c',]);
     const progressBar = new Array(totalQuestions).fill(0);
 
-
     useEffect(() => {
-        dispatch(progressTest({ currentProgress: 0, totalQuestions: 20 }));
+        dispatch(progressTest({ currentProgress: 0, totalQuestions: 10 }));
     }, [])
 
     pageProps = {
@@ -83,12 +83,12 @@ export default function TestSection({ pageProps }: Props) {
             });
 
             validateFinishTest(updatedAnswers)
-            dispatch(progressTest({ currentProgress: Object.keys(updatedAnswers).length, totalQuestions: 20 }));
+            dispatch(progressTest({ currentProgress: Object.keys(updatedAnswers).length, totalQuestions: 10 }));
 
 
             return updatedAnswers;
         });
-        next();
+        // next();
 
     };
 
@@ -106,7 +106,7 @@ export default function TestSection({ pageProps }: Props) {
 
     const validateFinishTest = async (updatedAnswers: { [key: string]: { [key: string]: boolean } }) => {
 
-        if (Object.keys(updatedAnswers).length === 20) {
+        if (Object.keys(updatedAnswers).length === 10) {
 
             // Get the response from the server
             // const user = auth.currentUser
@@ -146,11 +146,15 @@ export default function TestSection({ pageProps }: Props) {
                             <IoMdArrowRoundForward className="mt-0.5 ml-1" />
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0  items-center justify-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-0">
                         <Question page={page} />
                         <div className="grid grid-cols-3 gap-4">
                             {arrPictures.map((picture, i) => (
-                                <button key={page + i} className={answers[`${page}`]?.[`${picture}`] ? styles.buttonAnswerSelected : styles.buttonAnswer} onClick={() => answerSelected(picture)}>
+                                <button
+                                    key={page + i}
+                                    className={`${(answers[`${page}`]?.[`${picture}`] ? styles.buttonAnswerSelected : styles.buttonAnswer)} ${(answers[`${page}`] && correctAnswer[page] === picture) && `border-[3px] border-green-600 rounded-lg hover:border-[3px] hover:border-green-600`}`}
+                                    onClick={() => answerSelected(picture)}
+                                >
                                     <Answer page={page} picture={picture} />
                                 </button>
 
@@ -170,15 +174,13 @@ export default function TestSection({ pageProps }: Props) {
                         ))}
                     </div >
                 </div>
-
                 :
 
                 <div className="grid grid-rows-1 gap-4">
-                    <AnalyzeTest {...pageProps} />
+                    <AnalyzeTraining {...pageProps} />
                 </div>
 
             }
-
         </>
     );
 }

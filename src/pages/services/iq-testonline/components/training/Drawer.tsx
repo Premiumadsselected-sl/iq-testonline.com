@@ -18,7 +18,7 @@ export default function Drawer() {
     const objTrainings = [
         {
             "nameTraining": "Box clever",
-            "route": "/app",
+            "route": "/clever-box",
             "icon": <PiPuzzlePieceDuotone size={35} />
         },
         {

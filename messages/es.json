@@ -497,7 +497,8 @@
         "time_opinion2": "hace 2 horas",
         "text_opinion2": "Esta evaluación tiene un enfoque muy profesional, y he podido compartir los resultados con mis amigos y familiares para comparar y desafiar mutuamente nuestros resultados. Me ha resultado especialmente interesante comparar mis resultados con el promedio en distintas categorías profesionales de la población.",
         "time_opinion3": "hace 6 horas",
-        "text_opinion3": "¡Qué sorpresa! No esperaba mucho y, por primera vez, he obtenido una evaluación brillante de mi coeficiente intelectual. Estoy encantada con los resultados."    
+        "text_opinion3": "¡Qué sorpresa! No esperaba mucho y, por primera vez, he obtenido una evaluación brillante de mi coeficiente intelectual. Estoy encantada con los resultados.",
+        "trainig_in_progress": "Recopilando datos de su entrenamiento"
     }
 
 }
