@@ -1,5 +1,14 @@
+// Recuerda siempre añadir estas dos lineas
+import { GetStaticPropsContext } from 'next';
+import { AppProps } from 'next/app';
+
 import React, { ReactNode } from 'react';
 import { Transition } from 'react-transition-group';
+
+// recuerda siempre añadir el tipo Props
+type Props = AppProps & {
+  t: any
+}
 
 // Este componente se usa para hacer una transición al momento de mostrar una maqueta en pantalla
 
@@ -37,3 +46,16 @@ const Fade: React.FC<FadeProps> = ({ in: inProp, children }) => (
 );
 
 export default Fade;
+
+// Recuerda siempre añadir esto a todos los componentes que crees
+export async function getStaticProps({ locale }: GetStaticPropsContext & Props) {
+  const messages = (await import(`/messages/${locale}.json`)).default
+  return {
+      props: {
+          messages: messages,
+          translationNamespace: 'Index', 
+          locale: locale,
+          timeZone: process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'
+      }
+  }
+}
