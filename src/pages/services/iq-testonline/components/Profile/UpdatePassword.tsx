@@ -10,8 +10,6 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-//TODO: Agregar internacionalización a los textos
-
 export default function UpdatePassword({ router, pageProps }: AppProps) {
 
     const t = useTranslations('Profile')

@@ -18,7 +18,7 @@ export default function Insights({ pageProps }: Props) {
     }
 
     return (
-        <section>
+        <section className='2xl:px-48 xl:px-28'>
             <div className={styles.numbersWrapper}>
                 <div className={styles.divNumber}>
                     <div className={styles.numberWrapper}>

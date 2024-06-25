@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
 import serviceReducer from "./serviceSlice"
-import iqTestReducer from "./iqTestSlice"
+import timerReducer from "./timerSlice"
 
 export default configureStore({
     reducer: {
         service: serviceReducer,
-        iqTestStore: iqTestReducer
+        timerStore: timerReducer
     }
 })

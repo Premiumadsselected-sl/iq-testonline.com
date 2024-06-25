@@ -20,7 +20,7 @@ export default function Terms({ Component, router, pageProps }: Props) {
             timeZone={process.env.NEXT_PUBLIC_TIMEZONE || 'UTC'}
         >
             
-            <div className='w-full items-start px-6 md:px-24 md:pt-20'>
+            <div className='w-full items-start px-2 md:px-28 lg:px-36 xl:px-48 2xl:px-64'>
                 <TermsConditionsComponent {...pageProps} />
             </div>
 

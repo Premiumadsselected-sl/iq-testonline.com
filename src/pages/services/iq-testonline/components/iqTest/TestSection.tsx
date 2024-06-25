@@ -11,7 +11,7 @@ import { resolve } from 'url'
 
 //Context
 import { useDispatch, useSelector } from "react-redux"
-import { progressTest } from '@/contexts/redux/iqTestSlice'
+import { progressTest } from '@/contexts/redux/timerSlice'
 
 //Components
 import Question from "./Question"
@@ -30,17 +30,19 @@ type Props = AppProps & {
 export default function TestSection({ pageProps }: Props) {
 
     const t = useTranslations('Test');
-    const [page, setPage] = useState<number>(1);
-    const [answers, setAnswers] = useState<{ [key: string]: { [key: string]: boolean } }>({});
-    const [arrPictures] = useState<Array<string>>(['a', 'b', 'c', 'd', 'e', 'f',]);
-    const progressBar = new Array(20).fill(0);
 
     // Use the context Redux
     const dispatch = useDispatch()
-    const { progressTestPage } = useSelector((state: any) => state.iqTestStore)
+    const { progressTimerPage, totalQuestions } = useSelector((state: any) => state.timerStore)
+    
+    const [page, setPage] = useState<number>(1);
+    const [answers, setAnswers] = useState<{ [key: string]: { [key: string]: boolean } }>({});
+    const [arrPictures] = useState<Array<string>>(['a', 'b', 'c', 'd', 'e', 'f',]);
+    const progressBar = new Array(totalQuestions).fill(0);
+
 
     useEffect(() => {
-        dispatch(progressTest(0))
+        dispatch(progressTest({ currentProgress: 0, totalQuestions: 20 }));
     }, [])
 
     pageProps = {
@@ -55,7 +57,7 @@ export default function TestSection({ pageProps }: Props) {
         if (answersObj[nextPage]) {
             const nextMissingPage = findNextMissingKey(answersObj);
             setPage(nextMissingPage);
-        } else if (page < 20) {
+        } else if (page < totalQuestions) {
             setPage(nextPage);
         } else {
             const nextMissingPage = findNextMissingKey(answersObj);
@@ -81,7 +83,8 @@ export default function TestSection({ pageProps }: Props) {
             });
 
             validateFinishTest(updatedAnswers)
-            dispatch(progressTest(Object.keys(updatedAnswers).length))
+            dispatch(progressTest({ currentProgress: Object.keys(updatedAnswers).length, totalQuestions: 20 }));
+
 
             return updatedAnswers;
         });
@@ -129,21 +132,21 @@ export default function TestSection({ pageProps }: Props) {
 
     return (
         <>
-            {progressTestPage !== 100 ?
+            {progressTimerPage !== 100 ?
 
-                <div className="grid grid-rows-1 gap-10">
+                <div className="grid grid-rows-1 gap-5">
                     <div className="flex justify-between items-center">
                         <button className={styles.button} onClick={back}>
                             <IoMdArrowBack className="mt-0.5 mr-1" />
-                            <span >{t('preview')}</span>
+                            <span className="text-sm">{t('preview')}</span>
                         </button>
-                        <span className="text-customGray">{`${page}/20`}</span>
+                        <span className="text-customGray text-sm">{`${page}/${totalQuestions}`}</span>
                         <button className={styles.button} onClick={next}>
-                            <span >{t('next')}</span>
+                            <span className="text-sm">{t('next')}</span>
                             <IoMdArrowRoundForward className="mt-0.5 ml-1" />
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10  items-center justify-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0  items-center justify-center">
                         <Question page={page} />
                         <div className="grid grid-cols-3 gap-4">
                             {arrPictures.map((picture, i) => (
@@ -155,11 +158,11 @@ export default function TestSection({ pageProps }: Props) {
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap w-full items-center" >
+                    <div className="flex flex-wrap w-full items-center text-xl" >
                         {progressBar.map((_, i) => (
                             <div
                                 key={i}
-                                className={`${styles.progressIndicator} ${(typeof answers[i + 1] !== 'undefined' && i + 1 !== page) ? 'bg-[#2e7d32] text-white' : (page === i + 1 ? 'bg-purple-700 text-white' : 'bg-white border text-customGray')}`}
+                                className={` ${styles.progressIndicator} ${(typeof answers[i + 1] !== 'undefined' && i + 1 !== page) ? 'bg-[#2e7d32] text-white' : (page === i + 1 ? 'bg-purple-700 text-white' : 'bg-white border text-customGray')}`}
                                 onClick={() => setPage(i + 1)}
                             >
                                 {i + 1}
@@ -171,7 +174,7 @@ export default function TestSection({ pageProps }: Props) {
                 :
 
                 <div className="grid grid-rows-1 gap-4">
-                    <AnalyzeTest />
+                    <AnalyzeTest {...pageProps} />
                 </div>
 
             }

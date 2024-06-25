@@ -25,8 +25,8 @@
     focus:ring-4 
     focus:ring-gray-100 
     font-medium rounded-lg 
-    text-xs lg:text-sm
-    px-2 py-1 md:px-1 md:py-1 lg:px-3 lg:py-2 xl:px-4 xl:py-2 
+    text-[60%] 2xl:text-[80%]
+    px-2 py-1 md:px-1 md:py-1 lg:px-2 lg:py-1 xl:px-2.5 xl:py-0 2xl:px-5 2xl:py-3
     me-auto;
 }
 

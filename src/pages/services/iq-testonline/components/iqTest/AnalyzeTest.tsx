@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 import { GetStaticPropsContext } from 'next'
 import { AppProps } from 'next/app'
+import { useTranslations } from "next-intl";
 
 //Style
 import styles from '@/pages/services/iq-testonline/styles/IqTestStyles.module.css';
@@ -17,20 +18,25 @@ interface BooleanState {
     text: string;
 }
 
-//TODO: agregar internacionalización
+export default function AnalyzeTest({ pageProps }: Props) {
+    
+    const t = useTranslations('Preview')
 
-export default function AnalyzeTest() {
+    pageProps = {
+        ...pageProps,
+        t: t,
+    }
 
     const [showFade, setShowFade] = useState(false);
     const router = useRouter()
     const [percentage, setPercentage] = useState(0);
     const [blink, setBlink] = useState(false);
     const [booleans, setBooleans] = useState<BooleanState[]>([
-        { bool: false, text: "Intuición geométrica" },
-        { bool: false, text: "Conceptualización" },
-        { bool: false, text: "Visualización mental" },
-        { bool: false, text: "Análisis secuencial" },
-        { bool: false, text: "Fluidez cognitiva" }
+        { bool: false, text: t('geometric_intuition') },
+        { bool: false, text: t('conceptualization') },
+        { bool: false, text: t('mental_visualization') },
+        { bool: false, text: t('sequential_analysis') },
+        { bool: false, text: t('cognitive_fluency') }
     ]);
 
     useEffect(() => {
@@ -89,7 +95,7 @@ export default function AnalyzeTest() {
 
                             <div className="flex flex-wrap justify-center gap-2">
                                 <span className="text-customGray text-sm md:text-normal lg:text-normal xl:text-xl">
-                                    La evaluación de su prueba está en curso
+                                    {t('test_in_progress')}
                                     <progress className="progress  w-full justify-self-center" style={{ '--progress-color': '#7e22ce' } as React.CSSProperties} ></progress>
                                 </span>
 
@@ -101,7 +107,7 @@ export default function AnalyzeTest() {
 
                         <div className="w-full lg:max-w-full lg:flex ">
                             <div className="bg-[#7e22ce] p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md">
-                                <span className="text-xl md:text-normal lg:text-xl xl:text-2xl leading-none tracking-tight text-white mb-6" >Desglose de categorías</span>
+                                <span className="text-xl md:text-normal lg:text-xl xl:text-2xl leading-none tracking-tight text-white mb-6" >{t('category_breakdown')}</span>
 
                                 {booleans?.map((element, index) => (
                                     element.bool ?

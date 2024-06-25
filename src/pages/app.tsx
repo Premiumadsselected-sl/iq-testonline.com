@@ -5,9 +5,7 @@ import PWrapper from '@/pages/providers/client/PWrapper'
 
 // Importa los componentes del servicio
 import Timer from './services/iq-testonline/components/iqTest/Timer'
-import AnalyzeTest from './services/iq-testonline/components/iqTest/AnalyzeTest'
 import TestSection from './services/iq-testonline/components/iqTest/TestSection'
-import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import Fade from './services/iq-testonline/components/transitions/Fade'
 
@@ -34,7 +32,7 @@ export default function Index({ Component, router, pageProps }: Props) {
         >
 
             {/* Los componentes deven ser renderizados aqui */}
-            <div className='w-full justify-center items-center px-4 md:px-36'>
+            <div className='w-full justify-center items-center px-4 md:px-36 xl:px-56 2xl:px-48'>
                 <Fade in={showComponent}>
                     <Timer />
                     <TestSection {...pageProps} />
