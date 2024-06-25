@@ -57,45 +57,18 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         
         try{
             
-            // // Usa la funcion `ServicesAsyncRequest` para hacer la peticion.
-            // // La session siempre tienes enviarla como parametro para la autorizacion.
-            // const user = await ServicesAsyncRequest({
-            //     method: 'POST', 
-            //     path: 'users/get-user', 
-            //     body: JSON.stringify({ 
-            //         email: session?.user.email
-            //     }),
-            //     session: session
-            // }) 
-            // // Nota: Usa este metodo preferentemente 
-            // // para hacer peticiones al backend.
-
-            // // Ejemplo de como hacer una peticion para obtener la data
-            // const get_user_data = await ServicesAsyncRequest({
-            //     method: 'POST', 
-            //     path: 'auth/get-user-data', 
-            //     body: JSON.stringify({
-            //         "id": "string",
-            //         "email": "string"
-            //     }),
-            //     session: session
-            // }) 
-
-            // get_user_data.fulano = ''
-            // // Actualizas la data 
-            // const new_user_data = {  }
-
-            // // Ejemplo de como hacer una peticion para obtener la data
-            // const update_user_data = await ServicesAsyncRequest({
-            //     method: 'PUT', 
-            //     path: 'auth/update-user-data', 
-            //     body: JSON.stringify({
-            //         "id": "string",
-            //         "email": "string"
-            //     }),
-            //     session: session
-            // }) 
-            
+            // Usa la funcion `ServicesAsyncRequest` para hacer la peticion.
+            // La session siempre tienes enviarla como parametro para la autorizacion.
+            const user = await ServicesAsyncRequest({
+                method: 'POST', 
+                path: 'users/get-user', 
+                body: JSON.stringify({ 
+                    email: session?.user.email
+                }),
+                session: session
+            }) 
+            // Nota: Usa este metodo preferentemente 
+            // para hacer peticiones al backend.
 
             if( !user ) throw user
 
