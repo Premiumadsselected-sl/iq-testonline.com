@@ -30,17 +30,19 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
     }
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
+        
         event.preventDefault()
 
         if (error) setError(undefined)
 
         const formData = new FormData(event.currentTarget)
+        const remember_me = formData.get('remember_me')
 
         await signIn('credentials', {
             email: formData.get('email'),
             password: formData.get('password'),
             redirect: false
-        }).then((res) => {
+        }).then(async (res) => {
         
             if (res?.error) {
                 setError(res.error)
@@ -48,9 +50,9 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
                 return
             }
         
-            return successMessage().then(() => {
-               return router.push(`/${locale}`)
-            })
+            await successMessage()
+            router.push(`/${locale}`)
+            return true
         
         })
 
@@ -70,8 +72,6 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
         <section>
 
             <form
-                action="/api/auth/callback/credentials"
-                method="post"
                 onSubmit={onSubmit}
                 id="login-form"
                 className="login-form"
@@ -101,6 +101,23 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
                                     className={styles.inputForm}
                                     placeholder={t('password_holder')}
                                     required />
+                            </div>
+
+                            <div className="w-full col-span-2 flex flex-row">
+                                <div className="w-1/12">
+                                    <input
+                                        type="checkbox"
+                                        id="remember_me"
+                                        name="remember_me"
+                                        className={styles.inputForm}
+                                        required />
+                                </div>
+                                
+                                <div className="w-3/4 text-left">
+                                    <label htmlFor="remember_me">
+                                        {t('remember_me_label')}
+                                    </label>
+                                </div>
                             </div>
 
                             <div className="w-full col-span-2 justify-start">
@@ -145,7 +162,7 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
                 </div>
 
                 {/* SHOW ERROR  WITH TOAST */}
-                { error && toast.error( t('error', { error }) ) }
+                {/* { error && toast.error( t('error', { error }) ) } */}
 
                 {/* SHOW ERROR ON PAGE */}
                 {/* {error && <p
@@ -153,9 +170,6 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
                     id="login-error-paragraph">
                     {t('error', { error })}
                 </p>} */}
-
-                    
-
 
             </form>
         </section>

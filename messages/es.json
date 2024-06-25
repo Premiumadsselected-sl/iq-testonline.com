@@ -34,7 +34,7 @@
         "title": "Iniciar Sesión",
         "password": "Contraseña",
         "submit": "Iniciar Sesión",
-        "error": "{error, select, CredentialsSignin {Usuario o contraseña inválidos} other {Error desconocido}}",
+        "error": "{error, select, CredentialsSignin {Usuario o contraseña inválidos} other {Usuario o contraseña inválidos}}",
         "Unknown": "Error desconocido",
         "success_message": "Inicio de sesión exitoso",
         "user_email": "Correo Electrónico",
@@ -42,7 +42,8 @@
         "password_holder": "Introduce tu contraseña",
         "question_account": "¿No tienes una cuenta?",
         "login_button": "Registrarse",
-        "forgot_password": "¿Olvidaste tu contraseña?   "
+        "forgot_password": "¿Olvidaste tu contraseña?",
+        "remember_me_label": "Recordar session"
     },
 
     "Register": {
@@ -56,14 +57,15 @@
         "email-already-in-use": "Correo electrónico ya en uso",
         "invalid-email": "Correo electrónico inválido",
         "weak-password": "Contraseña débil",
-        "error": "{error, select, CredentialsSignup {Nombre de usuario ya tomado} other {Error desconocido}}",
+        "error": "{error, select, CredentialsSignup {Nombre de usuario ya tomado} other {Ya existe un usuario con este correo.}}",
         "user_holder": "Introduce tu nombre",
         "email_holder": "Introduce tu correo electrónico",
         "password_holder": "Introduce tu contraseña",
         "name_holder": "Introduce tu nombre",
         "register_button": "Registrarse",
         "answer_account": "¿Ya tienes una cuenta?",
-        "login_link": "Iniciar sesión"
+        "login_link": "Iniciar sesión",
+        "remember_me_label": "Recordar session"
     },
 
     "About": {

@@ -3,11 +3,12 @@ import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import { FormEvent } from 'react'
 import { signIn } from 'next-auth/react'
-import { signUp } from '@/components/private/Register' 
 import { useState } from 'react'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+
 
 // Styles
 import styles from '@/pages/services/iq-testonline/styles/RegisterStyles.module.css'
@@ -16,12 +17,14 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
+export default function CustomizeRegisterForm({ pageProps }: AppProps) {
 
     const locale = useLocale()
     const t = useTranslations('Register')
     const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
     const [error, setError] = useState<string>()
+
+    const router = useRouter()
 
     pageProps = {
         ...pageProps,
@@ -38,45 +41,52 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
         if (error) setError(undefined)
 
         const formData = new FormData(event.currentTarget)
-
-        await signUp(JSON.stringify({ 
-            user_name: formData.get('user_name'),
-            email: formData.get('email'), 
-            password: formData.get('password')
-        })).then( async ( res ) => {
-
-            if (res?.error) {
-                setError(res.error)
-                errorMessage(res.error)
-                return
-            }
-
-            await signIn('credentials', {
-                email: formData.get('email'),
-                password: formData.get('password'),
-                redirect: false
-            }).then((res) => {
-            
-                if (res?.error) {
-                    setError(res.error)
-                    errorMessage(res.error)
-                    return
-                }
-                
-                return successMessage().then(() => {
-                   return router.push( `/${locale}/payment`)
-                })
-            
+        const remember_me = formData.get('remember_me')
+        const user_name = formData.get('user_name')
+        const email = formData.get('email')
+        const password = formData.get('password')
+        
+        const req_register = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${'auth/register'}`, {
+            headers: { 'Content-Type': 'application/json', },
+            method: 'POST',
+            body: JSON.stringify({ 
+                user_name: user_name,
+                email: email, 
+                password: password,
+                remember_me
             })
-
         })
 
-        return false
+        const res_register = await req_register.json() 
+        
+        if ( res_register.statusCode !== 200 ) {
+            setError(res_register.message)
+            await errorMessage(res_register.message)
+            return false
+        }
+            
+        const req_login = signIn('credentials', {
+            email: email, 
+            password: password,
+            redirect: false
+        }).then(async (res)=>{
+            
+            if (res?.error) {
+                setError(res.error)
+                await errorMessage(res.error)
+                return false
+            }
+
+            await successMessage()
+            router.push( `/${locale}/payment`)
+        })
+
+        return req_login
 
     }
 
     async function errorMessage(error: string) {
-        return toast.error(t('error', { error }))
+        toast.error(t('error', { error }))
     }
 
     async function successMessage() {
@@ -88,8 +98,6 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
         <section>
 
             <form
-                action="/api/auth/callback/credentials"
-                method="post"
                 onSubmit={onSubmit}
                 id="register-form"
                 className="register-form"
@@ -133,6 +141,23 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                                     required />
                             </div>
 
+                            <div className="w-full col-span-2 flex flex-row">
+                                <div className="w-1/12">
+                                    <input
+                                        type="checkbox"
+                                        id="remember_me"
+                                        name="remember_me"
+                                        className={styles.inputForm}
+                                        required />
+                                </div>
+                                <div className="w-3/4 text-left">
+                                    <label htmlFor="remember_me">
+                                        {t('remember_me_label')}
+                                    </label>
+                                </div>
+                                
+                            </div>
+
                             <div className="col-span-2">
                                 <button
                                     type="submit"
@@ -168,7 +193,7 @@ export default function CustomizeRegisterForm({ router, pageProps }: AppProps) {
                 </div>
 
                 {/* SHOW ERROR  WITH TOAST */}
-                { error && toast.error( t('error', { error }) ) }
+                {/* { error && toast.error( t('error', { error }) ) } */}
 
                 {/* SHOW ERROR ON PAGE */}
                 {/* {error && <p

@@ -9,6 +9,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { GetStaticPropsContext } from 'next'
 
+// Ejemplo de como se usan las peticiones al backend.
+// Importaciones.
+import { useSession } from "next-auth/react";
+import ServicesAsyncRequest from "@/utils/ServicesAsyncRequest";
+
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
 
@@ -39,6 +44,53 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     const [path, setPath] = useState('#Information')
     const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
 
+    // Usando session y definiendo el usuario en el estado
+    const {data: session, status} = useSession()
+    const [user, setUser] = useState(session?.user)
+
+    // Metodo para traer los datos del usuario, 
+    // Puesdes usar el nombre que quieras para el metodo 
+    const getUser = async () => {
+
+        try{
+            
+            // Usando la funcion ServicesAsyncRequest
+            // enviala con estos parametros , 
+            // la session siempre tienes que traerla 
+            // antes de hacer la peticion,
+            const req = await ServicesAsyncRequest({
+                method: 'POST', 
+                path:'users/get-user',
+                body: JSON.stringify({ 
+                    email: user?.email
+                }),
+                session
+            })
+
+            const res = await req.json()
+
+            if( res.statusCode !== 200 )
+                throw res
+
+            setUser(res)
+            
+            return res
+        }
+
+        catch( error ){
+            return false
+        }
+        
+    }
+
+    useEffect(()=>{
+        console.log('Hola')
+        getUser().then((user)=>{
+            console.log(user)
+        })
+    }, [])
+
+
     useEffect(() => {
         route.push('#Information');
     }, []);
@@ -47,8 +99,9 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         const pathSelected = route.asPath;
 
         setPath(pathSelected);
-console.log(pathSelected)
-console.log(route)
+        console.log(pathSelected)
+        console.log(route)
+
         if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
         if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
         if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);

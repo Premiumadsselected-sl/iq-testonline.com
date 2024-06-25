@@ -1,6 +1,5 @@
 import {AuthOptions} from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
 
 const Authentication: AuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
@@ -15,17 +14,21 @@ const Authentication: AuthOptions = {
         },
         async authorize(credentials) {
             
-            const auth_user = await ServicesAsyncRequest({
-              method: 'POST', 
-              path:'auth-login',
-              body: JSON.stringify({ 
-                email: credentials?.email, 
-                password: credentials?.password
-              })
+            const req = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${'auth/login'}`, {
+                headers: { 'Content-Type': 'application/json', },
+                method: 'POST',
+                body: JSON.stringify({ 
+                  email: credentials?.email, 
+                  password: credentials?.password
+                })
             })
-            
-            if ( !auth_user.ok ) throw auth_user
-            return auth_user
+    
+            const res = await req.json() 
+
+            if ( res.statusCode !== 200 ) 
+                throw res
+
+            return res
     
        }
 

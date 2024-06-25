@@ -1,16 +1,21 @@
 
+'use client'
 import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
 
-const ServicesAsyncRequest = async ( { token, method, path, body } : ServicesAsyncRequestInterface ) => {
+const ServicesAsyncRequest = async ( { method, path, body, session } : ServicesAsyncRequestInterface ) => {
 
-    if( method === 'GET' )
+    if( method === 'GET' ){
         return { error: 'Method not allowed' }
+    }
 
     try {
+        console.log(`${process.env.NEXT_PUBLIC_ENDPOINT_URL}${path}`)
         const req = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${path}`, {
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${ token || process.env.NEXT_PUBLIC_API_TOKEN }`
+               'Content-Type': 'application/json',
+                    ...(session?.user.token && {
+                    authorization: `Bearer ${session?.user.token}`
+                })
             },
             method: method,
             body: body
