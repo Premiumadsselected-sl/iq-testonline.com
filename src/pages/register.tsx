@@ -10,7 +10,7 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function Register({ Component, router, pageProps }: Props) {
+export default function Register({ Component, router, children, pageProps }: Props) {
 
     return (
         <PWrapper
@@ -26,7 +26,8 @@ export default function Register({ Component, router, pageProps }: Props) {
                 <CustomizeRegisterForm
                     Component={Register}
                     router={router}
-                    pageProps={pageProps}
+                    pageProps={pageProps} 
+                    children={children}              
                 />
             </div>
 
