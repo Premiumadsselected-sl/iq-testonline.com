@@ -7,5 +7,5 @@ export interface ServicesAsyncRequestInterface {
     path: string,
     body: string,
     // session: SessionContextValue<R>
-    session: any
+    session?: any
 }
