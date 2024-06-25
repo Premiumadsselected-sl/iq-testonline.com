@@ -9,7 +9,7 @@ const ServicesAsyncRequest = async ( { method, path, body, session } : ServicesA
     }
 
     try {
-        console.log(`${process.env.NEXT_PUBLIC_ENDPOINT_URL}${path}`)
+        console.log( body, session )
         const req = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${path}`, {
             headers: {
                'Content-Type': 'application/json',

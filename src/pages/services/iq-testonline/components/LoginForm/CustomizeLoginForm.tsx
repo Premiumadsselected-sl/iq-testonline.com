@@ -18,7 +18,6 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
     const locale = useLocale()
     const t = useTranslations('Login')
     const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
-    const [error, setError] = useState<string>()
     const router = useRouter()
 
     pageProps = {
@@ -33,8 +32,6 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
         
         event.preventDefault()
 
-        if (error) setError(undefined)
-
         const formData = new FormData(event.currentTarget)
         const remember_me = formData.get('remember_me')
 
@@ -44,16 +41,11 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
             redirect: false
         }).then(async (res) => {
         
-            if (res?.error) {
-                setError(res.error)
-                errorMessage(res.error)
-                return
-            }
-        
-            await successMessage()
-            router.push(`/${locale}`)
-            return true
-        
+            if (res?.error) 
+                return errorMessage(res.error)
+    
+            return successMessage()
+            
         })
 
         return false
@@ -61,11 +53,14 @@ export default function CustomizeLoginForm({ pageProps }: AppProps) {
     }
 
     async function errorMessage(error: string) {
-        return toast.error(t('error', { error }))
+        toast.error(t('error', { error }))
+        return false
     }
 
     async function successMessage() {
         toast.success(t('success_message'))
+        router.push(`/${locale}`)
+        return true
     }
 
     return (

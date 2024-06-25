@@ -17,12 +17,11 @@ type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function CustomizeRegisterForm({ pageProps }: AppProps) {
+export default function CustomizeRegisterForm({ pageProps }: Props) {
 
     const locale = useLocale()
     const t = useTranslations('Register')
     const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
-    const [error, setError] = useState<string>()
 
     const router = useRouter()
 
@@ -38,59 +37,64 @@ export default function CustomizeRegisterForm({ pageProps }: AppProps) {
         
         event.preventDefault()
 
-        if (error) setError(undefined)
-
         const formData = new FormData(event.currentTarget)
         const remember_me = formData.get('remember_me')
         const user_name = formData.get('user_name')
         const email = formData.get('email')
         const password = formData.get('password')
         
-        const req_register = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${'auth/register'}`, {
-            headers: { 'Content-Type': 'application/json', },
-            method: 'POST',
-            body: JSON.stringify({ 
-                user_name: user_name,
-                email: email, 
-                password: password,
-                remember_me
+        try {
+            
+            const req_register = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${'auth/register'}`, {
+                headers: { 'Content-Type': 'application/json', },
+                method: 'POST',
+                body: JSON.stringify({ 
+                    user_name: user_name,
+                    email: email, 
+                    password: password,
+                    remember_me
+                })
             })
-        })
 
-        const res_register = await req_register.json() 
+            const res_register = await req_register.json() 
         
-        if ( res_register.statusCode !== 200 ) {
-            setError(res_register.message)
-            await errorMessage(res_register.message)
-            return false
-        }
-            
-        const req_login = signIn('credentials', {
-            email: email, 
-            password: password,
-            redirect: false
-        }).then(async (res)=>{
-            
-            if (res?.error) {
-                setError(res.error)
-                await errorMessage(res.error)
+            if ( res_register.statusCode !== 200 ) {
+                await errorMessage(res_register.message)
                 return false
             }
 
-            await successMessage()
-            router.push( `/${locale}/payment`)
-        })
+            const req_login = signIn('credentials', {
+                email: email, 
+                password: password,
+                redirect: false
+            }).then(async (res)=>{
+                
+                if (res?.error) {
+                    await errorMessage(res.error)
+                    return false
+                }
 
-        return req_login
+                await successMessage()
+                router.push( `/${locale}/payment`)
+            })
+
+            return req_login
+        }
+
+        catch (error: any) {
+            await errorMessage(error)
+        }
 
     }
 
     async function errorMessage(error: string) {
         toast.error(t('error', { error }))
+        return false
     }
 
     async function successMessage() {
         toast.success(t('success_message'))
+        return true
     }
 
     return (

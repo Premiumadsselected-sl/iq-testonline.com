@@ -1,18 +1,21 @@
 'use client'
 import { AppProps } from 'next/app'
+import { GetStaticPropsContext } from 'next'
 import { useLocale, useTimeZone, useTranslations } from 'next-intl'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
 import { SlReload } from 'react-icons/sl'
 import { MdLocalOffer } from 'react-icons/md'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { GetStaticPropsContext } from 'next'
+import Link from 'next/link'
 
-// Ejemplo de como se usan las peticiones al backend.
-// Importaciones.
-import { useSession } from "next-auth/react";
-import ServicesAsyncRequest from "@/utils/ServicesAsyncRequest";
+// Ejemplo: Como se usan las peticiones al backend.
+// Importa el hook useSession de next-auth/react y el 
+// metodo ServicesAsyncRequest de '@/utils/ServicesAsyncRequest'
+
+// Imports
+import { useSession } from "next-auth/react"
+import ServicesAsyncRequest from "@/utils/ServicesAsyncRequest"
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
@@ -46,35 +49,32 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
     // Usando session y definiendo el usuario en el estado
     const {data: session, status} = useSession()
-    const [user, setUser] = useState(session?.user)
+    const [user, setUser] = useState(null)
 
     // Metodo para traer los datos del usuario, 
-    // Puesdes usar el nombre que quieras para el metodo 
+    // Puesdes usar la forma que quieras para hacer la peticion.
     const getUser = async () => {
-
+        
         try{
             
-            // Usando la funcion ServicesAsyncRequest
-            // enviala con estos parametros , 
-            // la session siempre tienes que traerla 
-            // antes de hacer la peticion,
-            const req = await ServicesAsyncRequest({
+            // Usa la funcion `ServicesAsyncRequest` para hacer la peticion.
+            // La session siempre tienes enviarla como parametro para la autorizacion.
+            const user = await ServicesAsyncRequest({
                 method: 'POST', 
-                path:'users/get-user',
+                path: 'users/get-user', 
                 body: JSON.stringify({ 
-                    email: user?.email
+                    email: session?.user.email
                 }),
-                session
-            })
+                session: session
+            }) 
+            // Nota: Usa este metodo preferentemente 
+            // para hacer peticiones al backend.
 
-            const res = await req.json()
+            if( !user ) throw user
 
-            if( res.statusCode !== 200 )
-                throw res
-
-            setUser(res)
+            setUser(user)
             
-            return res
+            return user
         }
 
         catch( error ){
@@ -84,11 +84,8 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     }
 
     useEffect(()=>{
-        console.log('Hola')
-        getUser().then((user)=>{
-            console.log(user)
-        })
-    }, [])
+        getUser()
+    }, [ session ])
 
 
     useEffect(() => {
@@ -108,13 +105,20 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
     }, [route.asPath])
 
-
-
     return (<>
 
         <section className='grid grid-cols-1 justify-center items-center w-full text-customGray gap-8 md:gap-16'>
 
             <h1 className="col-span-1 text-4xl font-extrabold">Perfil</h1>
+
+            {/* PRUEBA MUESTRA USUARIO */}
+            { user && (
+                <div className='flex flex-row bg-gray-100 p-4 rounded-lg text-sm w-2/4 m-auto'>
+                    <pre className='text-left'>
+                        { JSON.stringify(user, null, 2) }
+                    </pre>
+                </div>
+            )}
 
             <div className='col-span-1 font-bold'>
                 <ul className="inline-table">
