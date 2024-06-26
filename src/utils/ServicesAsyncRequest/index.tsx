@@ -1,5 +1,3 @@
-
-'use client'
 import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
 
 const ServicesAsyncRequest = async ( { method, path, body, session } : ServicesAsyncRequestInterface ) => {
