@@ -36,7 +36,7 @@ export default function Drawer() {
         },
         {
             "nameTest": "Preguntados",
-            "route": "/app",
+            "route": "/asked-test",
             "icon": <FaClipboardQuestion size={30} />
         },
         {

@@ -2,19 +2,18 @@
 import { AppProps } from 'next/app'
 import { GetStaticPropsContext } from 'next'
 import PWrapper from '@/pages/providers/client/PWrapper'
-
-// Importa los componentes del servicio
-import Timer from './services/iq-testonline/components/timer/Timer'
-import TestSection from './services/iq-testonline/components/iqTest/TestSection'
 import { useEffect, useState } from 'react'
-import Fade from './services/iq-testonline/components/transitions/Fade'
 
+// Import the component
+import Fade from './services/iq-testonline/components/transitions/Fade'
+import TestSection from './services/iq-testonline/components/askedTest/TestSection'
+import Timer from './services/iq-testonline/components/timer/Timer'
 
 type Props = AppProps & {
     children: React.ReactNode
 }
 
-export default function Index({ Component, router, pageProps }: Props) {
+export default function AskedTest({ Component, router, pageProps }: Props) {
 
     const [showComponent, setShowComponent] = useState(false);
 
@@ -23,8 +22,9 @@ export default function Index({ Component, router, pageProps }: Props) {
     }, []);
 
     return (
+
         <PWrapper
-            Component={Index}
+            Component={AskedTest}
             pageProps={pageProps}
             router={router}
             translations="Index"
@@ -33,14 +33,14 @@ export default function Index({ Component, router, pageProps }: Props) {
 
             {/* Los componentes deven ser renderizados aqui */}
             <div className='w-full justify-center items-center px-4 md:px-36 xl:px-56 2xl:px-48'>
-                <Fade in={showComponent}>
+                <Fade in={showComponent} >
                     <Timer />
                     <TestSection {...pageProps} />
                 </Fade>
             </div>
             {/* ------------------------------------------- */}
 
-        </PWrapper>
+        </PWrapper >
     )
 
 }
@@ -56,3 +56,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext & Props) 
         }
     }
 }
+
+

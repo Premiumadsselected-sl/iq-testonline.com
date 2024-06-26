@@ -4,7 +4,7 @@ import { GetStaticPropsContext } from 'next'
 import PWrapper from '@/pages/providers/client/PWrapper'
 
 // Importa los componentes del servicio
-import Timer from './services/iq-testonline/components/iqTest/Timer'
+import Timer from './services/iq-testonline/components/timer/Timer'
 import Fade from './services/iq-testonline/components/transitions/Fade'
 import { useEffect, useState } from 'react'
 import TrainingSection from './services/iq-testonline/components/cleverBox/TrainingSection'
