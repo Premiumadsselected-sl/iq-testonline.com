@@ -1,5 +1,5 @@
 import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 // export default async function 
 // POST( req:NextApiRequest, res:NextApiResponse ) {
@@ -34,11 +34,9 @@ import { NextRequest } from 'next/server'
 
 // }
 
-export default async function ServicesAsyncRequest( req:NextRequest ) {
+export async function GET( req:NextRequest, res: NextResponse ) {
 
-    req.headers.set('Content-Type', 'application/json')
-    
-    return { status: 200, body: 'POST', request: req }
+     return NextResponse.json({ message: 'GET' })
     // const body = req.body 
     // const body_backend = JSON.parse(body as unknown as string) 
     // const path = body_backend.path as string
