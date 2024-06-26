@@ -34,8 +34,9 @@ import { NextRequest } from 'next/server'
 
 // }
 
-export async function POST( req:NextRequest ) {
-    return { status: 200, body: 'POST', request: req }
+export default async function handler( req:NextRequest ) {
+    if( req.method === 'POST' )
+        return { status: 200, body: 'POST', request: req }
     // const body = req.body 
     // const body_backend = JSON.parse(body as unknown as string) 
     // const path = body_backend.path as string
