@@ -34,7 +34,7 @@ import { NextRequest } from 'next/server'
 
 // }
 
-export async function GET( req:NextRequest ) {
+export default async function GET( req:NextRequest ) {
 
     req.headers.set("Allow", "GET, PUT")
     
