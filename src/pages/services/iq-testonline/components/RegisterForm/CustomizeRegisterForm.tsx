@@ -44,15 +44,20 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
         const password = formData.get('password')
         
         try {
-            
-            const req_register = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${'auth/register'}`, {
-                headers: { 'Content-Type': 'application/json', },
+
+            const req_register = 
+            await fetch(process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL as string, {
                 method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ 
-                    user_name: user_name,
-                    email: email, 
-                    password: password,
-                    remember_me
+                    method: 'POST',
+                    path: 'auth/register',
+                    params: { 
+                        user_name: user_name,
+                        email: email, 
+                        password: password,
+                        remember_me
+                    }
                 })
             })
 

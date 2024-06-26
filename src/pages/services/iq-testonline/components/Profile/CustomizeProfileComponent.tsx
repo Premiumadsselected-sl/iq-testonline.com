@@ -57,20 +57,39 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         
         try{
             
+            // ¡¡¡¡ YANO USAREMOS ESTO !!!!
             // Usa la funcion `ServicesAsyncRequest` para hacer la peticion.
             // La session siempre tienes enviarla como parametro para la autorizacion.
-            const user = await ServicesAsyncRequest({
-                method: 'POST', 
-                path: 'users/get-user', 
-                body: JSON.stringify({ 
-                    email: session?.user.email
-                }),
-                session: session
-            }) 
+            // const user = await ServicesAsyncRequest({
+            //     method: 'POST', 
+            //     path: 'users/get-user', 
+            //     body: JSON.stringify({ 
+            //         email: session?.user.email
+            //     }),
+            //     session: session
+            // }) 
             // Nota: Usa este metodo preferentemente 
             // para hacer peticiones al backend.
+            
+            // AHORA USAREMOS FETCH A LA API DE NEXT 
+            // (/api/service/ServicesAsyncRequest)
+            const request_user_data = 
+            await fetch(process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL as string, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({ 
+                    method: 'POST',
+                    token: session?.user.token,
+                    path: 'users/get-user',
+                    params: {
+                        email: session?.user.email,
+                    }  
+                })
+            })
 
-            if( !user ) throw user
+            const user_data = await request_user_data.json()
+
+            if( !user_data ) throw user
 
             setUser(user)
             

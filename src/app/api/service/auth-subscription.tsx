@@ -1,5 +1,3 @@
-
-import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
 import {NextApiRequest, NextApiResponse} from 'next'
 import { useSession } from 'next-auth/react'
 import { useLocale } from 'next-intl'
@@ -29,16 +27,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try{
         
-        const query = await ServicesAsyncRequest({
-            method: 'POST', 
-            path: `${process.env.NEXT_PUBLIC_ENDPOINT_URL}/get-subscription`, 
+        // const query = await ServicesAsyncRequest({
+        //     method: 'POST', 
+        //     path: `${process.env.NEXT_PUBLIC_ENDPOINT_URL}/get-subscription`, 
+        //     body: JSON.stringify({ 
+        //         user: session.user,
+        //         paymentId: paymentId
+        //     })
+        // })
+
+        const request = await fetch( `${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${session.user.token}`
+            },
+            method: 'POST',
             body: JSON.stringify({ 
                 user: session.user,
                 paymentId: paymentId
             })
         })
 
-        const response = await query.json()
+        const response = await request.json()
 
         if( !response.ok ) return ({
             id: response.error as string,
