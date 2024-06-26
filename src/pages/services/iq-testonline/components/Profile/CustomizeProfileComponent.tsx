@@ -15,7 +15,6 @@ import Link from 'next/link'
 
 // Imports
 import { useSession } from "next-auth/react"
-import ServicesAsyncRequest from "@/utils/ServicesAsyncRequest"
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
