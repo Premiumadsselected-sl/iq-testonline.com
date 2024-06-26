@@ -1,7 +1,8 @@
 import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-const ServicesAsyncRequest = async ( req:NextApiRequest, res:NextApiResponse ) => {
+export default async function 
+POST( req:NextApiRequest, res:NextApiResponse ) {
 
     const body: ServicesAsyncRequestInterface = req.body 
     const params = body.params as string
@@ -9,37 +10,26 @@ const ServicesAsyncRequest = async ( req:NextApiRequest, res:NextApiResponse ) =
     const method = body.method as string
     const token = body.token as string
 
-    if( req.method === 'GET' ){
-        return res.status(200).end()
+    try {
+
+        const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string
+        const request = await fetch( url, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${token}`
+            },
+            body: params as string
+        })
+    
+        const response = await request.json()  
+
+        return res.send(response)
+
     }
 
-    if( req.method === 'POST' ){
-        try {
-
-            const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string
-            const request = await fetch( url, {
-                method: method,
-                headers: {
-                    'Content-Type': 'application/json',
-                    authorization: `Bearer ${token}`
-                },
-                body: params as string
-            })
-        
-            const res = await request.json()  
-            return res 
-    
-        }
-
-        catch ( error ) {
-            return error
-        } 
-    }
-
-    
-
-    
+    catch ( error ) {
+        return res.send(error)
+    } 
 
 }
-
-export default ServicesAsyncRequest
