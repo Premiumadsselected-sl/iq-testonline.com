@@ -1,5 +1,5 @@
 import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest } from 'next/server'
 
 // export default async function 
 // POST( req:NextApiRequest, res:NextApiResponse ) {
@@ -34,13 +34,13 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 // }
 
-export async function POST( req:NextApiRequest, res:NextApiResponse ) {
+export async function POST( req:NextRequest ) {
 
-    const body: ServicesAsyncRequestInterface = req.body 
-    const params = body.params as string
-    const path = body.path as string
-    const method = body.method as string
-    const token = body.token as string
+    const body = req.body 
+    const body_backend = JSON.parse(body as unknown as string) 
+    const path = body_backend.path as string
+    const method = body_backend.method as string
+    const token = body_backend?.token as string
 
     try {
 
@@ -49,19 +49,19 @@ export async function POST( req:NextApiRequest, res:NextApiResponse ) {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${token}`
+                authorization: `Bearer ${token? token : ''}`
             },
-            body: params as string
+            body: body_backend as string
         })
     
         const response = await request.json()  
 
-        return res.send(response)
+        return response
 
     }
 
     catch ( error ) {
-        return res.send(error)
+        return error
     } 
 
 }

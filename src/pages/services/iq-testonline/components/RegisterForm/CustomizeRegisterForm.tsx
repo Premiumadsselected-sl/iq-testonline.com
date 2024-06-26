@@ -52,18 +52,17 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                 body: JSON.stringify({ 
                     method: 'POST',
                     path: 'auth/register',
-                    params: { 
+                    params: JSON.stringify({ 
                         user_name: user_name,
                         email: email, 
                         password: password,
                         remember_me
-                    }
+                    })
                 })
             })
 
             const res_register = await req_register.json()
             
-            console.log(res_register)
         
             if ( res_register.statusCode !== 200 ) {
                 await errorMessage(res_register.message)
