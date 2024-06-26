@@ -35,6 +35,8 @@ import { NextRequest } from 'next/server'
 // }
 
 export async function GET( req:NextRequest ) {
+
+    req.headers.set("Allow", "GET, PUT")
     
     return { status: 200, body: 'POST', request: req }
     // const body = req.body 
