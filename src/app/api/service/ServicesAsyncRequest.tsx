@@ -3,9 +3,9 @@ import { NextApiRequest } from 'next'
 
 const ServicesAsyncRequest = async ( req:NextApiRequest ) => {
 
-    if( req.method === 'GET' ){
-        return { error: 'Method not allowed' }
-    }
+    // if( req.method === 'GET' ){
+    //     return { error: 'Method not allowed' }
+    // }
 
     const body: ServicesAsyncRequestInterface = req.body 
     const params = body.params as string
