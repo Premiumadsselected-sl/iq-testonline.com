@@ -34,9 +34,10 @@ import { NextRequest } from 'next/server'
 
 // }
 
-export default async function handler( req:NextRequest ) {
+export default async function ServicesAsyncRequest( req:NextRequest ) {
 
-    
+    req.headers.set('Content-Type', 'application/json')
+    req.headers.set('method', req.method)
     
     return { status: 200, body: 'POST', request: req }
     // const body = req.body 
