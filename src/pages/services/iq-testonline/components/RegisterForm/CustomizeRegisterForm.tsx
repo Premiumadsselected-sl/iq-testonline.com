@@ -61,7 +61,9 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                 })
             })
 
-            const res_register = await req_register.json() 
+            const res_register = await req_register.json()
+            
+            console.log(res_register)
         
             if ( res_register.statusCode !== 200 ) {
                 await errorMessage(res_register.message)
