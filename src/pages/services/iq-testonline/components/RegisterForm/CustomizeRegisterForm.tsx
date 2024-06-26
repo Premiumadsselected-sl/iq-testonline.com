@@ -47,7 +47,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
 
             const req_register = 
             await fetch(process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL as string, {
-                method: 'GET',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ 
                     method: 'POST',
