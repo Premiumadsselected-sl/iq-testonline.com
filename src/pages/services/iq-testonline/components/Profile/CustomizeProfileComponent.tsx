@@ -77,7 +77,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
-                    'authorization': `Bearer ${session?.user.token}` 
+                    'Authorization': `Bearer ${session?.user.token}` 
                 },
                 body: JSON.stringify({ 
                     method: 'POST',
@@ -91,21 +91,21 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
             const user_data = await request_user_data.json()
 
-            console.log('Frontend Request:', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'authorization': `Bearer ${session?.user.token}` 
-                },
-                body: JSON.stringify({ 
-                    method: 'POST',
-                    path: 'users/get-user',
-                    token: session?.user.token,
-                    params: {
-                        email: session?.user.email
-                    }  
-                })
-            });
+            // console.log('Frontend Request:', {
+            //     method: 'POST',
+            //     headers: { 
+            //         'Content-Type': 'application/json',
+            //         'authorization': `Bearer ${session?.user.token}` 
+            //     },
+            //     body: JSON.stringify({ 
+            //         method: 'POST',
+            //         path: 'users/get-user',
+            //         token: session?.user.token,
+            //         params: {
+            //             email: session?.user.email
+            //         }  
+            //     })
+            // });
             
             if( !user_data ) throw user
 
@@ -121,8 +121,8 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     }
 
     useEffect(()=>{
-        if( status === "authenticated")
-            getUser()
+        // if( status === "authenticated")
+        //     getUser()
     }, [ session ])
 
 
@@ -157,7 +157,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                     </pre>
                 </div>
             )}
-
+            <button onClick={getUser} className='bg-blue-500 text-white p-2 rounded-lg'>Obtener Usuario</button>
             <div className='col-span-1 font-bold'>
                 <ul className="inline-table">
                     <Link href="#Information" className='px-5'>
