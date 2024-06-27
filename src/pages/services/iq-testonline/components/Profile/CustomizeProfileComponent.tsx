@@ -74,7 +74,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             // (/api/service/ServicesAsyncRequest)
             const request_user_data = 
             await fetch(process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL as string, {
-                method: 'GET',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ 
                     method: 'POST',
