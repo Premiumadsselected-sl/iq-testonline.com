@@ -5,8 +5,9 @@ export async function POST( req:NextRequest, res: NextResponse ) {
 
     try {
 
-        const { method, path, params, token } = await req.json()
+        const { method, path, params } = await req.json()
         const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string
+        //const token = req.headers.get('Authorization')
         
         // console.log('Backend Request:', {
         //     url: url,
@@ -20,10 +21,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
 
         const request = await fetch( url, {
             method: method,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
+            headers: req.headers,
             body: JSON.stringify(params)
         })
 
