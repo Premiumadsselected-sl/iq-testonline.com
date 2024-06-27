@@ -11,7 +11,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
     console.log('token:', token);
     
     return NextResponse.json({ message: 'POST', request: { 
-        method, path, params
+        method, path, params, token
     } });
 
     // const body = req.body 
