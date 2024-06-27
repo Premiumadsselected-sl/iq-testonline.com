@@ -34,7 +34,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
     }
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
-        debugger
+        
         event.preventDefault()
 
         const formData = new FormData(event.currentTarget)
