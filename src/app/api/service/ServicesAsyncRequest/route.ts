@@ -15,7 +15,9 @@ export async function POST( req:NextRequest, res: NextResponse ) {
         body: JSON.stringify(params)
     })
 
-    return NextResponse.json({ request })
+    const response = await request.json()
+
+    return NextResponse.json({ response })
 
     // const response = await request.json()
 
