@@ -8,14 +8,15 @@ export async function POST( req:NextRequest, res: NextResponse ) {
         const { method, path, params, token } = await req.json()
         const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string
         
-        console.log('Backend Request:', {
-            method: method,
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(params)
-        });
+        // console.log('Backend Request:', {
+        //     url: url,
+        //     method: method,
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'authorization': `Bearer ${token}`
+        //     },
+        //     body: JSON.stringify(params)
+        // });
 
         const request = await fetch( url, {
             method: method,

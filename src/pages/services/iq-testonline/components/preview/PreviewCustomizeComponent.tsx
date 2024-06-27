@@ -27,6 +27,7 @@ export default function PreviewCustomizeComponent({ pageProps }: Props) {
 
     const handleContinue = () => {
         
+        // Valida si el usuario esta autenticado
         if (status === 'unauthenticated') 
             return router.push('/register')
 
