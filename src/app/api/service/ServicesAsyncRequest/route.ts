@@ -1,8 +1,9 @@
 // import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET( req:NextRequest, res: NextResponse ) {
-    return NextResponse.json({ message: 'GET', request: req })
+export async function POST( req:NextRequest, res: NextResponse ) {
+    
+    return NextResponse.json({ message: 'POST', request: req })
     // const body = req.body 
     // const body_backend = JSON.parse(body as unknown as string) 
     // const path = body_backend.path as string
