@@ -19,7 +19,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
 
         const response = await request.json()
 
-        return NextResponse.json(response)
+        return NextResponse.json({token: token, response})
 
     }
 
