@@ -75,10 +75,12 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             const request_user_data = 
             await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.user.token}`
+                },
                 body: JSON.stringify({ 
                     method: 'POST',
-                    token: session?.user.token,
                     path: 'users/get-user',
                     params: {
                         email: session?.user.email,
@@ -87,7 +89,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             })
 
             const user_data = await request_user_data.json()
-            console.log(user_data)
+            
             if( !user_data ) throw user
 
             setUser(user)
