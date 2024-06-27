@@ -121,7 +121,8 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     }
 
     useEffect(()=>{
-        getUser()
+        if( status === "authenticated")
+            getUser()
     }, [ session ])
 
 
