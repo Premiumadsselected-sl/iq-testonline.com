@@ -10,10 +10,6 @@ export async function POST( req:NextRequest, res: NextResponse ) {
         
         const request = await fetch( url, {
             method: method,
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': `Bearer ${token}`
-            },
             body: JSON.stringify(params)
         })
 

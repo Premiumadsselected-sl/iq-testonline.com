@@ -82,7 +82,6 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                 body: JSON.stringify({ 
                     method: 'POST',
                     path: 'users/get-user',
-                    token: session?.user.token,
                     params: {
                         email: session?.user.email
                     }  
