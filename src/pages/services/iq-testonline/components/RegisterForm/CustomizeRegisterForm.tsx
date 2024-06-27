@@ -63,28 +63,30 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
 
             const res_register = await req_register.json()
             console.log(' registro ', res_register)
+
+            return false
         
-            if ( res_register.statusCode !== 200 ) {
-                await errorMessage(res_register.message)
-                return false
-            }
+            // if ( res_register.statusCode !== 200 ) {
+            //     await errorMessage(res_register.message)
+            //     return false
+            // }
 
-            const req_login = signIn('credentials', {
-                email: email, 
-                password: password,
-                redirect: false
-            }).then(async (res)=>{
+            // const req_login = signIn('credentials', {
+            //     email: email, 
+            //     password: password,
+            //     redirect: false
+            // }).then(async (res)=>{
                 
-                if (res?.error) {
-                    await errorMessage(res.error)
-                    return false
-                }
+            //     if (res?.error) {
+            //         await errorMessage(res.error)
+            //         return false
+            //     }
 
-                await successMessage()
-                router.push( `/${locale}/payment`)
-            })
+            //     await successMessage()
+            //     router.push( `/${locale}/payment`)
+            // })
 
-            return req_login
+            // return req_login
         }
 
         catch (error: any) {
