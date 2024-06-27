@@ -59,7 +59,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             // AHORA USAREMOS FETCH A LA API DE NEXT 
             // (/api/service/ServicesAsyncRequest)
             const request_user_data = 
-            await fetch(`${process.env.NEXT_BACKEND_ENDPOINT_URL}`, {
+            await fetch('https://adsdigitalbackend.net/api/users/get-user', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
