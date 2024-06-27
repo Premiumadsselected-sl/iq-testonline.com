@@ -77,7 +77,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${session?.user.token}`
+                    'authorization': `Bearer ${session?.user.token}`
                 },
                 body: JSON.stringify({ 
                     method: 'POST',
