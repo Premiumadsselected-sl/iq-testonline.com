@@ -12,7 +12,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(params)
         })
