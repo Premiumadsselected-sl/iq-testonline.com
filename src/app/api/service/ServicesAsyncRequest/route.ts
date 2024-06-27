@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST( req:NextRequest, res: NextResponse ) {
     
-    return NextResponse.json({ message: 'POST', request: req })
+    return NextResponse.json({ message: 'POST', request: req.body })
     // const body = req.body 
     // const body_backend = JSON.parse(body as unknown as string) 
     // const path = body_backend.path as string
