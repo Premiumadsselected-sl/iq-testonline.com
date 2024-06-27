@@ -3,17 +3,16 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST( req:NextRequest, res: NextResponse ) {
     
-    const { path, params, token } = await req.json()
+    const { method, path, params, token } = await req.json()
 
     const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string
-    //return NextResponse.json({ url, params, token })
     const request = await fetch( url, {
-        method: params.method,
+        method: method,
         headers: {
             'Content-Type': 'application/json',
-            authorization: `Bearer ${token? token : ''}`
+            authorization: `Bearer ${token? token as string : ''}`
         },
-        body: params as string
+        body: JSON.stringify(params)
     })
 
     return NextResponse.json({ request })
