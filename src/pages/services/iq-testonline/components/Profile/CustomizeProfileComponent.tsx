@@ -42,9 +42,9 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         timeZone: Zone
     }
 
-    const route = useRouter()
-    const [path, setPath] = useState('#Information')
-    const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
+    // const route = useRouter()
+    // const [path, setPath] = useState('#Information')
+    // const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
 
     // Usando session y definiendo el usuario en el estado
     const {data: session, status} = useSession()
@@ -113,7 +113,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
 
     useEffect(() => {
-        route.push('#Information');
+        //route.push('#Information');
     }, []);
 
     // useEffect(() => {
@@ -144,7 +144,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                 </div>
             )}
             {/* <button onClick={getUser} className='bg-blue-500 text-white p-2 rounded-lg'>Obtener Usuario</button> */}
-            <div className='col-span-1 font-bold'>
+            {/* <div className='col-span-1 font-bold'>
                 <ul className="inline-table">
                     <Link href="#Information" className='px-5'>
                         <li className={path === '#Information' ? styles.linkUnderline : styles.underline}>
@@ -166,7 +166,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
             <div className='w-full items-center justify-center lg:px-36 xl:px-64'>
                 {componentToShow}
-            </div>
+            </div> */}
 
         </section>
 
