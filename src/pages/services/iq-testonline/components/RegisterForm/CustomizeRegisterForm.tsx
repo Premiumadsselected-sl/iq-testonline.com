@@ -52,7 +52,6 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                 body: JSON.stringify({ 
                     method: 'POST',
                     path: 'auth/register',
-                    token: '11111111',
                     params: { 
                         user_name: user_name,
                         email: email, 
@@ -63,30 +62,27 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
             })
 
             const res_register = await req_register.json()
-
-            console.log(res_register)
             
             if ( res_register.statusCode !== 200 ) {
                 await errorMessage(res_register.message)
                 return false
             }
 
-            const req_login = signIn('credentials', {
+            const req_login = await signIn('credentials', {
                 email: email, 
                 password: password,
                 redirect: false
-            }).then(async (res)=>{
-                
-                if (res?.error) {
-                    await errorMessage(res.error)
-                    return false
-                }
+            });
 
-                await successMessage()
-                router.push( `/${locale}/payment`)
-            })
+            if (req_login?.error) {
+                await errorMessage(req_login.error);
+                return false;
+            }
 
-            return req_login
+            await successMessage();
+            router.push(`/${locale}/payment`);
+            return true;
+
         }
 
         catch (error: any) {
