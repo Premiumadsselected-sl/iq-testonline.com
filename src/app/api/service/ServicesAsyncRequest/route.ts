@@ -3,15 +3,15 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST( req:NextRequest, res: NextResponse ) {
     
-    const { method, path, params, headers } = await req.json();
+    const { method, path, params, token } = await req.json();
     
     console.log('method:', method);
     console.log('path:', path);
     console.log('params:', params);
-    console.log('headers:', headers);
+    console.log('token:', token);
     
     return NextResponse.json({ message: 'POST', request: { 
-        method, path, params, headers
+        method, path, params
     } });
 
     // const body = req.body 
