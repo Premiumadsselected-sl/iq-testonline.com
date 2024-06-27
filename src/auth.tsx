@@ -20,10 +20,10 @@ const Authentication: AuthOptions = {
                 body: JSON.stringify({ 
                     method: 'POST',
                     path: 'auth/login',
-                    params: JSON.stringify({ 
+                    params: { 
                       email: credentials?.email, 
                       password: credentials?.password
-                    })
+                    }
                 })
             })
     
