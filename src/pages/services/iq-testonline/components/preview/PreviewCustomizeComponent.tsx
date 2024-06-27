@@ -17,6 +17,8 @@ type Props = AppProps & {
 export default function PreviewCustomizeComponent({ pageProps }: Props) {
 
     const t = useTranslations('Preview')
+    const router = useRouter()
+    const { status } = useSession()
 
     pageProps = {
         ...pageProps,
@@ -24,8 +26,6 @@ export default function PreviewCustomizeComponent({ pageProps }: Props) {
     }
 
     const handleContinue = () => {
-        const router = useRouter()
-        const { status } = useSession()
         
         if (status === 'unauthenticated') 
             return router.push('/register')
