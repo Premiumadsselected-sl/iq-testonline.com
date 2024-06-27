@@ -48,7 +48,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
             const req_register = 
             await fetch(process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL as string, {
                 method: 'GET',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     method: 'POST',
                     path: 'auth/register',
@@ -62,7 +62,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
             })
 
             const res_register = await req_register.json()
-            
+            console.log(' registro ', res_register)
         
             if ( res_register.statusCode !== 200 ) {
                 await errorMessage(res_register.message)
