@@ -87,7 +87,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             })
 
             const user_data = await request_user_data.json()
-
+            console.log(user_data)
             if( !user_data ) throw user
 
             setUser(user)
