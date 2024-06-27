@@ -52,63 +52,63 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
     // Metodo para traer los datos del usuario, 
     // Puesdes usar la forma que quieras para hacer la peticion.
-    // const getUser = async () => {
+    const getUser = async () => {
         
-    //     try{
+        try{
             
-    //         // AHORA USAREMOS FETCH A LA API DE NEXT 
-    //         // (/api/service/ServicesAsyncRequest)
-    //         const request_user_data = 
-    //         await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
-    //             method: 'POST',
-    //             headers: { 
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${session?.user.token}` 
-    //             },
-    //             body: JSON.stringify({ 
-    //                 method: 'POST',
-    //                 path: 'users/get-user',
-    //                 token: session?.user.token,
-    //                 params: {
-    //                     email: session?.user.email
-    //                 }  
-    //             })
-    //         })
+            // AHORA USAREMOS FETCH A LA API DE NEXT 
+            // (/api/service/ServicesAsyncRequest)
+            const request_user_data = 
+            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.user.token}` 
+                },
+                body: JSON.stringify({ 
+                    method: 'POST',
+                    path: 'users/get-user',
+                    token: session?.user.token,
+                    params: {
+                        email: session?.user.email
+                    }  
+                })
+            })
 
-    //         const user_data = await request_user_data.json()
+            const user_data = await request_user_data.json()
 
-    //         // console.log('Frontend Request:', {
-    //         //     method: 'POST',
-    //         //     headers: { 
-    //         //         'Content-Type': 'application/json',
-    //         //         'authorization': `Bearer ${session?.user.token}` 
-    //         //     },
-    //         //     body: JSON.stringify({ 
-    //         //         method: 'POST',
-    //         //         path: 'users/get-user',
-    //         //         token: session?.user.token,
-    //         //         params: {
-    //         //             email: session?.user.email
-    //         //         }  
-    //         //     })
-    //         // });
+            // console.log('Frontend Request:', {
+            //     method: 'POST',
+            //     headers: { 
+            //         'Content-Type': 'application/json',
+            //         'authorization': `Bearer ${session?.user.token}` 
+            //     },
+            //     body: JSON.stringify({ 
+            //         method: 'POST',
+            //         path: 'users/get-user',
+            //         token: session?.user.token,
+            //         params: {
+            //             email: session?.user.email
+            //         }  
+            //     })
+            // });
             
-    //         if( !user_data ) throw user
+            if( !user_data ) throw user
 
-    //         setUser(user)
+            setUser(user)
             
-    //         return user
-    //     }
+            return user
+        }
 
-    //     catch( error ){
-    //         return false
-    //     }
+        catch( error ){
+            return false
+        }
         
-    // }
+    }
 
     useEffect(()=>{
-        // if( status === "authenticated")
-        //     getUser()
+        if( status === "authenticated")
+            getUser()
     }, [ session ])
 
 
