@@ -19,11 +19,14 @@ export async function POST( req:NextRequest, res: NextResponse ) {
     
         const response = await request.json()
 
+        console.log('response', response)
+
         return NextResponse.json(response)
 
     }
 
     catch ( error ) {
+        console.log('error', error)
         return NextResponse.json(error)
     } 
 
