@@ -66,11 +66,3 @@ export async function GET( req:NextRequest, res: NextResponse ) {
     // } 
 
 }
-
-export const config = {
-    api: {
-        bodyParser: {
-            sizeLimit: '1mb'
-        }
-    }
-}
