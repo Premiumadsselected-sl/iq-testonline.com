@@ -1,4 +1,4 @@
-import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
+// import {ServicesAsyncRequestInterface} from '@/interfaces/IServicesAsyncRequest'
 import { NextRequest, NextResponse } from 'next/server'
 
 // export default async function 
@@ -57,7 +57,7 @@ export async function GET( req:NextRequest, res: NextResponse ) {
     
     //     const response = await request.json()  
 
-    //     return response
+    //     return responsetest
 
     // }
 
@@ -65,4 +65,12 @@ export async function GET( req:NextRequest, res: NextResponse ) {
     //     return error
     // } 
 
+}
+
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb'
+        }
+    }
 }
