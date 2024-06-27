@@ -8,11 +8,12 @@ export async function POST( req:NextRequest, res: NextResponse ) {
     console.log('method:', method);
     console.log('path:', path);
     console.log('params:', params);
+    console.log('headers:', headers);
     
     return NextResponse.json({ message: 'POST', request: { 
         method, path, params, headers
     } });
-    
+
     // const body = req.body 
     // const body_backend = JSON.parse(body as unknown as string) 
     // const path = body_backend.path as string
