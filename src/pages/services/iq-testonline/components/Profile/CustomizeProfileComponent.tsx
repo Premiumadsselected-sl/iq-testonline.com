@@ -90,6 +90,22 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             })
 
             const user_data = await request_user_data.json()
+
+            console.log('Frontend Request:', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${session?.user.token}` 
+                },
+                body: JSON.stringify({ 
+                    method: 'POST',
+                    path: 'users/get-user',
+                    token: session?.user.token,
+                    params: {
+                        email: session?.user.email
+                    }  
+                })
+            });
             
             if( !user_data ) throw user
 
