@@ -3,7 +3,13 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST( req:NextRequest, res: NextResponse ) {
     
-    return NextResponse.json({ message: 'POST', request: req.body })
+    const { method, path, params } = await req.json();
+    
+    console.log('method:', method);
+    console.log('path:', path);
+    console.log('params:', params);
+    
+    return NextResponse.json({ message: 'POST', request: { method, path, params } });
     // const body = req.body 
     // const body_backend = JSON.parse(body as unknown as string) 
     // const path = body_backend.path as string

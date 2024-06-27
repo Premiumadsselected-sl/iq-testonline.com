@@ -52,12 +52,12 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                 body: JSON.stringify({ 
                     method: 'POST',
                     path: 'auth/register',
-                    params: JSON.stringify({ 
+                    params: { 
                         user_name: user_name,
                         email: email, 
                         password: password,
                         remember_me
-                    })
+                    }
                 })
             })
 
