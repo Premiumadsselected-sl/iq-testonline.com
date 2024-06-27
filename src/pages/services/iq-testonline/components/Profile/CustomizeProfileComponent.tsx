@@ -52,73 +52,59 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
     // Metodo para traer los datos del usuario, 
     // Puesdes usar la forma que quieras para hacer la peticion.
-    const getUser = async () => {
+    // const getUser = async () => {
         
-        try{
+    //     try{
             
-            // ¡¡¡¡ YANO USAREMOS ESTO !!!!
-            // Usa la funcion `ServicesAsyncRequest` para hacer la peticion.
-            // La session siempre tienes enviarla como parametro para la autorizacion.
-            // const user = await ServicesAsyncRequest({
-            //     method: 'POST', 
-            //     path: 'users/get-user', 
-            //     body: JSON.stringify({ 
-            //         email: session?.user.email
-            //     }),
-            //     session: session
-            // }) 
-            // Nota: Usa este metodo preferentemente 
-            // para hacer peticiones al backend.
+    //         // AHORA USAREMOS FETCH A LA API DE NEXT 
+    //         // (/api/service/ServicesAsyncRequest)
+    //         const request_user_data = 
+    //         await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
+    //             method: 'POST',
+    //             headers: { 
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${session?.user.token}` 
+    //             },
+    //             body: JSON.stringify({ 
+    //                 method: 'POST',
+    //                 path: 'users/get-user',
+    //                 token: session?.user.token,
+    //                 params: {
+    //                     email: session?.user.email
+    //                 }  
+    //             })
+    //         })
+
+    //         const user_data = await request_user_data.json()
+
+    //         // console.log('Frontend Request:', {
+    //         //     method: 'POST',
+    //         //     headers: { 
+    //         //         'Content-Type': 'application/json',
+    //         //         'authorization': `Bearer ${session?.user.token}` 
+    //         //     },
+    //         //     body: JSON.stringify({ 
+    //         //         method: 'POST',
+    //         //         path: 'users/get-user',
+    //         //         token: session?.user.token,
+    //         //         params: {
+    //         //             email: session?.user.email
+    //         //         }  
+    //         //     })
+    //         // });
             
-            // AHORA USAREMOS FETCH A LA API DE NEXT 
-            // (/api/service/ServicesAsyncRequest)
-            const request_user_data = 
-            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${session?.user.token}` 
-                },
-                body: JSON.stringify({ 
-                    method: 'POST',
-                    path: 'users/get-user',
-                    token: session?.user.token,
-                    params: {
-                        email: session?.user.email
-                    }  
-                })
-            })
+    //         if( !user_data ) throw user
 
-            const user_data = await request_user_data.json()
-
-            // console.log('Frontend Request:', {
-            //     method: 'POST',
-            //     headers: { 
-            //         'Content-Type': 'application/json',
-            //         'authorization': `Bearer ${session?.user.token}` 
-            //     },
-            //     body: JSON.stringify({ 
-            //         method: 'POST',
-            //         path: 'users/get-user',
-            //         token: session?.user.token,
-            //         params: {
-            //             email: session?.user.email
-            //         }  
-            //     })
-            // });
+    //         setUser(user)
             
-            if( !user_data ) throw user
+    //         return user
+    //     }
 
-            setUser(user)
-            
-            return user
-        }
-
-        catch( error ){
-            return false
-        }
+    //     catch( error ){
+    //         return false
+    //     }
         
-    }
+    // }
 
     useEffect(()=>{
         // if( status === "authenticated")
@@ -130,18 +116,18 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         route.push('#Information');
     }, []);
 
-    useEffect(() => {
-        const pathSelected = route.asPath;
+    // useEffect(() => {
+    //     const pathSelected = route.asPath;
 
-        setPath(pathSelected);
-        console.log(pathSelected)
-        console.log(route)
+    //     setPath(pathSelected);
+    //     console.log(pathSelected)
+    //     console.log(route)
 
-        if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
-        if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
-        if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
+    //     if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
+    //     if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
+    //     if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
 
-    }, [route.asPath])
+    // }, [route.asPath])
 
     return (<>
 
@@ -157,7 +143,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                     </pre>
                 </div>
             )}
-            <button onClick={getUser} className='bg-blue-500 text-white p-2 rounded-lg'>Obtener Usuario</button>
+            {/* <button onClick={getUser} className='bg-blue-500 text-white p-2 rounded-lg'>Obtener Usuario</button> */}
             <div className='col-span-1 font-bold'>
                 <ul className="inline-table">
                     <Link href="#Information" className='px-5'>
