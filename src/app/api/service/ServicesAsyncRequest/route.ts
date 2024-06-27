@@ -10,12 +10,12 @@ export async function POST( req:NextRequest, res: NextResponse ) {
         
         const request = await fetch( url, {
             method: method,
-            body: JSON.stringify(params)
+            body: params
         })
 
         const response = await request.json()
 
-        return NextResponse.json({paramas: JSON.stringify(params), response})
+        return NextResponse.json({paramas: params, response})
 
     }
 
