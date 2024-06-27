@@ -14,7 +14,7 @@ const Authentication: AuthOptions = {
         },
         async authorize(credentials) {
 
-            const req = await fetch(process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL as string, {
+            const req = await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ 

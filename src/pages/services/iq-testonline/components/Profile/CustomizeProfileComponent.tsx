@@ -73,7 +73,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             // AHORA USAREMOS FETCH A LA API DE NEXT 
             // (/api/service/ServicesAsyncRequest)
             const request_user_data = 
-            await fetch(process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL as string, {
+            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ 
