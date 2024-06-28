@@ -61,7 +61,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             // (/api/service/ServicesAsyncRequest)
             // NOTA: Lo dejo aqui ya lo cambiaras a redux
             const request_user_data = 
-            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
+            await fetch(`https://iq-testonline-com-git-dev-ads-digital.vercel.app/api/service/ServicesAsyncRequest`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
