@@ -77,7 +77,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             })
 
             const user_data = await request_user_data.json()
-            console.log('user data: ', user_data)
+            
             if( !user_data ) throw user
 
             setUser(user)
@@ -92,9 +92,9 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     }
 
     useEffect(()=>{
-        // if( status === "authenticated")
+        if( status === "authenticated")
             getUser()
-    }, [ session ])
+    }, [ session, user ])
 
 
     useEffect(() => {
