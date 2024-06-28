@@ -13,13 +13,17 @@ const Authentication: AuthOptions = {
           password: {type: 'password'}
         },
         async authorize(credentials) {
-            
-            const req = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${'auth/login'}`, {
-                headers: { 'Content-Type': 'application/json', },
+
+            const req = await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
                 method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ 
-                  email: credentials?.email, 
-                  password: credentials?.password
+                    method: 'POST',
+                    path: 'auth/login',
+                    params: { 
+                      email: credentials?.email, 
+                      password: credentials?.password
+                    }
                 })
             })
     

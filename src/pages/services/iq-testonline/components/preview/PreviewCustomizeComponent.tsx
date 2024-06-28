@@ -1,7 +1,12 @@
+'use client'
 import { AppProps } from 'next/app'
 import { useTranslations } from 'next-intl'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/navigation'
+
+// Usa la session para obtener el 
+// usuario y comprovar que este logeado.
+import { useSession } from 'next-auth/react'
 
 import Image from 'next/image'
 
@@ -12,6 +17,8 @@ type Props = AppProps & {
 export default function PreviewCustomizeComponent({ pageProps }: Props) {
 
     const t = useTranslations('Preview')
+    const router = useRouter()
+    const { status } = useSession()
 
     pageProps = {
         ...pageProps,
@@ -19,8 +26,14 @@ export default function PreviewCustomizeComponent({ pageProps }: Props) {
     }
 
     const handleContinue = () => {
-        const router = useRouter()
-        router.push('/payment');
+        
+        // Valida si el usuario esta autenticado
+        if (status === 'unauthenticated') 
+            return router.push('/register')
+
+        // TODO: Falta la comprovacion de la subscripcion
+        
+        router.push('/payment')
     }
 
     return (

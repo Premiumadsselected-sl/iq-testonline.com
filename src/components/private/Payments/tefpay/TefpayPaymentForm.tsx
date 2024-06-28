@@ -60,24 +60,26 @@ export const TefpayPaymentForm = () => {
         
         try{
 
-            const req = await fetch( '/api/service/auth-subscription', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    "data": {
-                        "create_payment_token": {
-                            "payment_token": paymentToken,
-                            "user_email": user_email
-                        }
-                    }
-                })
-            })
+            // const req = await fetch( '/api/service/auth-subscription', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         "data": {
+            //             "create_payment_token": {
+            //                 "payment_token": paymentToken,
+            //                 "user_email": user_email
+            //             }
+            //         }
+            //     })
+            // })
     
-            const res = await req.json()
-            return res
+            // const res = await req.json()
+            // return res
+
+            return { error: false }
     
         } catch ( error ) {
-            return error
+            return {error}
         }
 
     }
@@ -140,7 +142,7 @@ export const TefpayPaymentForm = () => {
         setSuscriptionDescription(`NUEVA SUSCRIPCION EN - /${locale} `)
 
         createPaymentToken(paymentToken).then( ( result ) => {
-            if( result.error ) setPaymentToken('')
+            if( result?.error ) setPaymentToken('')
             else setPaymentToken(`${matchingData}-${signature}`)
         })
 

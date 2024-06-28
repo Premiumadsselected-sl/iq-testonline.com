@@ -15,7 +15,6 @@ import Link from 'next/link'
 
 // Imports
 import { useSession } from "next-auth/react"
-import ServicesAsyncRequest from "@/utils/ServicesAsyncRequest"
 
 //Styles
 import styles from '@/pages/services/iq-testonline/styles/ProfileStyles.module.css'
@@ -43,9 +42,9 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         timeZone: Zone
     }
 
-    const route = useRouter()
-    const [path, setPath] = useState('#Information')
-    const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
+    // const route = useRouter()
+    // const [path, setPath] = useState('#Information')
+    // const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
 
     // Usando session y definiendo el usuario en el estado
     const {data: session, status} = useSession()
@@ -54,50 +53,48 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     // Metodo para traer los datos del usuario, 
     // Puesdes usar la forma que quieras para hacer la peticion.
     const getUser = async () => {
-        
+
+        // LOGGING
+        console.log('Frontend Request:', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${session?.user.token}` 
+            },
+            body: JSON.stringify({ 
+                method: 'POST',
+                path: 'users/get-user',
+                token: session?.user.token,
+                params: {
+                    email: session?.user.email
+                }  
+            })
+        })
+
         try{
             
-            // // Usa la funcion `ServicesAsyncRequest` para hacer la peticion.
-            // // La session siempre tienes enviarla como parametro para la autorizacion.
-            // const user = await ServicesAsyncRequest({
-            //     method: 'POST', 
-            //     path: 'users/get-user', 
-            //     body: JSON.stringify({ 
-            //         email: session?.user.email
-            //     }),
-            //     session: session
-            // }) 
-            // // Nota: Usa este metodo preferentemente 
-            // // para hacer peticiones al backend.
+            // AHORA USAREMOS FETCH A LA API DE NEXT 
+            // (/api/service/ServicesAsyncRequest)
+            const request_user_data = 
+            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.user.token}` 
+                },
+                body: JSON.stringify({ 
+                    method: 'POST',
+                    path: 'users/get-user',
+                    token: session?.user.token,
+                    params: {
+                        email: session?.user.email
+                    }  
+                })
+            })
 
-            // // Ejemplo de como hacer una peticion para obtener la data
-            // const get_user_data = await ServicesAsyncRequest({
-            //     method: 'POST', 
-            //     path: 'auth/get-user-data', 
-            //     body: JSON.stringify({
-            //         "id": "string",
-            //         "email": "string"
-            //     }),
-            //     session: session
-            // }) 
+            const user_data = await request_user_data.json()
 
-            // get_user_data.fulano = ''
-            // // Actualizas la data 
-            // const new_user_data = {  }
-
-            // // Ejemplo de como hacer una peticion para obtener la data
-            // const update_user_data = await ServicesAsyncRequest({
-            //     method: 'PUT', 
-            //     path: 'auth/update-user-data', 
-            //     body: JSON.stringify({
-            //         "id": "string",
-            //         "email": "string"
-            //     }),
-            //     session: session
-            // }) 
-            
-
-            if( !user ) throw user
+            if( !user_data ) throw user
 
             setUser(user)
             
@@ -111,26 +108,27 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     }
 
     useEffect(()=>{
-        getUser()
+        if( status === "authenticated")
+            getUser()
     }, [ session ])
 
 
     useEffect(() => {
-        route.push('#Information');
+        //route.push('#Information');
     }, []);
 
-    useEffect(() => {
-        const pathSelected = route.asPath;
+    // useEffect(() => {
+    //     const pathSelected = route.asPath;
 
-        setPath(pathSelected);
-        console.log(pathSelected)
-        console.log(route)
+    //     setPath(pathSelected);
+    //     console.log(pathSelected)
+    //     console.log(route)
 
-        if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
-        if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
-        if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
+    //     if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
+    //     if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
+    //     if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
 
-    }, [route.asPath])
+    // }, [route.asPath])
 
     return (<>
 
@@ -146,8 +144,8 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                     </pre>
                 </div>
             )}
-
-            <div className='col-span-1 font-bold'>
+            {/* <button onClick={getUser} className='bg-blue-500 text-white p-2 rounded-lg'>Obtener Usuario</button> */}
+            {/* <div className='col-span-1 font-bold'>
                 <ul className="inline-table">
                     <Link href="#Information" className='px-5'>
                         <li className={path === '#Information' ? styles.linkUnderline : styles.underline}>
@@ -169,7 +167,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
             <div className='w-full items-center justify-center lg:px-36 xl:px-64'>
                 {componentToShow}
-            </div>
+            </div> */}
 
         </section>
 

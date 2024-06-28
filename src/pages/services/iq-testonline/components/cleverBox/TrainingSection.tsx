@@ -4,11 +4,6 @@ import { AppProps } from "next/app"
 import { GetStaticPropsContext } from 'next'
 import { useEffect, useState } from "react"
 
-// Import ServicesAsyncRequest utility, auth from firebase and resolve from url
-import ServicesAsyncRequest from '@/utils/ServicesAsyncRequest'
-// import { auth } from '@/configs/firebase/config'
-import { resolve } from 'url'
-
 //Context
 import { useDispatch, useSelector } from "react-redux"
 import { progressTest } from '@/contexts/redux/timerSlice'

@@ -44,41 +44,45 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
         const password = formData.get('password')
         
         try {
-            
-            const req_register = await fetch( `${process.env.NEXT_PUBLIC_ENDPOINT_URL}${'auth/register'}`, {
-                headers: { 'Content-Type': 'application/json', },
+
+            const req_register = 
+            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
                 method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    user_name: user_name,
-                    email: email, 
-                    password: password,
-                    remember_me
+                    method: 'POST',
+                    path: 'auth/register',
+                    params: { 
+                        user_name: user_name,
+                        email: email, 
+                        password: password,
+                        remember_me
+                    }
                 })
             })
 
-            const res_register = await req_register.json() 
-        
+            const res_register = await req_register.json()
+            
             if ( res_register.statusCode !== 200 ) {
                 await errorMessage(res_register.message)
                 return false
             }
 
-            const req_login = signIn('credentials', {
+            const req_login = await signIn('credentials', {
                 email: email, 
                 password: password,
                 redirect: false
-            }).then(async (res)=>{
-                
-                if (res?.error) {
-                    await errorMessage(res.error)
-                    return false
-                }
+            });
 
-                await successMessage()
-                router.push( `/${locale}/payment`)
-            })
+            if (req_login?.error) {
+                await errorMessage(req_login.error);
+                return false;
+            }
 
-            return req_login
+            await successMessage();
+            router.push(`/${locale}/payment`);
+            return true;
+
         }
 
         catch (error: any) {
