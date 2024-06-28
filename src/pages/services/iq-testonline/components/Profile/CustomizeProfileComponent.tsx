@@ -10,8 +10,8 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 // Ejemplo: Como se usan las peticiones al backend.
-// Importa el hook useSession de next-auth/react y el 
-// metodo ServicesAsyncRequest de '@/utils/ServicesAsyncRequest'
+// Importa el hook useSession de next-auth/react para 
+// obtener el token en session.
 
 // Imports
 import { useSession } from "next-auth/react"
@@ -42,10 +42,11 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         timeZone: Zone
     }
 
-    // const route = useRouter()
-    // const [path, setPath] = useState('#Information')
-    // const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
+    const route = useRouter()
+    const [path, setPath] = useState('#Information')
+    const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
 
+    // Ejemplo de uso de la sesion
     // Usando session y definiendo el usuario en el estado
     const {data: session, status} = useSession()
     const [user, setUser] = useState(null)
@@ -54,38 +55,21 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     // Puesdes usar la forma que quieras para hacer la peticion.
     const getUser = async () => {
 
-        // LOGGING
-        console.log('Frontend Request:', {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'authorization': `Bearer ${session?.user.token}` 
-            },
-            body: JSON.stringify({ 
-                method: 'POST',
-                path: 'users/get-user',
-                token: session?.user.token,
-                params: {
-                    email: session?.user.email
-                }  
-            })
-        })
-
         try{
             
             // AHORA USAREMOS FETCH A LA API DE NEXT 
             // (/api/service/ServicesAsyncRequest)
+            // NOTA: Lo dejo aqui ya lo cambiaras a redux
             const request_user_data = 
             await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${session?.user.token}` 
+                    'Authorization': session?.user.token as string 
                 },
                 body: JSON.stringify({ 
                     method: 'POST',
                     path: 'users/get-user',
-                    token: session?.user.token,
                     params: {
                         email: session?.user.email
                     }  
@@ -114,21 +98,21 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
 
     useEffect(() => {
-        //route.push('#Information');
+        route.push('#Information');
     }, []);
 
-    // useEffect(() => {
-    //     const pathSelected = route.asPath;
+    useEffect(() => {
+        const pathSelected = route.asPath;
 
-    //     setPath(pathSelected);
-    //     console.log(pathSelected)
-    //     console.log(route)
+        setPath(pathSelected);
+        console.log(pathSelected)
+        console.log(route)
 
-    //     if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
-    //     if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
-    //     if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
+        if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
+        if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
+        if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
 
-    // }, [route.asPath])
+    }, [route.asPath])
 
     return (<>
 
@@ -144,8 +128,8 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                     </pre>
                 </div>
             )}
-            {/* <button onClick={getUser} className='bg-blue-500 text-white p-2 rounded-lg'>Obtener Usuario</button> */}
-            {/* <div className='col-span-1 font-bold'>
+            
+            <div className='col-span-1 font-bold'>
                 <ul className="inline-table">
                     <Link href="#Information" className='px-5'>
                         <li className={path === '#Information' ? styles.linkUnderline : styles.underline}>
@@ -167,7 +151,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
             <div className='w-full items-center justify-center lg:px-36 xl:px-64'>
                 {componentToShow}
-            </div> */}
+            </div>
 
         </section>
 
