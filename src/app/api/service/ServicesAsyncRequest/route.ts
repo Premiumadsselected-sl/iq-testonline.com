@@ -15,7 +15,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': `Bearer ${token}`
+                'authorization': `${token}`
             },
             body: JSON.stringify(params)
         });
@@ -25,7 +25,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `${token}`
             },
             body: JSON.stringify(params)
         })
