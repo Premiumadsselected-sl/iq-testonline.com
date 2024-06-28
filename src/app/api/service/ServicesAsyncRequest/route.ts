@@ -3,21 +3,28 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST( req:NextRequest, res: NextResponse ) {
 
+    
+
+
     try {
 
         const { method, path, params } = await req.json()
         const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string
         const token = req.headers.get('Authorization')
-        // console.log('Backend Request:', {
-        //     url: url,
-        //     method: method,
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'authorization': `Bearer ${token}`
-        //     },
-        //     body: JSON.stringify(params)
-        // });
+       
+        // LOGGING
+        console.log('Backend Request:', {
+            url: url,
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(params)
+        });
 
+
+        
         const request = await fetch( url, {
             method: method,
             headers: {
