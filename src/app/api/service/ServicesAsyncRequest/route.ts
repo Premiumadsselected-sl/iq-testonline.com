@@ -23,7 +23,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
         }
 
         const response = await request.json()
-        return NextResponse.json({method, token, params, path})
+        return NextResponse.json(request)
 
     }
 
@@ -32,3 +32,12 @@ export async function POST( req:NextRequest, res: NextResponse ) {
     } 
 
 }
+
+// {
+//     "method": "POST",
+//     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZXh0ZXN0MUBtYWlsLmNvbSIsInJvbGUiOiJzdWJzY3JpYmVyIiwiaWF0IjoxNzE5NTg2ODcwLCJleHAiOjE3MTk2NzMyNzB9.1dUzhssvtpB5j5YePUR8PqJ5EJ7JTVXteubtuAcUsWU",
+//     "params": {
+//         "email": "alextest1@mail.com"
+//     },
+//     "path": "users/get-user"
+// }
