@@ -23,7 +23,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
         // }
 
         // const response = await request.json()
-        return NextResponse.json(method)
+        return NextResponse.json({method, token, params, path})
 
     }
 
