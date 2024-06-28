@@ -21,11 +21,8 @@ export async function POST( req:NextRequest, res: NextResponse ) {
             return NextResponse.json(errorResponse, { status: request.status });
         }
 
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         const response = await request.json();
-        console.log(response);
         return NextResponse.json(response);
-
     }
 
     catch ( error ) {
