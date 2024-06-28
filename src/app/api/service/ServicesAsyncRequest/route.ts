@@ -24,7 +24,6 @@ export async function POST( req:NextRequest, res: NextResponse ) {
         });
 
 
-        
         const request = await fetch( url, {
             method: method,
             headers: {

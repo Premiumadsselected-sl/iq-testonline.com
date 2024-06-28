@@ -69,10 +69,8 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                     email: session?.user.email
                 }  
             })
-        });
+        })
 
-
-        
         try{
             
             // AHORA USAREMOS FETCH A LA API DE NEXT 
