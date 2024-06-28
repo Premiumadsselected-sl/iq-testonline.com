@@ -78,11 +78,11 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
             const user_data = await request_user_data.json()
             
-            if( !user_data ) throw user
+            if( !user_data ) throw user_data
 
-            setUser(user)
+            setUser(user_data)
             
-            return user
+            return user_data
         }
 
         catch( error ){
@@ -92,9 +92,9 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     }
 
     useEffect(()=>{
-        // if( status === "authenticated")
+        if( status === "authenticated")
             getUser()
-    }, [ session, user ])
+    }, [ session ])
 
 
     useEffect(() => {
