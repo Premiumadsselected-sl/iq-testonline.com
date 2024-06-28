@@ -67,7 +67,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                 },
                 body: JSON.stringify({ 
                     method: 'POST',
-                    path: 'users/get-user',
+                    path: 'users/get-user-profile',
                     params: {
                         email: session?.user.email
                     }  
@@ -93,7 +93,6 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         if( status === "authenticated")
             getUser()
     }, [ session ])
-
 
     useEffect(() => {
         route.push('#Information');
