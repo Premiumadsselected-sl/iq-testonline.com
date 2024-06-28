@@ -42,9 +42,9 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         timeZone: Zone
     }
 
-    // const route = useRouter()
-    // const [path, setPath] = useState('#Information')
-    // const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
+    const route = useRouter()
+    const [path, setPath] = useState('#Information')
+    const [componentToShow, setComponentToShow] = useState(<Information {...pageProps}/>)
 
     // Ejemplo de uso de la sesion
     // Usando session y definiendo el usuario en el estado
@@ -56,9 +56,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     const getUser = async () => {
 
         try{
-            
-            // AHORA USAREMOS FETCH A LA API DE NEXT 
-            // (/api/service/ServicesAsyncRequest)
+        
             // NOTA: Lo dejo aqui ya lo cambiaras a redux
             const request_user_data = 
             await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
@@ -98,21 +96,21 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
 
     useEffect(() => {
-        // route.push('#Information');
+        route.push('#Information');
     }, []);
 
-    // useEffect(() => {
-    //     const pathSelected = route.asPath;
+    useEffect(() => {
+        const pathSelected = route.asPath;
 
-    //     setPath(pathSelected);
-    //     console.log(pathSelected)
-    //     console.log(route)
+        setPath(pathSelected);
+        console.log(pathSelected)
+        console.log(route)
 
-    //     if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
-    //     if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
-    //     if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
+        if (pathSelected === '/profile#Information') setComponentToShow(<Information {...pageProps} />);
+        if (pathSelected === '/profile#Update-Password') setComponentToShow(<UpdatePassword  {...pageProps} />);
+        if (pathSelected === '/profile#My-Offer') setComponentToShow(<MyOffer {...pageProps} />);
 
-    // }, [route.asPath])
+    }, [route.asPath])
 
     return (<>
 
@@ -129,7 +127,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
                 </div>
             )}
             
-            {/* <div className='col-span-1 font-bold'>
+            <div className='col-span-1 font-bold'>
                 <ul className="inline-table">
                     <Link href="#Information" className='px-5'>
                         <li className={path === '#Information' ? styles.linkUnderline : styles.underline}>
@@ -151,7 +149,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
 
             <div className='w-full items-center justify-center lg:px-36 xl:px-64'>
                 {componentToShow}
-            </div> */}
+            </div>
 
         </section>
 
