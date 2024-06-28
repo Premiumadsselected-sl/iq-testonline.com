@@ -3,29 +3,28 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function POST( req:NextRequest, res: NextResponse ) {
 
     try {
+        const { method, path, params } = await req.json();
+        const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string;
+        const token = req.headers.get('Authorization');
 
-        const { method, path, params } = await req.json()
-        const url = `${process.env.NEXT_BACKEND_ENDPOINT_URL}${path}` as string
-        const token = req.headers.get('Authorization')
-
-        const request = await fetch( url, {
+        const request = await fetch(url, {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(params)
-        })
+            body: JSON.stringify(params),
+        });
 
         if (!request.ok) {
-            const errorResponse = await request.json()
-            return NextResponse.json(errorResponse, { status: request.status })
+            const errorResponse = await request.json();
+            return NextResponse.json(errorResponse, { status: request.status });
         }
 
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        console.log(request)
-        const response = await request.json()
-        return NextResponse.json({request})
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        const response = await request.json();
+        console.log(response);
+        return NextResponse.json(response);
 
     }
 
