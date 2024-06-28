@@ -3,9 +3,6 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST( req:NextRequest, res: NextResponse ) {
 
-    
-
-
     try {
 
         const { method, path, params } = await req.json()
@@ -23,7 +20,7 @@ export async function POST( req:NextRequest, res: NextResponse ) {
             body: JSON.stringify(params)
         });
 
-
+        // Peticion al backend
         const request = await fetch( url, {
             method: method,
             headers: {
