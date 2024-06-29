@@ -127,31 +127,44 @@ export const TefpayPaymentForm = () => {
 
     useEffect(() =>{
 
-        const matchingData = String(new Date().toISOString().replace(/[^0-9]/g, '')).padEnd(21, '0')
-        const merchantURL = tefpay_notyfi_url
-        const signature = createSubscriptionSignature(
-            merchantSharedkey as string,
-            merchantCode as string,
-            trial_amount as string,
-            matchingData as string,
-            merchantURL as string
-        )
-        
-        const paymentToken = `${matchingData}-${signature}`
+        if ( status === "loading" ) 
+            setLoading(true)
 
-        setSignature( signature )
-        setMatchingData( matchingData )
-        setSuscriptionAccount( matchingData )
-        setPaymentId( matchingData )
-        setUserEmail( user_email )
-        setPaymentDescription( `NUEVO PAGO EN - /${locale} `)
-        setSuscriptionDescription(`NUEVA SUSCRIPCION EN - /${locale} `)
-        
-        savePayment(paymentToken).then( res => {
-            if( res.error ) console.error(res.error)
-        })
+        else if ( status === "authenticated" ) {
+            const matchingData = String(new Date().toISOString().replace(/[^0-9]/g, '')).padEnd(21, '0')
+            const merchantURL = tefpay_notyfi_url
+            const signature = createSubscriptionSignature(
+                merchantSharedkey as string,
+                merchantCode as string,
+                trial_amount as string,
+                matchingData as string,
+                merchantURL as string
+            )
+            
+            const paymentToken = `${matchingData}-${signature}`
 
-    }, [])
+            setSignature( signature )
+            setMatchingData( matchingData )
+            setSuscriptionAccount( matchingData )
+            setPaymentId( matchingData )
+            setUserEmail( user_email )
+            setPaymentDescription( `NUEVO PAGO EN - /${locale} `)
+            setSuscriptionDescription(`NUEVA SUSCRIPCION EN - /${locale} `)
+            
+            savePayment(paymentToken).then( res => {
+                if( res.error ) { 
+                    console.error(res.error) 
+                    return false 
+                }
+                else { setPaymentToken(paymentToken) }
+            })
+
+        }
+
+            
+
+
+    }, [session])
 
     useEffect(() => {
         
