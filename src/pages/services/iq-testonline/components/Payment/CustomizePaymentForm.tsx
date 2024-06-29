@@ -76,6 +76,7 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
                                         </label>
                                         <label
                                             className="mt-px cursor-pointer select-none font-light text-gray-700"
+                                            htmlFor="checkbox"
                                         >
                                             {t('accept_conditions')}
                                         </label>

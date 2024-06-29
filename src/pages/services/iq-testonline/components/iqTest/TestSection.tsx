@@ -103,21 +103,24 @@ export default function TestSection({ pageProps }: Props) {
 
         if (Object.keys(updatedAnswers).length === 20) {
 
-            // Get the response from the server
-            // const user = auth.currentUser
-            // const token = await user?.getIdToken()
-            // const req = await ServicesAsyncRequest({
-            //     method: 'POST', path: '/api/auth-subscription',
-            //     body: JSON.stringify({
-            //         token: token,
-            //         user: user,
-            //         data: updatedAnswers
-            //     })
-            // })
-
-            // Resolve the response
-            // const res = await req.json()
-            // return resolve(process.env.NEXT_PUBLIC_SERVICE_DOMAIN as string, res.url)
+            // Aqui analizamos las respuestas
+            // y actualizamos user_data 
+            // usa -> PATH : auth/update-user-data
+            // para que luego puedas usar estos datos 
+            // en la pagina de resultados, no creo que tengas 
+            // la necesidad de ir haciendo peticiones al servidor 
+            // para ir guardando o actualizando user_data con cada 
+            // pregunta o interaccion , en el test primero recopilas 
+            // todas las respuestas y al final actalizas user_data, 
+            // en el caso de training usa la misma mecanica intenta no hacer 
+            // peticiones al servidor por cada interaccion, recopila todas las
+            // interacciones y al final actualiza user_data.
+            // saviendo que user_data es un objeto que se guarda en la bd
+            // y que necesitas traerlo en cada pagina para poder usarlo y actualizarlo
+            // talvez podria hacer un hook personalizado en el servicio 👀
+            // que se encargue de traer user_data y actualizarlo , dejo esto a tu eleccion
+            // por que se lo podriamos añadir al marco mas adelante cuando tengamos mas
+            // servicios que lo necesiten y seria una funcionalidad comun a todos los servicios
 
             return true
         }
