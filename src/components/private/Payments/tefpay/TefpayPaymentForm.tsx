@@ -35,8 +35,8 @@ export const TefpayPaymentForm = () => {
     const [ payment_description, setPaymentDescription ] = useState('')
     const [ suscription_account, setSuscriptionAccount ] = useState('')
     const [ suscription_description, setSuscriptionDescription ] = useState('')
-    const [ user_name, setUserName ] = useState('prueba')
-    const [ user_email, setUserEmail ] = useState('prueba@prueba.com')
+    const [ user_name, setUserName ] = useState('')
+    const [ user_email, setUserEmail ] = useState('')
     
     const [dsmerchant_terminal, setDsMerchantTerminal] = useState('00000001')
     const [dsmerchant_terminalauth, setDsMerchantTerminalAuth] = useState('00000001')
@@ -115,20 +115,10 @@ export const TefpayPaymentForm = () => {
             setSuscriptionAccount( matchingData )
             setPaymentId( matchingData )
             setPaymentCode( paymentCode )
-            setUserEmail( user_email )
+            setUserName(session.user.name)
+            setUserEmail(session.user.email)
             setPaymentDescription( `NUEVO PAGO EN - /${locale} `)
             setSuscriptionDescription(`NUEVA SUSCRIPCION EN - /${locale} `)
-            
-        }
-
-    }, [ session ])
-
-    useEffect(() => {
-
-        if ( status === "loading" ) 
-            setLoading(true)
-        
-        else if ( status === "authenticated" ) {
 
             const src = iframe_src
             const script = document.createElement( 'script' )
@@ -150,17 +140,56 @@ export const TefpayPaymentForm = () => {
                     }
                 }
 
-                setLoading(false)
-
-            }
-
-            return () => {
-                window.TefpayIframe = null
             }
 
         }
- 
+
+        else {
+            window.TefpayIframe = null
+        }
+
+        setLoading(false)
+        
     }, [ session ])
+
+    // useEffect(() => {
+
+    //     if ( status === "loading" ) 
+    //         setLoading(true)
+        
+    //     else if ( status === "authenticated" ) {
+
+    //         const src = iframe_src
+    //         const script = document.createElement( 'script' )
+            
+    //         script.src = src as string
+    //         script.async = true
+
+    //         setDsMerchantTerminal(terminals[locale])
+    //         setDsMerchantTerminalAuth(terminals[locale])
+
+    //         document.body.appendChild(script).onload = () => {
+                
+    //             const TefpayIframe = window.TefpayIframe
+                
+    //             if (TefpayIframe) {
+    //                 if (TefpayIframe.init()) {
+    //                     TefpayIframe.configure(iframe_configure_url, "100%")
+    //                     TefpayIframe.load()
+    //                 }
+    //             }
+
+    //             setLoading(false)
+
+    //         }
+
+    //         return () => {
+    //             window.TefpayIframe = null
+    //         }
+
+    //     }
+ 
+    // }, [ session ])
 
     return (<>
 
@@ -187,13 +216,13 @@ export const TefpayPaymentForm = () => {
             <input type="hidden" name="Ds_Merchant_MerchantCodeTemplate" value={merchantTemplate} />
             <input type="hidden" name="Ds_Merchant_TemplateNumber" value="07" />
             <input type="hidden" name="Ds_Merchant_AdditionalData" value="1" />
-            <input type="hidden" name="Ds_Merchant_MatchingData" id="Ds_Merchant_MatchingData"  value={ matching_data } />
-            <input type="hidden" name="Ds_Merchant_MerchantSignature" id="Ds_Merchant_MerchantSignature"  value={ signature } />
+            <input type="hidden" name="Ds_Merchant_MatchingData" id="Ds_Merchant_MatchingData"  value={ matching_data ? matching_data : '' } />
+            <input type="hidden" name="Ds_Merchant_MerchantSignature" id="Ds_Merchant_MerchantSignature"  value={ signature ? signature : '' } />
             <input type="hidden" name="Ds_Merchant_Subscription_Account" id="Ds_Merchant_Subscription_Account" value={ suscription_account } />
             <input type="hidden" name="Ds_Merchant_Subscription_ClientName" id="Ds_Merchant_Subscription_ClientName" value={ user_name } />
             <input type="hidden" name="Ds_Merchant_Subscription_ClientEmail" id="Ds_Merchant_Subscription_ClientEmail" value={ (cleanEmailString( user_email )) } />
-            <input type="hidden" name="Ds_Merchant_Subscription_Description" value={ suscription_description } />
-            <input type="hidden" name="Ds_Merchant_Description" value={ payment_description } />
+            <input type="hidden" name="Ds_Merchant_Subscription_Description" value={ suscription_description ? suscription_description : '' } />
+            <input type="hidden" name="Ds_Merchant_Description" value={ payment_description ? payment_description : '' } />
             <input type="hidden" name="Ds_Merchant_Subscription_NotifyCostumerByEmail" value="0" />
             <input type="hidden" name="Ds_Merchant_Lang" value={ locale } />
             <input type="hidden" id="Ds_Merchant_Subscription_Enable" name="Ds_Merchant_Subscription_Enable" value="1" />
