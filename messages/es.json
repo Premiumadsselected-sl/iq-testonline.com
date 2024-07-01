@@ -49,6 +49,7 @@
     "Register": {
         "title": "Registrarse",
         "user_name": "Nombre de usuario",
+        "user_name_error": "El nombre debe tener al menos 3 caracteres y no puede contener numeros",
         "user_email": "Correo electrónico",
         "password": "Contraseña",
         "submit": "Registrarse",
