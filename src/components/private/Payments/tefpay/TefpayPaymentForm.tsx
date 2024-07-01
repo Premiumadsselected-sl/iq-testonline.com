@@ -186,46 +186,9 @@ export const TefpayPaymentForm = () => {
 
         setLoading(false)
         
-    }, [ session ])
+    }, [])
 
-    // useEffect(() => {
-
-    //     if ( status === "loading" ) 
-    //         setLoading(true)
-        
-    //     else if ( status === "authenticated" ) {
-
-    //         const src = iframe_src
-    //         const script = document.createElement( 'script' )
-            
-    //         script.src = src as string
-    //         script.async = true
-
-    //         setDsMerchantTerminal(terminals[locale])
-    //         setDsMerchantTerminalAuth(terminals[locale])
-
-    //         document.body.appendChild(script).onload = () => {
-                
-    //             const TefpayIframe = window.TefpayIframe
-                
-    //             if (TefpayIframe) {
-    //                 if (TefpayIframe.init()) {
-    //                     TefpayIframe.configure(iframe_configure_url, "100%")
-    //                     TefpayIframe.load()
-    //                 }
-    //             }
-
-    //             setLoading(false)
-
-    //         }
-
-    //         return () => {
-    //             window.TefpayIframe = null
-    //         }
-
-    //     }
  
-    // }, [ session ])
 
     return (<>
 
@@ -300,7 +263,7 @@ export const TefpayPaymentForm = () => {
                 Al aceptar el pago accedes a nuestro servicio por una suscripción mensual de 49.90€ con la opción de cancelar en 24 horas, teniendo un coste de 0.60€, pudiendo cancelar en cualquier momento.
             </p>
         </div>
-        
+
     </>)
 
 }
