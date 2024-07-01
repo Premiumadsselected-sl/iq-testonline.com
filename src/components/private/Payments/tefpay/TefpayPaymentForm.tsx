@@ -233,7 +233,7 @@ export const TefpayPaymentForm = () => {
 
         </form>  
 
-        <div className="bg-white p-6 text-center">
+        <div className="bg-white px-6 text-center">
             <h1 className="text-2xl font-bold text-purple-700">Pago seguro</h1>
             <div className="my-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-purple-700 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
