@@ -28,12 +28,23 @@ export default function PreviewCustomizeComponent({ pageProps }: Props) {
     const handleContinue = () => {
         
         // Valida si el usuario esta autenticado
+        // La ruta /payment ya esta protegida por session 
+        // puede que esta validacion sea innecesaria pero como 
+        // este es un componente independiente lo dejo asi.
+        // de hecho podria ser reutilizable y me estoy pensando 
+        // en hacerlo parte de la plantilla del marco de trabajo.
         if (status === 'unauthenticated') 
             return router.push('/register')
 
         // TODO: Falta la comprovacion de la subscripcion
+        // Valida si el usuario esta suscrito
+        // usa -> POST subscriptions/validate-subscription
+        // Redirige a la pagina de pago si no esta suscrito
+        // Redirige a la pagina de resultados si esta suscrito
         
+        // Redirige a la pagina de pago hasta que acabes la validacion
         router.push('/payment')
+        
     }
 
     return (
