@@ -35,7 +35,7 @@ export const TefpayPaymentForm = () => {
     const [ payment_description, setPaymentDescription ] = useState('')
     const [ suscription_account, setSuscriptionAccount ] = useState('')
     const [ suscription_description, setSuscriptionDescription ] = useState('')
-    const [ user_name, setUserName ] = useState('')
+    const [ user_name, setUserName ] = useState(session?.user.name as string)
     const [ user_email, setUserEmail ] = useState('')
     
     const [dsmerchant_terminal, setDsMerchantTerminal] = useState('00000001')
@@ -232,9 +232,9 @@ export const TefpayPaymentForm = () => {
                     <label className="required font-semibold text-sm">
                         {t('name_label')}
                     </label>
-                    <input type="name_lastname" id="name_lastname" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-purple-700 focus:border-none block w-full mt-0 p-3.5" placeholder={t('name_holder')} onChange={(e)=>{
+                    <input type="name_lastname" id="name_lastname" value={user_name} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-purple-700 focus:border-none block w-full mt-0 p-3.5 cursor-not-allowed" placeholder={t('name_holder')} onChange={(e)=>{
                         changeUserName(e.target.value)
-                    }} />
+                    }} disabled/>
                 </div>
             </div>
 
