@@ -185,7 +185,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                                 </div>
                                 <div className="w-3/4 text-left">
                                     <label htmlFor="remember_me">
-                                        <Link href="/terms" className="text-purple-700">
+                                        <Link href={`${locale}/terms`} className="text-purple-700">
                                             {t('accept_terms_label')}
                                         </Link>
                                     </label>
