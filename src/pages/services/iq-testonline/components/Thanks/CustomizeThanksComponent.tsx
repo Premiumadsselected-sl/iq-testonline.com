@@ -2,6 +2,8 @@
 import { AppProps } from "next/app"
 import { GetStaticPropsContext } from 'next'
 import { useLocale, useTimeZone, useTranslations } from "next-intl"
+import { useSession } from "next-auth/react"
+import { useEffect, useState } from "react"
 
 type Props = AppProps & {
     children: React.ReactNode
@@ -14,6 +16,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
     const locale = useLocale()
     const t = useTranslations('Thanks') 
     const Zone = useTimeZone() || process.env.NEXT_PUBLIC_TIMEZONE
+    const { data: session } = useSession()
 
     pageProps = {
         ...pageProps,
@@ -22,6 +25,63 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
         locale: locale,
         timeZone: Zone
     }
+
+    // Este metodo se encarga de guardar los datos del pago 
+    // y los datos de la subscripcion en la base de datos.
+    const savePayment = async ( payment_code:string ) => {
+        
+        try{
+
+            const request_save_payment = 
+            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': session?.user.token as string 
+                },
+                body: JSON.stringify({ 
+                    method: 'POST',
+                    path: 'payments/payment-flow',
+                    params: {
+                        payment_code: payment_code,
+                        email: session?.user.email
+                    }  
+                })
+            })
+
+            const response = await request_save_payment.json()
+
+            if( !response ) 
+                throw response
+
+            return response
+    
+        } catch ( error ) {
+            return error
+        }
+
+    }
+
+    useEffect(() => {
+            
+            const payment_code = router.query.payment_code as string
+    
+            if( payment_code ) 
+                savePayment(payment_code).then( response => {
+                    console.log(response)
+                    
+                    if( response.error ) 
+                        router.push(`/${locale}`)
+
+                    // usar pixel de converciones
+
+                })
+            
+            else
+                router.push(`/${locale}`)
+            
+        }
+    , [session])
 
     return (<>
         
@@ -32,6 +92,7 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             <p className="text-center">
                 {t('description')}
             </p>
+
         </div>
 
     </>)

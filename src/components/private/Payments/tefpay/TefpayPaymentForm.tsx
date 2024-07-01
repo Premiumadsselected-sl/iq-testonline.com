@@ -31,7 +31,7 @@ export const TefpayPaymentForm = () => {
     const [ matching_data, setMatchingData ] = useState('')
     const [ signature, setSignature ] = useState('')
     const [ payment_id, setPaymentId ] = useState('')
-    const [ payment_token, setPaymentToken ] = useState('')
+    const [ payment_code, setPaymentCode ] = useState('')
     const [ payment_description, setPaymentDescription ] = useState('')
     const [ suscription_account, setSuscriptionAccount ] = useState('')
     const [ suscription_description, setSuscriptionDescription ] = useState('')
@@ -54,40 +54,6 @@ export const TefpayPaymentForm = () => {
     const changeUserName = ( value:string ) => {
         setUserName(value)
         return value
-    }
-
-    const savePayment = async ( payment_code:string ) => {
-        
-        try{
-
-            const request_save_payment = 
-            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': session?.user.token as string 
-                },
-                body: JSON.stringify({ 
-                    method: 'POST',
-                    path: 'payments/payment-flow',
-                    params: {
-                        payment_code: payment_code,
-                        email: session?.user.email
-                    }  
-                })
-            })
-
-            const response = await request_save_payment.json()
-
-            if( !response ) 
-                throw response
-
-            return response
-    
-        } catch ( error ) {
-            return error
-        }
-
     }
 
     const cleanEmailString = ( email:string ) => {
@@ -131,6 +97,7 @@ export const TefpayPaymentForm = () => {
             setLoading(true)
 
         else if ( status === "authenticated" ) {
+            
             const matchingData = String(new Date().toISOString().replace(/[^0-9]/g, '')).padEnd(21, '0')
             const merchantURL = tefpay_notyfi_url
             const signature = createSubscriptionSignature(
@@ -141,28 +108,18 @@ export const TefpayPaymentForm = () => {
                 merchantURL as string
             )
             
-            const paymentToken = `${matchingData}-${signature}`
+            const paymentCode = `${matchingData}-${signature}`
 
             setSignature( signature )
             setMatchingData( matchingData )
             setSuscriptionAccount( matchingData )
             setPaymentId( matchingData )
+            setPaymentCode( paymentCode )
             setUserEmail( user_email )
             setPaymentDescription( `NUEVO PAGO EN - /${locale} `)
             setSuscriptionDescription(`NUEVA SUSCRIPCION EN - /${locale} `)
             
-            savePayment(paymentToken).then( res => {
-                if( res.error ) { 
-                    console.error(res.error) 
-                    return false 
-                }
-                else { setPaymentToken(paymentToken) }
-            })
-
         }
-
-            
-
 
     }, [session])
 
@@ -217,8 +174,8 @@ export const TefpayPaymentForm = () => {
             <input type="hidden" name="Ds_Merchant_TerminalAuth" value={dsmerchant_terminalauth}/>
             <input type="hidden" name="Ds_Merchant_Subscription_Iteration" value="0"/>
             <input type="hidden" name="Ds_Merchant_Url" value={ tefpay_notyfi_url } />
-            <input type="hidden" name="Ds_Merchant_UrlOK" value={ `${hostname}${locale}/thanks?payment_token=${payment_token}` } />
-            <input type="hidden" name="Ds_Merchant_UrlKO" value={ `${hostname}${locale}/payment?error=true` } />
+            <input type="hidden" name="Ds_Merchant_UrlOK" value={ `${hostname}/${locale}/thanks?payment_code=${payment_code}` } />
+            <input type="hidden" name="Ds_Merchant_UrlKO" value={ `${hostname}/${locale}/payment?error=true` } />
             <input type="hidden" name="Ds_Merchant_MerchantCode" value={merchantCode} />
             <input type="hidden" name="Ds_Merchant_MerchantCodeTemplate" value={merchantTemplate} />
             <input type="hidden" name="Ds_Merchant_TemplateNumber" value="07" />
