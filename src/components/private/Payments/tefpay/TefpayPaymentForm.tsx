@@ -248,12 +248,12 @@ export const TefpayPaymentForm = () => {
                 <img src="/assets/paymentForm/icon_jcb.png" alt="JCB" className="h-8" />
             </div>
             <p className="text-gray-700">
-                Aceptamos VISA, MASTERCARD y AMERICA EXPRESS, su pago está protegido por
-                <span className="text-purple-700">3Ds Secure</span>.
+                Aceptamos VISA, MASTERCARD y AMERICA EXPRESS, su pago está protegido por 
+                <span className="text-purple-700"> 3Ds Secure</span>.
             </p>
-            <p className="text-gray-500 text-sm mt-4">
+            <small className="text-gray-500 text-sm mt-4">
                 Al aceptar el pago accedes a nuestro servicio por una suscripción mensual de 49.90€ con la opción de cancelar en 24 horas, teniendo un coste de 0.60€, pudiendo cancelar en cualquier momento.
-            </p>
+            </small>
         </div>
 
     </>)
