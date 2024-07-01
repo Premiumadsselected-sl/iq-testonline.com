@@ -278,11 +278,6 @@ export const TefpayPaymentForm = () => {
 
         </form>  
 
-        <div id="tefpay-images-container" className="flex justify-center items-center mt-4">
-            <img src="/assets/paymentForm/tefpay-logo1.png" alt="Tefpay Logo" className="w-32 h-32"/>
-
-        </div>
-
         <div className="bg-white p-6 rounded-lg shadow-lg text-center">
             <h1 className="text-2xl font-bold text-purple-700">Pago seguro</h1>
             <div className="my-4">
@@ -305,11 +300,7 @@ export const TefpayPaymentForm = () => {
                 Al aceptar el pago accedes a nuestro servicio por una suscripción mensual de 49.90€ con la opción de cancelar en 24 horas, teniendo un coste de 0.60€, pudiendo cancelar en cualquier momento.
             </p>
         </div>
-
-
-
-
-
+        
     </>)
 
 }
