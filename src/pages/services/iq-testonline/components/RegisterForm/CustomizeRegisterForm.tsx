@@ -160,7 +160,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                             </div>
 
                             <div className="w-full col-span-2 flex flex-row">
-                                <div className="w-1/12">
+                                <div className="w-1/12 flex">
                                     <input
                                         type="checkbox"
                                         id="remember_me"
