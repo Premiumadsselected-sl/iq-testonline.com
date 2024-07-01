@@ -35,7 +35,7 @@ export const TefpayPaymentForm = () => {
     const [ payment_description, setPaymentDescription ] = useState('')
     const [ suscription_account, setSuscriptionAccount ] = useState('')
     const [ suscription_description, setSuscriptionDescription ] = useState('')
-    const [ user_name, setUserName ] = useState(session?.user.name as string)
+    const [ user_name, setUserName ] = useState(session?.user.user_name as string)
     const [ user_email, setUserEmail ] = useState('')
     
     const [dsmerchant_terminal, setDsMerchantTerminal] = useState('00000001')
@@ -115,7 +115,7 @@ export const TefpayPaymentForm = () => {
             setSuscriptionAccount( matchingData )
             setPaymentId( matchingData )
             setPaymentCode( paymentCode )
-            setUserName(session.user.name)
+            setUserName(session.user.user_name)
             setUserEmail(session.user.email)
             setPaymentDescription( `NUEVO PAGO EN - /${locale} `)
             setSuscriptionDescription(`NUEVA SUSCRIPCION EN - /${locale} `)
