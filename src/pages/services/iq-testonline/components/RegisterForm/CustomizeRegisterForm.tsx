@@ -175,7 +175,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                                         {t('remember_me_label')}
                                     </label>
                                 </div> */}
-                                <div className="w-1/12 flex">
+                                <div className="w-1/12 flex mx-1">
                                     <input
                                         type="checkbox"
                                         id="accept_terms"
