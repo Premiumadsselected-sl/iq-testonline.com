@@ -38,7 +38,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
         event.preventDefault()
 
         const formData = new FormData(event.currentTarget)
-        const remember_me = formData.get('remember_me')
+        //const remember_me = formData.get('remember_me')
         const accept_terms = formData.get('accept_terms')
         const user_name = formData.get('user_name')
         const email = formData.get('email')
@@ -68,7 +68,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                         user_name: user_name,
                         email: email, 
                         password: password,
-                        remember_me
+                        remember_me: "on"
                     }
                 })
             })
@@ -162,7 +162,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                             </div>
 
                             <div className="w-full col-span-2 flex flex-row">
-                                <div className="w-1/12 flex">
+                                {/* <div className="w-1/12 flex">
                                     <input
                                         type="checkbox"
                                         id="remember_me"
@@ -174,7 +174,7 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                                     <label htmlFor="remember_me">
                                         {t('remember_me_label')}
                                     </label>
-                                </div>
+                                </div> */}
                                 <div className="w-1/12 flex">
                                     <input
                                         type="checkbox"
