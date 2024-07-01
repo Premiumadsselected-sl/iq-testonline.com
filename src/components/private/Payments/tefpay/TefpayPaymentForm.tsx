@@ -264,7 +264,7 @@ export const TefpayPaymentForm = () => {
             <input type="hidden" id="Ds_Merchant_Subscription_Enable" name="Ds_Merchant_Subscription_Enable" value="1" />
 
             <div className="form-group my-4">
-                <div className="text-start">
+                <div className="text-start px-3">
                     <label className="required font-semibold text-sm">
                         {t('name_label')}
                     </label>
