@@ -283,6 +283,29 @@ export const TefpayPaymentForm = () => {
 
         </div>
 
+        <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h1 className="text-2xl font-bold text-purple-700">Pago seguro</h1>
+            <div className="my-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-purple-700 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zM14 9h.01M20 9h.01M4 9h.01M18 9h.01M6 9h.01M12 7h.01M8 7h.01M16 7h.01M8 5h.01M16 5h.01M12 5h.01M20 7h.01M4 7h.01M4 5h.01M20 5h.01M10 11v4h4v-4h-4z"/>
+                </svg>
+            </div>
+            <p className="text-gray-700">En su extracto bancario le mostrará</p>
+            <p className="text-gray-700 font-semibold">iq-testonline.com</p>
+            <div className="flex justify-center my-4 space-x-4">
+                <img src="/assets/paymentForm/icon_visa.png" alt="Visa" className="h-8" />
+                <img src="/assets/paymentForm/icon_mastercard.png" alt="MasterCard" className="h-8" />
+                <img src="/assets/paymentForm/icon_jcb.png" alt="JCB" className="h-8" />
+            </div>
+            <p className="text-gray-700">
+                Aceptamos VISA, MASTERCARD y AMERICA EXPRESS, su pago está protegido por
+                <span className="text-purple-700">3Ds Secure</span>.
+            </p>
+            <p className="text-gray-500 text-sm mt-4">
+                Al aceptar el pago accedes a nuestro servicio por una suscripción mensual de 49.90€ con la opción de cancelar en 24 horas, teniendo un coste de 0.60€, pudiendo cancelar en cualquier momento.
+            </p>
+        </div>
+
 
 
 
