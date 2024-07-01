@@ -279,7 +279,7 @@ export const TefpayPaymentForm = () => {
         </form>  
 
         <div id="tefpay-images-container" className="flex justify-center items-center mt-4">
-            <img src="/assets/paymentForm/tefpay-logo1.png" alt="Tefpay Logo" className="w-32 h-32"/>
+            <img src="../tefpay_resources/img/07V99000544/tefpay-logo1.png" alt="Tefpay Logo" className="w-32 h-32"/>
 
         </div>
 
