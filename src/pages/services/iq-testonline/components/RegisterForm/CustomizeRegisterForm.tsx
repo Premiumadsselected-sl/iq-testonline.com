@@ -42,6 +42,16 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
         const user_name = formData.get('user_name')
         const email = formData.get('email')
         const password = formData.get('password')
+
+        // Validando user_name para que cumpla con el formato de un
+        // nombre o nombre y apellidos con una exprecion regural 
+        // que permita letras y espacios.
+
+        const regex = /^[a-zA-Z\s]{3,40}$/
+        if (!regex.test(user_name as string)) {
+            await errorMessage(t('user_name_error'))
+            return false
+        }
         
         try {
 
