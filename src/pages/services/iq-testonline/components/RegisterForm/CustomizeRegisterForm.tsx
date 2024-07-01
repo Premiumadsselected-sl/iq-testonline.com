@@ -39,13 +39,15 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
 
         const formData = new FormData(event.currentTarget)
         const remember_me = formData.get('remember_me')
+        const accept_terms = formData.get('accept_terms')
         const user_name = formData.get('user_name')
         const email = formData.get('email')
         const password = formData.get('password')
 
-        // Validando user_name para que cumpla con el formato de un
-        // nombre o nombre y apellidos con una exprecion regural 
-        // que permita letras y espacios.
+        if( !accept_terms ) {
+            await errorMessage(t('accept_terms_error'))
+            return false
+        }
 
         const regex = /^[a-zA-Z\s]{3,40}$/
         if (!regex.test(user_name as string)) {
@@ -171,6 +173,21 @@ export default function CustomizeRegisterForm({ pageProps }: Props) {
                                 <div className="w-3/4 text-left">
                                     <label htmlFor="remember_me">
                                         {t('remember_me_label')}
+                                    </label>
+                                </div>
+                                <div className="w-1/12 flex">
+                                    <input
+                                        type="checkbox"
+                                        id="accept_terms"
+                                        name="accept_terms"
+                                        className={styles.inputForm}
+                                        required />
+                                </div>
+                                <div className="w-3/4 text-left">
+                                    <label htmlFor="remember_me">
+                                        <Link href="/terms" className="text-purple-700">
+                                            {t('accept_terms_label')}
+                                        </Link>
                                     </label>
                                 </div>
                                 

@@ -65,7 +65,8 @@
         "register_button": "Registrarse",
         "answer_account": "¿Ya tienes una cuenta?",
         "login_link": "Iniciar sesión",
-        "remember_me_label": "Recordar session"
+        "remember_me_label": "Recordar session",
+        "accept_terms_label": "Acepto los términos y condiciones del servicio"
     },
 
     "About": {
