@@ -121,90 +121,99 @@ export const TefpayPaymentForm = () => {
             
         }
 
-    }, [session])
+    }, [ session ])
 
     useEffect(() => {
-        
-        const src = iframe_src
-        const script = document.createElement( 'script' )
-        
-        script.src = src as string
-        script.async = true
 
-        setDsMerchantTerminal(terminals[locale])
-        setDsMerchantTerminalAuth(terminals[locale])
+        if ( status === "loading" ) 
+            setLoading(true)
+        
+        else if ( status === "authenticated" ) {
 
-        document.body.appendChild(script).onload = () => {
+            const src = iframe_src
+            const script = document.createElement( 'script' )
             
-            const TefpayIframe = window.TefpayIframe
-            
-            if (TefpayIframe) {
-                if (TefpayIframe.init()) {
-                    TefpayIframe.configure(iframe_configure_url, "100%")
-                    TefpayIframe.load()
+            script.src = src as string
+            script.async = true
+
+            setDsMerchantTerminal(terminals[locale])
+            setDsMerchantTerminalAuth(terminals[locale])
+
+            document.body.appendChild(script).onload = () => {
+                
+                const TefpayIframe = window.TefpayIframe
+                
+                if (TefpayIframe) {
+                    if (TefpayIframe.init()) {
+                        TefpayIframe.configure(iframe_configure_url, "100%")
+                        TefpayIframe.load()
+                    }
                 }
+
+                setLoading(false)
+
             }
 
-            setLoading(false)
+            return () => {
+                window.TefpayIframe = null
+            }
 
         }
-
-        return () => {
-            window.TefpayIframe = null
-        }
-
-    }, [])
+ 
+    }, [ session ])
 
     return (<>
 
-        { loading ? <div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div></div> : null }
+        { loading ? <div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div></div> :  
 
-        <form className="p-2 px-20 mb-2 payment-form" role="form" id="tefpayData" autoComplete="true" >
+            <form className="p-2 px-20 mb-2 payment-form" role="form" id="tefpayData" autoComplete="true" >
 
-            <input type="hidden" name="Ds_Merchant_TransactionType" value="6"/>
-            <input type="hidden" name="Ds_Merchant_Subscription_ProcessingMethod" value="201"/>
-            <input type="hidden" name="Ds_Merchant_Subscription_Action" value="C"/>
-            <input type="hidden" name="Ds_Merchant_Currency" value="978"/>
-            <input type="hidden" name="Ds_Merchant_Amount" value={ trial_amount } />
-            <input type="hidden" name="Ds_Merchant_Subscription_ChargeAmount" value={ suscription_amount } />
-            <input type="hidden" name="Ds_Merchant_Subscription_RelFirstCharge" value="02D"/>
-            <input type="hidden" name="Ds_Merchant_Subscription_PeriodType" value="M"/>
-            <input type="hidden" name="Ds_Merchant_Subscription_PeriodInterval" value="1"/>
-            <input type="hidden" name="Ds_Merchant_Terminal" value={dsmerchant_terminal}/>
-            <input type="hidden" name="Ds_Merchant_TerminalAuth" value={dsmerchant_terminalauth}/>
-            <input type="hidden" name="Ds_Merchant_Subscription_Iteration" value="0"/>
-            <input type="hidden" name="Ds_Merchant_Url" value={ tefpay_notyfi_url } />
-            <input type="hidden" name="Ds_Merchant_UrlOK" value={ `${hostname}/${locale}/thanks?payment_code=${payment_code}` } />
-            <input type="hidden" name="Ds_Merchant_UrlKO" value={ `${hostname}/${locale}/payment?error=true` } />
-            <input type="hidden" name="Ds_Merchant_MerchantCode" value={merchantCode} />
-            <input type="hidden" name="Ds_Merchant_MerchantCodeTemplate" value={merchantTemplate} />
-            <input type="hidden" name="Ds_Merchant_TemplateNumber" value="07" />
-            <input type="hidden" name="Ds_Merchant_AdditionalData" value="1" />
-            <input type="hidden" name="Ds_Merchant_MatchingData" id="Ds_Merchant_MatchingData"  value={ matching_data } />
-            <input type="hidden" name="Ds_Merchant_MerchantSignature" id="Ds_Merchant_MerchantSignature"  value={ signature } />
-            <input type="hidden" name="Ds_Merchant_Subscription_Account" id="Ds_Merchant_Subscription_Account" value={ suscription_account } />
-            <input type="hidden" name="Ds_Merchant_Subscription_ClientName" id="Ds_Merchant_Subscription_ClientName" value={ user_name } />
-            <input type="hidden" name="Ds_Merchant_Subscription_ClientEmail" id="Ds_Merchant_Subscription_ClientEmail" value={ (cleanEmailString( user_email )) } />
-            <input type="hidden" name="Ds_Merchant_Subscription_Description" value={ suscription_description } />
-            <input type="hidden" name="Ds_Merchant_Description" value={ payment_description } />
-            <input type="hidden" name="Ds_Merchant_Subscription_NotifyCostumerByEmail" value="0" />
-            <input type="hidden" name="Ds_Merchant_Lang" value={ locale } />
-            <input type="hidden" id="Ds_Merchant_Subscription_Enable" name="Ds_Merchant_Subscription_Enable" value="1" />
+                <input type="hidden" name="Ds_Merchant_TransactionType" value="6"/>
+                <input type="hidden" name="Ds_Merchant_Subscription_ProcessingMethod" value="201"/>
+                <input type="hidden" name="Ds_Merchant_Subscription_Action" value="C"/>
+                <input type="hidden" name="Ds_Merchant_Currency" value="978"/>
+                <input type="hidden" name="Ds_Merchant_Amount" value={ trial_amount } />
+                <input type="hidden" name="Ds_Merchant_Subscription_ChargeAmount" value={ suscription_amount } />
+                <input type="hidden" name="Ds_Merchant_Subscription_RelFirstCharge" value="02D"/>
+                <input type="hidden" name="Ds_Merchant_Subscription_PeriodType" value="M"/>
+                <input type="hidden" name="Ds_Merchant_Subscription_PeriodInterval" value="1"/>
+                <input type="hidden" name="Ds_Merchant_Terminal" value={dsmerchant_terminal}/>
+                <input type="hidden" name="Ds_Merchant_TerminalAuth" value={dsmerchant_terminalauth}/>
+                <input type="hidden" name="Ds_Merchant_Subscription_Iteration" value="0"/>
+                <input type="hidden" name="Ds_Merchant_Url" value={ tefpay_notyfi_url } />
+                <input type="hidden" name="Ds_Merchant_UrlOK" value={ `${hostname}/${locale}/thanks?payment_code=${payment_code}` } />
+                <input type="hidden" name="Ds_Merchant_UrlKO" value={ `${hostname}/${locale}/payment?error=true` } />
+                <input type="hidden" name="Ds_Merchant_MerchantCode" value={merchantCode} />
+                <input type="hidden" name="Ds_Merchant_MerchantCodeTemplate" value={merchantTemplate} />
+                <input type="hidden" name="Ds_Merchant_TemplateNumber" value="07" />
+                <input type="hidden" name="Ds_Merchant_AdditionalData" value="1" />
+                <input type="hidden" name="Ds_Merchant_MatchingData" id="Ds_Merchant_MatchingData"  value={ matching_data } />
+                <input type="hidden" name="Ds_Merchant_MerchantSignature" id="Ds_Merchant_MerchantSignature"  value={ signature } />
+                <input type="hidden" name="Ds_Merchant_Subscription_Account" id="Ds_Merchant_Subscription_Account" value={ suscription_account } />
+                <input type="hidden" name="Ds_Merchant_Subscription_ClientName" id="Ds_Merchant_Subscription_ClientName" value={ user_name } />
+                <input type="hidden" name="Ds_Merchant_Subscription_ClientEmail" id="Ds_Merchant_Subscription_ClientEmail" value={ (cleanEmailString( user_email )) } />
+                <input type="hidden" name="Ds_Merchant_Subscription_Description" value={ suscription_description } />
+                <input type="hidden" name="Ds_Merchant_Description" value={ payment_description } />
+                <input type="hidden" name="Ds_Merchant_Subscription_NotifyCostumerByEmail" value="0" />
+                <input type="hidden" name="Ds_Merchant_Lang" value={ locale } />
+                <input type="hidden" id="Ds_Merchant_Subscription_Enable" name="Ds_Merchant_Subscription_Enable" value="1" />
 
-            <div className="form-group my-4">
-                <div className="text-start">
-                    <label className="required font-semibold text-sm">
-                        {t('name_label')}
-                    </label>
-                    <input type="name_lastname" id="name_lastname" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-purple-700 focus:border-none block w-full mt-0 p-3.5" placeholder={t('name_holder')} onChange={(e)=>{
-                        changeUserName(e.target.value)
-                    }} />
+                <div className="form-group my-4">
+                    <div className="text-start">
+                        <label className="required font-semibold text-sm">
+                            {t('name_label')}
+                        </label>
+                        <input type="name_lastname" id="name_lastname" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-purple-700 focus:border-none block w-full mt-0 p-3.5" placeholder={t('name_holder')} onChange={(e)=>{
+                            changeUserName(e.target.value)
+                        }} />
+                    </div>
                 </div>
-            </div>
 
-            <div id="tefpayBox"></div>
+                <div id="tefpayBox"></div>
 
-        </form>  
+            </form>  
+            
+        }
 
     </>)
 
