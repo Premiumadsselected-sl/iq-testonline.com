@@ -129,11 +129,17 @@ export const TefpayPaymentForm = () => {
 
     useEffect(() =>{
 
+        const tefpayBox = document.getElementById('tefpayBox')
+
         if ( status === "loading" ) 
             setLoading(true)
 
-        else if ( status === "authenticated" ) {
+        else if ( status === "authenticated" && tefpayBox?.innerHTML === '' ) {
+            
             getUser()
+
+            setUserName(session.user?.user_name as string)
+            setUserEmail(session.user?.email as string)
             
             const matchingData = String(new Date().toISOString().replace(/[^0-9]/g, '')).padEnd(21, '0')
             const merchantURL = tefpay_notyfi_url
