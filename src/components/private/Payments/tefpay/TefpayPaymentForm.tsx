@@ -35,7 +35,7 @@ export const TefpayPaymentForm = () => {
     const [ payment_description, setPaymentDescription ] = useState('')
     const [ suscription_account, setSuscriptionAccount ] = useState('')
     const [ suscription_description, setSuscriptionDescription ] = useState('')
-    const [ user_name, setUserName ] = useState(session?.user.user_name as string)
+    const [ user_name, setUserName ] = useState('')
     const [ user_email, setUserEmail ] = useState('')
     
     const [dsmerchant_terminal, setDsMerchantTerminal] = useState('00000001')
@@ -49,6 +49,42 @@ export const TefpayPaymentForm = () => {
         nl: '00000006',
         ie: '00000007',
         ae: '00000008'
+    }
+
+    const getUser = async () => {
+
+        try{
+        
+            // NOTA: Lo dejo aqui ya lo cambiaras a redux
+            const request_user_data = 
+            await fetch(`${process.env.NEXT_PUBLIC_SERVICE_ENDPOINT_URL}`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': session?.user.token as string 
+                },
+                body: JSON.stringify({ 
+                    method: 'POST',
+                    path: 'users/get-user',
+                    params: {
+                        email: session?.user.email
+                    }  
+                })
+            })
+
+            const user_data = await request_user_data.json()
+            
+            if( !user_data ) throw user_data
+
+            setUserName(user_data.user_name)
+            
+            return user_data
+        }
+
+        catch( error ){
+            return false
+        }
+        
     }
 
     const changeUserName = ( value:string ) => {
@@ -85,7 +121,7 @@ export const TefpayPaymentForm = () => {
             setLoading(true)
 
         else if ( status === "authenticated" ) {
-          setUserName(session.user?.name as string)
+          setUserName(session.user?.user_name as string)
           setUserEmail(session.user?.email as string)
         }
 
@@ -97,6 +133,7 @@ export const TefpayPaymentForm = () => {
             setLoading(true)
 
         else if ( status === "authenticated" ) {
+            getUser()
             
             const matchingData = String(new Date().toISOString().replace(/[^0-9]/g, '')).padEnd(21, '0')
             const merchantURL = tefpay_notyfi_url
@@ -115,7 +152,6 @@ export const TefpayPaymentForm = () => {
             setSuscriptionAccount( matchingData )
             setPaymentId( matchingData )
             setPaymentCode( paymentCode )
-            setUserName(session.user.user_name)
             setUserEmail(session.user.email)
             setPaymentDescription( `NUEVO PAGO EN - /${locale} `)
             setSuscriptionDescription(`NUEVA SUSCRIPCION EN - /${locale} `)
