@@ -115,18 +115,6 @@ export const TefpayPaymentForm = () => {
         return result
     }
 
-    useEffect(() => {
-
-        if ( status === "loading" ) 
-            setLoading(true)
-
-        else if ( status === "authenticated" ) {
-          setUserName(session.user?.user_name as string)
-          setUserEmail(session.user?.email as string)
-        }
-
-    }, [session])
-
     useEffect(() =>{
 
         const tefpayBox = document.getElementById('tefpayBox')
@@ -182,19 +170,17 @@ export const TefpayPaymentForm = () => {
                     }
                 }
 
+                else {
+                    window.TefpayIframe = null
+                }
+
             }
 
         }
 
-        else {
-            window.TefpayIframe = null
-        }
-
         setLoading(false)
         
-    }, [])
-
- 
+    }, [ session ])
 
     return (<>
 
