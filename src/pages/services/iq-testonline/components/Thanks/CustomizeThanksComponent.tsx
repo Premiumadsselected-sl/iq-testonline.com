@@ -66,19 +66,20 @@ export default function CustomizeThanksComponent({ router, pageProps }: AppProps
             
             const payment_code = router.query.payment_code as string
     
-            if( payment_code ) 
-                savePayment(payment_code).then( response => {
-                    console.log(response)
+            // if( payment_code ) 
+            //     savePayment(payment_code).then( response => {
+            //         console.log(response)
                     
-                    if( response.error ) 
-                        router.push(`/${locale}`)
+            //         if( response.error ) 
+            //             router.push(`/${locale}`)
 
-                    // usar pixel de converciones
+            //         // usar pixel de converciones
 
-                })
+            //     })
             
-            else
-                router.push(`/${locale}`)
+            // else
+            //     router.push(`/${locale}`)
+            console.log(payment_code)
             
         }
     , [session])
