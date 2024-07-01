@@ -96,7 +96,7 @@ export default function CustomizePaymentForm({ router, pageProps }: AppProps) {
             </div>
 
             <div className="col-span-3 md:col-span-2 justify-center items-center md:pr-36">
-                <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md h-[70vh]">
+                <div className="bg-white p-4 flex flex-col leading-normal rounded-lg w-full border-customBorderGray border-[1px] shadow-md h-full">
 
                     <div className='grid grid-cols-1 text-start text-customGray gap-2'>
 
